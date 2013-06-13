@@ -1,5 +1,5 @@
 base = slides
-slidefilename = talk-about-XYZ
+slidefilename = haenel-scipy-2013-numpy-ipython-intro-slides
 
 .PHONY: git-sha
 

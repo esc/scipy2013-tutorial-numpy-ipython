@@ -1,26 +1,78 @@
 Introduction
 ============
 
-Making slides with ``rst2beamer``
----------------------------------
+Materials
+---------
 
-* list item
-* list item
+* http://scipy2013.zetatech.org
 
-  * nested list item
+.. raw:: pdf
 
-.. code-block:: console
+   \vspace{2cm}
 
-    $ echo "example code block" 
+* Anconda: https://store.continuum.io/
 
-Next slide
+.. raw:: pdf
+
+   \vspace{2cm}
+
+* In case of not network: grab one of the three USB-Keys
+
+  * They read *Bruker*
+
+.. raw:: pdf
+
+   \vspace{2cm}
+
+* GitHub Repository: http://git.io/bocND
+
+About The Speaker
+-----------------
+
+* `Valentin Haenel <http://haenel.co>`_ from Berlin, Germany
+* Freelance software developer and consultant
+* Specialise in Git consulting and scientifc software tooling
+
+
+The Scientists Needs
+--------------------
+
+* Acquire data
+
+  * Simulation
+  * Experiment
+
+* Manipulate and process that data
+* Visualize results
+* Communicate results
+
+  * Produce figures for reports or publications
+  * Write presentations.
+
+
+Why Python
 ----------
 
-* Links:
-* `github <http://github.com>`_
+* Easy to learn, easy to read, easy to maintain
+* Thriving ecosystem of scientific libraries
+* Numpy IPython
+* Commercial support
 
-Images
-------
+The Scientific Python Ecosystem
+-------------------------------
 
-.. image:: images/octocat.pdf
+* Numpy
+* IPython
+* Scipy
+* Matplotlib
+
+.. raw:: pdf
+
+   \vspace{2cm}
+
+* Pandas
+* Sympy
+* Scikits-Learn
+* PyTables
+* Cython
 

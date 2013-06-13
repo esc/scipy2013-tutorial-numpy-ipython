@@ -1,10 +1,10 @@
-Talk about XYZ
-==============
+SciPy 2013 Tutorial - NumPy and IPython
+=======================================
 
 Description
 -----------
 
-Talk template based on rst2beamer.
+Introductory slides for my SciPy 2013 tutorial on NumPy and IPython.
 
 Dependencies
 ------------

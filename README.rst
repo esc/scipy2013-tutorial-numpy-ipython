@@ -6,5 +6,6 @@ Materials repository for my SciPy 2013 tutorial on NumPy and IPython.
 Contents
 --------
 
-:``introductory_slides/``: the 5 minute introduction slides
+:``introductory_slides/``: the 5 minute introduction slides (`rendered as HTML
+                           on github <http://git.io/UGsMiQ>`_)
 :``ipython-intro.ipynb``: the ipython notebook introduction to the ipython notebook

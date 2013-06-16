@@ -60,10 +60,12 @@ Tutorial Proposal for Scipy 2013
                * Ipython (Version 0.13 or higher)
                * Matplotlib (Version 1.2.1 or higher)
 
-:Documentation: I will use the corresponding sections from `Python Scientific Lecture
-                Notes <http://scipy-lectures.github.com/>`_. There is quite alot of
-                material there already. In preparation for this tutorial I would
-                invest some more time to increase the coherence of the material
-                and adding more short and easy exercises. Also, I will
-                hopefully get the ``sphinx2ipynb`` converter to work properly such
-                that I can give the lecture using an IPython notebook.
+:Documentation: I have converted a large part of the `Numpy chaper
+                <http://scipy-lectures.github.io/intro/numpy/index.html>`_ from
+                the `Python Scientific Lecture
+                Notes <http://scipy-lectures.github.com/>`_ using the
+                ``sphinx2ipynb`` converter from the `nbconvert project
+                <https://github.com/ipython/nbconvert>`_. All materials are
+                collected in my `scipy2013-tutorial-numpy-ipython Gitub
+                repository
+                <https://github.com/esc/scipy2013-tutorial-numpy-ipython>`_.

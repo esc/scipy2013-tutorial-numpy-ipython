@@ -1,5 +1,5 @@
-Tutorial Proposal for Scipy 2013
-================================
+SciPy2013 tutorial on NumPy and IPython
+=======================================
 
 :Tutorial Title: An Introduction to IPython and Numpy
 :Track:          Introduction Scientific Python Basics (Numpy and IPython)

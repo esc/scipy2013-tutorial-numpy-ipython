@@ -8,4 +8,5 @@ Contents
 
 :``introductory_slides/``: the 5 minute introduction slides (`rendered as HTML
                            on github <http://git.io/UGsMiQ>`_)
-:``ipython-intro.ipynb``: the ipython notebook introduction to the ipython notebook
+:``ipython-intro.ipynb``:  the ipython notebook introduction to the ipython notebook
+:``images``:               image files

@@ -6,7 +6,7 @@ SciPy2013 tutorial on NumPy and IPython
 :Link:           https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100
 :Author:         Valentin Haenel
 :Contact Email:  valentin@haenel.co
-:Version:        1.1
+:Version:        1.2
 :Bio:            Valentin Haenel is an software developer with experience
                  working in a scientific context. He is the co-author of a
                  scientific toolbox used in experimental psychology research

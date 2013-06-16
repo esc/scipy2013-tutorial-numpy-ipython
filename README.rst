@@ -20,6 +20,5 @@ Contents
 License
 -------
 
-* `Creative Commons Attribution 3.0 United States License (CC-by)
-   <http://creativecommons.org/licenses/by/3.0/us/>`_
+* `Creative Commons Attribution 3.0 United States License (CC-by) <http://creativecommons.org/licenses/by/3.0/us/>`_
 

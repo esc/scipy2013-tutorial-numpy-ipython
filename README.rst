@@ -12,6 +12,8 @@ Contents
 :``numpy_1.ipynb``: numpy part 1 ipython notebook
 :``numpy_2.ipynb``: numpy part 2 ipython notebook
 
+:``abstract.rst``:  abstract for the tutorial (`rendered as HTML on github:
+                    <http://git.io/dxcpqA>`_)
 :``intro_src/``:    build directory for the introductory slides
 :``images``:        image files
 

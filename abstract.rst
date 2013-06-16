@@ -3,6 +3,7 @@ Tutorial Proposal for Scipy 2013
 
 :Tutorial Title: An Introduction to IPython and Numpy
 :Track: Introduction Scientific Python Basics (Numpy and IPython)
+:Link: https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100
 :Author: Valentin Haenel
 :Contact Email: valentin@haenel.co
 :Version: 1.1

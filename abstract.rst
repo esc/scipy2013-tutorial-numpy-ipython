@@ -54,7 +54,7 @@ Tutorial Proposal for Scipy 2013
           During the exercises sessions, participants will be given exercises
           and solutions. I will walk around the room offering help and advice.
 
-:Package List: An install of Anaconda should be enough
+:Package List: An install of `Anaconda <https://store.continuum.io/>`_ should be enough
 
                * Numpy (Version 1.6 or higher)
                * Ipython (Version 0.13 or higher)

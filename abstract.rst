@@ -2,11 +2,11 @@ Tutorial Proposal for Scipy 2013
 ================================
 
 :Tutorial Title: An Introduction to IPython and Numpy
-:Track: Introduction Scientific Python Basics (Numpy and IPython)
-:Link: https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100
-:Author: Valentin Haenel
-:Contact Email: valentin@haenel.co
-:Version: 1.1
+:Track:          Introduction Scientific Python Basics (Numpy and IPython)
+:Link:           https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100
+:Author:         Valentin Haenel
+:Contact Email:  valentin@haenel.co
+:Version:        1.1
 :Bio: Valentin Haenel is an software developer with experience working in a
       scientific context. He is the co-author of a scientific toolbox used in
       experimental psychology research and has worked on a large-scale brain

@@ -25,16 +25,16 @@ Tutorial Proposal for Scipy 2013
       C <http://scipy-lectures.github.com/advanced/interfacing_with_c/interfacing_with_c.html>`_.
 
       See also: http://haenel.co
-:Tutorial Description: This tutorial is a hands-on introduction to the two most
-                       basic building-blocks of the scientific Python stack:
-                       the enhanced interactive interpreter IPython and the
-                       fast numerical container Numpy. Amongst other things you
-                       will learn how to structure an interactive workflow for
-                       scientific computing and how to create (or load) and
-                       manipulate numerical data efficiently. You should have
-                       some basic familiarity with Python (variables, loops,
-                       functions) and basic command-line usage (executing
-                       commands, using history).
+
+:Description: This tutorial is a hands-on introduction to the two most basic
+              building-blocks of the scientific Python stack: the enhanced
+              interactive interpreter IPython and the fast numerical container
+              Numpy. Amongst other things you will learn how to structure an
+              interactive workflow for scientific computing and how to create
+              (or load) and manipulate numerical data efficiently. You should
+              have some basic familiarity with Python (variables, loops,
+              functions) and basic command-line usage (executing commands,
+              using history).
 :Outline: **Ipython** (1 hour)
 
           * Help system, magic functions, aliases and history

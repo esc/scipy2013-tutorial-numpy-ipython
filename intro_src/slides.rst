@@ -10,7 +10,7 @@ Materials
 
    \vspace{2cm}
 
-* Anconda: https://store.continuum.io/
+* Anaconda: https://store.continuum.io/
 
 .. raw:: pdf
 
@@ -31,7 +31,7 @@ About The Speaker
 
 * `Valentin Haenel <http://haenel.co>`_ from Berlin, Germany
 * Freelance software developer and consultant
-* Specialise in Git consulting and scientifc software tooling
+* Specialise in Git consulting and scientific software tooling
 
 
 The Scientists Needs
@@ -79,7 +79,7 @@ The Scientific Python Ecosystem
 About IPython
 -------------
 
-* Defacto python interpreter with bells and whistles
+* De facto Python interpreter with bells and whistles
 * Since 2011: available in the browser as *IPython notebook*
 
 .. code:: console

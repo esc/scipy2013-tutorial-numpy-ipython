@@ -94,7 +94,6 @@ About this tutorial
 * Some of the tutors from the other tutorials are here to help.
 * We can have a break in the middle.
 
-
 About the Material
 ------------------
 

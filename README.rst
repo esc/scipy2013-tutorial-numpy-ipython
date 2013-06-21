@@ -10,7 +10,7 @@ Contents
 :``README.pdf``:         this file as PDF
 :``intro.rst``:          introductory slides (`rendered as HTML on GitHub
                          <http://git.io/-1PxAg>`_)
-:``ipython.ipynb``:      the IPython notebook introduction to the IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Z>`_)
+:``ipython.ipynb``:      the IPython notebook introduction to the IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/50>`_)
 :``array_object.ipynb``: numpy part 1 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4X>`_)
 :``operations.ipynb``:   numpy part 2 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Y>`_)
 

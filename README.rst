@@ -6,19 +6,19 @@ Materials repository for my SciPy 2013 tutorial on NumPy and IPython.
 Contents
 --------
 
-:``README.rst``:         this file
-:``README.pdf``:         this file as PDF
-:``intro.rst``:          introductory slides (`rendered as HTML on GitHub
-                         <http://git.io/-1PxAg>`_)
-:``ipython.ipynb``:      the IPython notebook introduction to the IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/50>`_)
-:``array_object.ipynb``: numpy part 1 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4X>`_)
-:``operations.ipynb``:   numpy part 2 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Y>`_)
-
-:``abstract.rst``:       abstract for the tutorial (`rendered as HTML on GitHub
-                         <http://git.io/dxcpqA>`_)
-:``abstract.pdf``:       abstract for the tutorial as PDF
-:``intro_src/``:         build directory for the introductory slides
-:``images``:             image files
+:``README.rst``:           this file
+:``README.pdf``:           this file as PDF
+:``intro.rst``:            introductory slides (`rendered as HTML on GitHub
+                           <http://git.io/-1PxAg>`_)
+:``ipython.ipynb``:        the IPython notebook introduction to the IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/50>`_)
+:``array_object.ipynb``:   numpy part 1 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4X>`_)
+:``operations.ipynb``:     numpy part 2 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Y>`_)
+:``scipy_lectures_html/``: HTML build of the `Python Scientific Lecture Notes <http://scipy-lectures.github.io/>`_
+:``abstract.rst``:         abstract for the tutorial (`rendered as HTML on GitHub
+                           <http://git.io/dxcpqA>`_)
+:``abstract.pdf``:         abstract for the tutorial as PDF
+:``intro_src/``:           build directory for the introductory slides
+:``images/``:              image files
 
 License
 -------

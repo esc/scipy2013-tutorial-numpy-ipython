@@ -49,7 +49,8 @@ Why Python
 
 * Easy to learn, easy to read, easy to maintain
 * Thriving ecosystem of scientific libraries
-* Numpy IPython
+* Vibrant community
+* Numpy and IPython
 * Commercial support
 
 The Scientific Python Ecosystem

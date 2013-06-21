@@ -71,6 +71,59 @@ The Scientific Python Ecosystem
 * PyTables
 * Cython
 
+About this tutorial
+-------------------
+
+* **Ipython** (1 hour)
+
+  * Using the IPython notebook
+  * Help system, magic functions, aliases and history
+
+* **Numpy** (3 hours)
+
+  * Basic arrays, dtypes and numerical operations
+  * Indexing, slicing, reshaping and broadcasting
+  * Copies, views and fancy indexing
+
+.. raw:: latex
+
+   \vspace{1cm}
+
+* The tutorial will feature short bursts of small exercises every
+  5-10 minutes.
+* Some of the tutors from the other tutorials are here to help.
+* We can have a break in the middle.
+
+
+About the Material
+------------------
+
+* **Ipython**
+
+  * An IPython notebook demonstrating the IPython notebook
+  * A demo session of the IPython shell
+
+* **Numpy** (3 hours)
+
+  * Two IPython notebooks
+  * (Semi-)Automatically converted from `Python Scientific Lecture Notes <http://scipy-lectures.github.io/>`_
+
+  * The generated HTML is included in the GitHub Repository / Zip file and
+    available online
+
+How to follow
+-------------
+
+* Grab the IPython notebook, try out the examples, work on the exercises, all
+  from within the notebook.
+
+.. raw:: latex
+
+   \vspace{1cm}
+
+* Alternatively: view the HTML and copy and paste the examples into an IPython
+  shell or a Python file.
+
 About IPython
 -------------
 

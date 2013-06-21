@@ -75,11 +75,15 @@ About IPython
 -------------
 
 * De facto Python interpreter with bells and whistles
-* Since 2011: available in the browser as *IPython notebook*
+* Since 2011: available in the browser as *IPython notebook*:
 
-.. code:: console
+  .. sourcecode:: console
 
-   $ ipython notebook --pylab=inline
+     $ ipython notebook --pylab=inline
+
+.. raw:: latex
+
+   \vspace{1cm}
 
 * The URL to access the notebook will be printed
 * Numpy and Matplotlib tools are available

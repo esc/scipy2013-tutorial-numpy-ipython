@@ -6,19 +6,24 @@ Materials
 
 * GitHub Repository: http://git.io/bocND
 
+
+* Materials ZipFile: http://git.io/G5i5qA
+
+
 .. raw:: latex
 
-   \vspace{1cm}
+   \vspace{0.5cm}
 
 * Anaconda: https://store.continuum.io/
 
 .. raw:: latex
 
-   \vspace{1cm}
+   \vspace{1.5cm}
 
-* In case of not network: grab one of the three USB-Keys
+* In case of no network: grab one of the three USB-Keys
 
   * They read *Bruker*
+
 
 About The Speaker
 -----------------

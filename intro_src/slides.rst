@@ -4,7 +4,7 @@ Introduction
 Materials
 ---------
 
-* http://scipy2013.zetatech.org
+* GitHub Repository: http://git.io/bocND
 
 .. raw:: pdf
 
@@ -19,12 +19,6 @@ Materials
 * In case of not network: grab one of the three USB-Keys
 
   * They read *Bruker*
-
-.. raw:: pdf
-
-   \vspace{2cm}
-
-* GitHub Repository: http://git.io/bocND
 
 About The Speaker
 -----------------

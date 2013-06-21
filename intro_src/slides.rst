@@ -6,15 +6,15 @@ Materials
 
 * GitHub Repository: http://git.io/bocND
 
-.. raw:: pdf
+.. raw:: latex
 
-   \vspace{2cm}
+   \vspace{1cm}
 
 * Anaconda: https://store.continuum.io/
 
-.. raw:: pdf
+.. raw:: latex
 
-   \vspace{2cm}
+   \vspace{1cm}
 
 * In case of not network: grab one of the three USB-Keys
 
@@ -61,7 +61,7 @@ The Scientific Python Ecosystem
 * Scipy
 * Matplotlib
 
-.. raw:: pdf
+.. raw:: latex
 
    \vspace{2cm}
 

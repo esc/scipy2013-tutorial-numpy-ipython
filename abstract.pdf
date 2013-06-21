@@ -1,0 +1,927 @@
+%PDF-1.4
+%“Œ‹ž ReportLab Generated PDF document http://www.reportlab.com
+% 'BasicFonts': class PDFDictionary 
+1 0 obj
+% The standard fonts dictionary
+<< /F1 2 0 R
+ /F2 3 0 R
+ /F3 18 0 R >>
+endobj
+% 'F1': class PDFType1Font 
+2 0 obj
+% Font Helvetica
+<< /BaseFont /Helvetica
+ /Encoding /WinAnsiEncoding
+ /Name /F1
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'F2': class PDFType1Font 
+3 0 obj
+% Font Helvetica-Bold
+<< /BaseFont /Helvetica-Bold
+ /Encoding /WinAnsiEncoding
+ /Name /F2
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'Annot.NUMBER1': class PDFDictionary 
+4 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 689.7736
+ 526.5827
+ 701.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER2': class PDFDictionary 
+5 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (mailto:valentin@haenel.co) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 659.7736
+ 526.5827
+ 671.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER3': class PDFDictionary 
+6 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://python.g-node.org/wiki/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 311.8745
+ 587.7736
+ 521.5356
+ 599.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER4': class PDFDictionary 
+7 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://python.g-node.org/wiki/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 575.7736
+ 268.004
+ 587.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER5': class PDFDictionary 
+8 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://aspp.github.com/pelita/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 397.4385
+ 563.7736
+ 422.4485
+ 575.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER6': class PDFDictionary 
+9 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://www.euroscipy.org/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 209.7024
+ 551.7736
+ 310.5624
+ 563.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER7': class PDFDictionary 
+10 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://scipy-lectures.github.com/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 539.7736
+ 297.0515
+ 551.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER8': class PDFDictionary 
+11 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://github.com/pcp13) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 407.1735
+ 539.7736
+ 525.1263
+ 551.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER9': class PDFDictionary 
+12 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://github.com/pcp13) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 527.7736
+ 390.4325
+ 539.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER10': class PDFDictionary 
+13 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://scipy-lectures.github.com/advanced/interfacing_with_c/interfacing_with_c.html) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 515.7736
+ 263.2323
+ 527.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER11': class PDFDictionary 
+14 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://haenel.co) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 198.2023
+ 497.7736
+ 266.5823
+ 509.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER12': class PDFDictionary 
+15 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://store.continuum.io/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 208.2023
+ 254.7736
+ 256.0123
+ 266.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER13': class PDFDictionary 
+16 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://scipy-lectures.github.io/intro/numpy/index.html) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 332.4025
+ 185.7736
+ 405.4026
+ 197.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER14': class PDFDictionary 
+17 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://scipy-lectures.github.com/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 450.0626
+ 185.7736
+ 523.9826
+ 197.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'F3': class PDFType1Font 
+18 0 obj
+% Font Courier
+<< /BaseFont /Courier
+ /Encoding /WinAnsiEncoding
+ /Name /F3
+ /Subtype /Type1
+ /Type /Font >>
+endobj
+% 'Annot.NUMBER15': class PDFDictionary 
+19 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://scipy-lectures.github.com/) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 173.7736
+ 223.6357
+ 185.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER16': class PDFDictionary 
+20 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://github.com/ipython/nbconvert) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 217.7568
+ 161.7736
+ 306.7391
+ 173.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER17': class PDFDictionary 
+21 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://github.com/esc/scipy2013-tutorial-numpy-ipython) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 149.7736
+ 518.2427
+ 161.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER18': class PDFDictionary 
+22 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (https://github.com/esc/scipy2013-tutorial-numpy-ipython) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 153.7323
+ 137.7736
+ 403.8323
+ 149.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Annot.NUMBER19': class PDFDictionary 
+23 0 obj
+<< /A << /S /URI
+ /Type /Action
+ /URI (http://git.io/bocNDg) >>
+ /Border [ 0
+ 0
+ 0 ]
+ /Rect [ 415.5023
+ 137.7736
+ 500.5423
+ 149.7736 ]
+ /Subtype /Link
+ /Type /Annot >>
+endobj
+% 'Page1': class PDFPage 
+24 0 obj
+% Page dictionary
+<< /Annots [ 4 0 R
+ 5 0 R
+ 6 0 R
+ 7 0 R
+ 8 0 R
+ 9 0 R
+ 10 0 R
+ 11 0 R
+ 12 0 R
+ 13 0 R
+ 14 0 R
+ 15 0 R
+ 16 0 R
+ 17 0 R
+ 19 0 R
+ 20 0 R
+ 21 0 R
+ 22 0 R
+ 23 0 R ]
+ /Contents 28 0 R
+ /MediaBox [ 0
+ 0
+ 595.2756
+ 841.8898 ]
+ /Parent 27 0 R
+ /Resources << /Font 1 0 R
+ /ProcSet [ /PDF
+ /Text
+ /ImageB
+ /ImageC
+ /ImageI ] >>
+ /Rotate 0
+ /Trans <<  >>
+ /Type /Page >>
+endobj
+% 'R25': class PDFCatalog 
+25 0 obj
+% Document Root
+<< /Outlines 29 0 R
+ /PageLabels 30 0 R
+ /PageMode /UseNone
+ /Pages 27 0 R
+ /Type /Catalog >>
+endobj
+% 'R26': class PDFInfo 
+26 0 obj
+<< /Author (Valentin Haenel)
+ /CreationDate (D:20130621175547-01'00')
+ /Creator (\(unspecified\))
+ /Keywords ()
+ /Producer (ReportLab PDF Library - www.reportlab.com)
+ /Subject (\(unspecified\))
+ /Title (SciPy2013 tutorial on NumPy and IPython) >>
+endobj
+% 'R27': class PDFPages 
+27 0 obj
+% page tree
+<< /Count 1
+ /Kids [ 24 0 R ]
+ /Type /Pages >>
+endobj
+% 'R28': class PDFStream 
+28 0 obj
+% page stream
+<< /Length 9623 >>
+stream
+1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
+q
+1 0 0 1 62.69291 741.0236 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 4 Tm /F2 20 Tf 24 TL 36.55488 0 Td (SciPy2013 tutorial on NumPy and IPython) Tj T* -36.55488 0 Td ET
+Q
+Q
+q
+1 0 0 1 62.69291 716.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 9.69937 0 Td (Tutorial Title:) Tj T* -9.69937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (An Introduction to IPython and Numpy) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 701.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 43.02937 0 Td (Track:) Tj T* -43.02937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Introduction Scientific Python Basics \(Numpy and IPython\)) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 686.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 49.14937 0 Td (Link:) Tj T* -49.14937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (https://conference.scipy.org/scipy2013/tutorial_detail.php?id=100) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 671.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 36.93937 0 Td (Author:) Tj T* -36.93937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Valentin Haenel) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 656.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 3.02937 0 Td (Contact Email:) Tj T* -3.02937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 .501961 rg
+0 0 .501961 RG
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (valentin@haenel.co) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 641.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 33.02937 0 Td (Version:) Tj T* -33.02937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (1.3) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 494.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 135 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 53.59937 0 Td (Bio:) Tj T* -53.59937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 111 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 26 Tm /F1 10 Tf 12 TL 1.963672 Tw (Valentin Haenel is an software developer with experience working in a scientific) Tj T* 0 Tw .594199 Tw (context. He is the co-author of a scientific toolbox used in experimental psychology) Tj T* 0 Tw (research and has worked on a large-scale brain simulation project in the past.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 21 cm
+q
+BT 1 0 0 1 0 74 Tm 5.047039 Tw 12 TL /F1 10 Tf 0 0 0 rg (He has been teaching at the ) Tj 0 0 .501961 rg (Advanced Scientific Programming in Python) Tj T* 0 Tw .735866 Tw (Summerschool materials ) Tj 0 0 0 rg (where his main focus is the lecture on best practices and) Tj T* 0 Tw 2.271039 Tw (contributing to the schools programming framework ) Tj 0 0 .501961 rg (Pelita) Tj 0 0 0 rg (. He has been tutorial) Tj T* 0 Tw .130025 Tw (chair for the ) Tj 0 0 .501961 rg (EuroScipy conference ) Tj 0 0 0 rg (in 2011 and 2012 and is one of the editors of the) Tj T* 0 Tw 1.456399 Tw 0 0 .501961 rg (Python Scientific Lecture Notes) Tj 0 0 0 rg (. Recently, he taught a ) Tj 0 0 .501961 rg (week-long course for PhD) Tj T* 0 Tw 1.517533 Tw (students and Postdocs at the EPFL in Switzerland ) Tj 0 0 0 rg (and authored an article about) Tj T* 0 Tw 0 0 .501961 rg (interfacing Python and C) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (See also: ) Tj 0 0 .501961 rg (http://haenel.co) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 407.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 75 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 14.69937 0 Td (Description:) Tj T* -14.69937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 74 Tm /F1 10 Tf 12 TL .805415 Tw (This tutorial is a hands-on introduction to the two most basic building-blocks of the) Tj T* 0 Tw 1.989039 Tw (scientific Python stack: the enhanced interactive interpreter IPython and the fast) Tj T* 0 Tw .225866 Tw (numerical container Numpy. Amongst other things you will learn how to structure an) Tj T* 0 Tw 2.771039 Tw (interactive workflow for scientific computing and how to create and manipulate) Tj T* 0 Tw 2.994039 Tw (numerical data efficiently. You should have some basic familiarity with Python) Tj T* 0 Tw .825049 Tw (\(variables, loops, functions\) and basic command-line usage \(executing commands,) Tj T* 0 Tw (using history\).) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 266.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 129 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 35.25937 0 Td (Outline:) Tj T* -35.25937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 129 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F2 10 Tf 0 0 0 rg (Ipython ) Tj /F1 10 Tf (\(1 hour\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 123 cm
+Q
+q
+1 0 0 1 91.03937 123 cm
+Q
+q
+1 0 0 1 91.03937 111 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Using the IPython notebook) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 105 cm
+Q
+q
+1 0 0 1 91.03937 93 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Help system, magic functions, aliases and history) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 93 cm
+Q
+q
+1 0 0 1 91.03937 75 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F2 10 Tf 0 0 0 rg (Numpy ) Tj /F1 10 Tf (\(3 hours\)) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 69 cm
+Q
+q
+1 0 0 1 91.03937 69 cm
+Q
+q
+1 0 0 1 91.03937 57 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Basic arrays, dtypes and numerical operations) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 51 cm
+Q
+q
+1 0 0 1 91.03937 39 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Indexing, slicing, reshaping and broadcasting) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 33 cm
+Q
+q
+1 0 0 1 91.03937 21 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Copies, views and fancy indexing) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 21 cm
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (The tutorial will feature short bursts of small exercises every 5-10 minutes.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 197.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 57 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL 8.56937 0 Td (Package List:) Tj T* -8.56937 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 57 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (An install of ) Tj 0 0 .501961 rg (Anaconda ) Tj 0 0 0 rg (should be enough) Tj T* ET
+Q
+Q
+q
+1 0 0 1 91.03937 51 cm
+Q
+q
+1 0 0 1 91.03937 51 cm
+Q
+q
+1 0 0 1 91.03937 39 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Numpy \(Version 1.6 or higher\)) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 33 cm
+Q
+q
+1 0 0 1 91.03937 21 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Ipython \(Version 0.13 or higher\)) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 15 cm
+Q
+q
+1 0 0 1 91.03937 3 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL 10.5 0 Td (\177) Tj T* -10.5 0 Td ET
+Q
+Q
+q
+1 0 0 1 23 -3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (Matplotlib \(Version 1.2.1 or higher\)) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 134.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 51 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F2 10 Tf 12 TL -3.07063 0 Td (Documentation:) Tj T* 3.07063 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 50 Tm 2.60003 Tw 12 TL /F1 10 Tf 0 0 0 rg (I have converted a large part of the ) Tj 0 0 .501961 rg (Numpy chaper ) Tj 0 0 0 rg (from the ) Tj 0 0 .501961 rg (Python Scientific) Tj T* 0 Tw 2.43671 Tw (Lecture Notes ) Tj 0 0 0 rg (to IPython notebook format using the ) Tj /F3 10 Tf (sphinx2ipynb ) Tj /F1 10 Tf (converter) Tj T* 0 Tw 12.28227 Tw (from the ) Tj 0 0 .501961 rg (nbconvert project) Tj 0 0 0 rg (. All materials are collected in my) Tj T* 0 Tw 47.03346 Tw 0 0 .501961 rg (scipy2013-tutorial-numpy-ipython Gitub repository ) Tj 0 0 0 rg (at) Tj T* 0 Tw 0 0 .501961 rg (https://github.com/esc/scipy2013-tutorial-numpy-ipython ) Tj 0 0 0 rg (or ) Tj 0 0 .501961 rg (http://git.io/bocNDg) Tj 0 0 0 rg (.) Tj T* ET
+Q
+Q
+q
+Q
+Q
+ 
+endstream
+endobj
+% 'R29': class PDFOutlines 
+29 0 obj
+<< /Count 0
+ /Type /Outlines >>
+endobj
+% 'R30': class PDFPageLabels 
+30 0 obj
+% Document Root
+<< /Nums [ 0
+ 31 0 R ] >>
+endobj
+% 'R31': class PDFPageLabel 
+31 0 obj
+% None
+<< /S /D
+ /St 1 >>
+endobj
+xref
+0 32
+0000000000 65535 f
+0000000113 00000 n
+0000000234 00000 n
+0000000399 00000 n
+0000000586 00000 n
+0000000869 00000 n
+0000001112 00000 n
+0000001361 00000 n
+0000001609 00000 n
+0000001857 00000 n
+0000002101 00000 n
+0000002353 00000 n
+0000002596 00000 n
+0000002840 00000 n
+0000003144 00000 n
+0000003380 00000 n
+0000003627 00000 n
+0000003901 00000 n
+0000004141 00000 n
+0000004316 00000 n
+0000004569 00000 n
+0000004825 00000 n
+0000005100 00000 n
+0000005375 00000 n
+0000005600 00000 n
+0000006058 00000 n
+0000006217 00000 n
+0000006516 00000 n
+0000006624 00000 n
+0000016348 00000 n
+0000016431 00000 n
+0000016524 00000 n
+trailer
+<< /ID 
+ % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
+ [(=\206\275\314q\036\372\217\000\032\200"\025\364\363\215) (=\206\275\314q\036\372\217\000\032\200"\025\364\363\215)] 
+
+ /Info 26 0 R
+ /Root 25 0 R
+ /Size 32 >>
+startxref
+16571
+%%EOF

@@ -14,6 +14,7 @@ Contents
 
 :``abstract.rst``:       abstract for the tutorial (`rendered as HTML on github:
                          <http://git.io/dxcpqA>`_)
+:``abstract.pdf``:       abstract for the tutorial as PDF
 :``intro_src/``:         build directory for the introductory slides
 :``images``:             image files
 

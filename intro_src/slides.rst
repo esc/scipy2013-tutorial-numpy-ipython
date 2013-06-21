@@ -63,7 +63,7 @@ The Scientific Python Ecosystem
 
 .. raw:: latex
 
-   \vspace{2cm}
+   \vspace{1cm}
 
 * Pandas
 * Sympy

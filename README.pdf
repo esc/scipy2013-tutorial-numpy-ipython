@@ -43,9 +43,9 @@ endobj
  0
  0 ]
  /Rect [ 240.4223
- 662.7736
- 370.4823
- 674.7736 ]
+ 632.7736
+ 374.3623
+ 644.7736 ]
  /Subtype /Link
  /Type /Annot >>
 endobj
@@ -58,9 +58,9 @@ endobj
  0
  0 ]
  /Rect [ 259.3323
- 602.7736
- 389.3923
- 614.7736 ]
+ 572.7736
+ 393.2723
+ 584.7736 ]
  /Subtype /Link
  /Type /Annot >>
 endobj
@@ -73,9 +73,9 @@ endobj
  0
  0 ]
  /Rect [ 85.69291
- 494.7736
+ 464.7736
  373.5629
- 506.7736 ]
+ 476.7736 ]
  /Subtype /Link
  /Type /Annot >>
 endobj
@@ -113,7 +113,7 @@ endobj
 % 'R10': class PDFInfo 
 10 0 obj
 << /Author ()
- /CreationDate (D:20130621175754-01'00')
+ /CreationDate (D:20130621180304-01'00')
  /Creator (\(unspecified\))
  /Keywords ()
  /Producer (ReportLab PDF Library - www.reportlab.com)
@@ -143,7 +143,7 @@ endobj
 << /Dest [ 8 0 R
  /XYZ
  62.69291
- 542.0236
+ 512.0236
  0 ]
  /Parent 11 0 R
  /Prev 12 0 R
@@ -159,7 +159,7 @@ endobj
 % 'R15': class PDFStream 
 15 0 obj
 % page stream
-<< /Length 3927 >>
+<< /Length 4562 >>
 stream
 1 0 0 1 0 0 cm  BT /F1 12 Tf 14.4 TL ET
 q
@@ -191,13 +191,14 @@ BT /F1 10 Tf 12 TL ET
 q
 1 0 0 1 6 3 cm
 q
-BT 1 0 0 1 0 2 Tm 15.70937 0 Td 12 TL /F3 10 Tf 0 0 0 rg (intro.rst) Tj /F2 10 Tf (:) Tj T* -15.70937 0 Td ET
+BT 1 0 0 1 0 2 Tm 9.70937 0 Td 12 TL /F3 10 Tf 0 0 0 rg (README.rst) Tj /F2 10 Tf (:) Tj T* -9.70937 0 Td ET
 Q
 Q
 q
 1 0 0 1 91.03937 3 cm
 q
-BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (introductory slides \() Tj 0 0 .501961 rg (rendered as HTML on github:) Tj 0 0 0 rg (\)) Tj T* ET
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (this file) Tj T* ET
 Q
 Q
 q
@@ -210,14 +211,14 @@ BT /F1 10 Tf 12 TL ET
 q
 1 0 0 1 6 3 cm
 q
-BT 1 0 0 1 0 2 Tm -8.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (ipython.ipynb) Tj /F2 10 Tf (:) Tj T* 8.29063 0 Td ET
+BT 1 0 0 1 0 2 Tm 9.70937 0 Td 12 TL /F3 10 Tf 0 0 0 rg (README.pdf) Tj /F2 10 Tf (:) Tj T* -9.70937 0 Td ET
 Q
 Q
 q
 1 0 0 1 91.03937 3 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (the ipython notebook introduction to the ipython notebook) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (this file as PDF) Tj T* ET
 Q
 Q
 q
@@ -230,14 +231,13 @@ BT /F1 10 Tf 12 TL ET
 q
 1 0 0 1 6 3 cm
 q
-BT 1 0 0 1 0 2 Tm -38.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (array_object.ipynb) Tj /F2 10 Tf (:) Tj T* 38.29063 0 Td ET
+BT 1 0 0 1 0 2 Tm 15.70937 0 Td 12 TL /F3 10 Tf 0 0 0 rg (intro.rst) Tj /F2 10 Tf (:) Tj T* -15.70937 0 Td ET
 Q
 Q
 q
 1 0 0 1 91.03937 3 cm
 q
-0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (numpy part 1 ipython notebook) Tj T* ET
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (introductory slides \() Tj 0 0 .501961 rg (rendered as HTML on GitHub:) Tj 0 0 0 rg (\)) Tj T* ET
 Q
 Q
 q
@@ -250,14 +250,14 @@ BT /F1 10 Tf 12 TL ET
 q
 1 0 0 1 6 3 cm
 q
-BT 1 0 0 1 0 2 Tm -26.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (operations.ipynb) Tj /F2 10 Tf (:) Tj T* 26.29063 0 Td ET
+BT 1 0 0 1 0 2 Tm -8.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (ipython.ipynb) Tj /F2 10 Tf (:) Tj T* 8.29063 0 Td ET
 Q
 Q
 q
 1 0 0 1 91.03937 3 cm
 q
 0 0 0 rg
-BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (numpy part 2 ipython notebook) Tj T* ET
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (the IPython notebook introduction to the IPython notebook) Tj T* ET
 Q
 Q
 q
@@ -270,13 +270,14 @@ BT /F1 10 Tf 12 TL ET
 q
 1 0 0 1 6 3 cm
 q
-BT 1 0 0 1 0 2 Tm -2.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (abstract.rst) Tj /F2 10 Tf (:) Tj T* 2.29063 0 Td ET
+BT 1 0 0 1 0 2 Tm -38.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (array_object.ipynb) Tj /F2 10 Tf (:) Tj T* 38.29063 0 Td ET
 Q
 Q
 q
 1 0 0 1 91.03937 3 cm
 q
-BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (abstract for the tutorial \() Tj 0 0 .501961 rg (rendered as HTML on github:) Tj 0 0 0 rg (\)) Tj T* ET
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (numpy part 1 IPython notebook) Tj T* ET
 Q
 Q
 q
@@ -284,6 +285,45 @@ Q
 Q
 q
 1 0 0 1 62.69291 584.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+BT 1 0 0 1 0 2 Tm -26.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (operations.ipynb) Tj /F2 10 Tf (:) Tj T* 26.29063 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+0 0 0 rg
+BT 1 0 0 1 0 2 Tm /F1 10 Tf 12 TL (numpy part 2 IPython notebook) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 569.0236 cm
+0 0 0 rg
+BT /F1 10 Tf 12 TL ET
+q
+1 0 0 1 6 3 cm
+q
+BT 1 0 0 1 0 2 Tm -2.29063 0 Td 12 TL /F3 10 Tf 0 0 0 rg (abstract.rst) Tj /F2 10 Tf (:) Tj T* 2.29063 0 Td ET
+Q
+Q
+q
+1 0 0 1 91.03937 3 cm
+q
+BT 1 0 0 1 0 2 Tm 12 TL /F1 10 Tf 0 0 0 rg (abstract for the tutorial \() Tj 0 0 .501961 rg (rendered as HTML on GitHub:) Tj 0 0 0 rg (\)) Tj T* ET
+Q
+Q
+q
+Q
+Q
+q
+1 0 0 1 62.69291 554.0236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -303,7 +343,7 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 569.0236 cm
+1 0 0 1 62.69291 539.0236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -323,7 +363,7 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 554.0236 cm
+1 0 0 1 62.69291 524.0236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -343,19 +383,19 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 521.0236 cm
+1 0 0 1 62.69291 491.0236 cm
 q
 BT 1 0 0 1 0 3.5 Tm 21 TL /F2 17.5 Tf 0 0 0 rg (License) Tj T* ET
 Q
 Q
 q
-1 0 0 1 62.69291 509.0236 cm
+1 0 0 1 62.69291 479.0236 cm
 Q
 q
-1 0 0 1 62.69291 509.0236 cm
+1 0 0 1 62.69291 479.0236 cm
 Q
 q
-1 0 0 1 62.69291 497.0236 cm
+1 0 0 1 62.69291 467.0236 cm
 0 0 0 rg
 BT /F1 10 Tf 12 TL ET
 q
@@ -375,7 +415,7 @@ q
 Q
 Q
 q
-1 0 0 1 62.69291 497.0236 cm
+1 0 0 1 62.69291 467.0236 cm
 Q
  
 endstream
@@ -410,16 +450,16 @@ xref
 0000002535 00000 n
 0000002686 00000 n
 0000002793 00000 n
-0000006823 00000 n
-0000006916 00000 n
+0000007458 00000 n
+0000007551 00000 n
 trailer
 << /ID 
  % ReportLab generated PDF document -- digest (http://www.reportlab.com) 
- [(\036\356/6`\247\251P\016\021V+\2630\366\220) (\036\356/6`\247\251P\016\021V+\2630\366\220)] 
+ [(f\266\215\033=\352\362\023\241\347\322\217rM\343\352) (f\266\215\033=\352\362\023\241\347\322\217rM\343\352)] 
 
  /Info 10 0 R
  /Root 9 0 R
  /Size 18 >>
 startxref
-6963
+7598
 %%EOF

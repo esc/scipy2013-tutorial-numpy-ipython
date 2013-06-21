@@ -6,6 +6,8 @@ Materials repository for my SciPy 2013 tutorial on NumPy and IPython.
 Contents
 --------
 
+:``README.rst``:         this file
+:``README.pdf``:         this file as PDF
 :``intro.rst``:          introductory slides (`rendered as HTML on github:
                          <http://git.io/-1PxAg>`_)
 :``ipython.ipynb``:      the ipython notebook introduction to the ipython notebook

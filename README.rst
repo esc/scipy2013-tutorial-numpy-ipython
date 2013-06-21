@@ -8,13 +8,13 @@ Contents
 
 :``README.rst``:         this file
 :``README.pdf``:         this file as PDF
-:``intro.rst``:          introductory slides (`rendered as HTML on GitHub:
+:``intro.rst``:          introductory slides (`rendered as HTML on GitHub
                          <http://git.io/-1PxAg>`_)
-:``ipython.ipynb``:      the IPython notebook introduction to the IPython notebook
-:``array_object.ipynb``: numpy part 1 IPython notebook
-:``operations.ipynb``:   numpy part 2 IPython notebook
+:``ipython.ipynb``:      the IPython notebook introduction to the IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Z>`_)
+:``array_object.ipynb``: numpy part 1 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4X>`_)
+:``operations.ipynb``:   numpy part 2 IPython notebook (`rendered as HTML on nbviewer <http://krzz.de/4Y>`_)
 
-:``abstract.rst``:       abstract for the tutorial (`rendered as HTML on GitHub:
+:``abstract.rst``:       abstract for the tutorial (`rendered as HTML on GitHub
                          <http://git.io/dxcpqA>`_)
 :``abstract.pdf``:       abstract for the tutorial as PDF
 :``intro_src/``:         build directory for the introductory slides

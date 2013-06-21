@@ -1,0 +1,530 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.1. Scientific computing with tools and workflow &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../index.html" />
+    <link rel="up" title="1. Getting started with Python for science" href="index.html" />
+    <link rel="next" title="1.2. The Python language" href="language/python_language.html" />
+    <link rel="prev" title="1. Getting started with Python for science" href="index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="language/python_language.html" title="1.2. The Python language"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="index.html" title="1. Getting started with Python for science"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">1. Getting started with Python for science</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="scientific-computing-with-tools-and-workflow">
+<h1>1.1. Scientific computing with tools and workflow<a class="headerlink" href="#scientific-computing-with-tools-and-workflow" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Fernando Perez, Emmanuelle Gouillart, Gaël Varoquaux, Valentin Haenel</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="why-python">
+<h2>1.1.1. Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-scientist-s-needs">
+<h3>1.1.1.1. The scientist&#8217;s needs<a class="headerlink" href="#the-scientist-s-needs" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Get data (simulation, experiment control)</li>
+<li>Manipulate and process data.</li>
+<li>Visualize results... to understand what we are doing!</li>
+<li>Communicate results: produce figures for reports or publications,
+write presentations.</li>
+</ul>
+</div>
+<div class="section" id="specifications">
+<h3>1.1.1.2. Specifications<a class="headerlink" href="#specifications" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Rich collection of already existing <strong>bricks</strong> corresponding to classical
+numerical methods or basic actions: we don&#8217;t want to re-program the
+plotting of a curve, a Fourier transform or a fitting algorithm. Don&#8217;t
+reinvent the wheel!</li>
+<li>Easy to learn: computer science is neither our job nor our education. We
+want to be able to draw a curve, smooth a signal, do a Fourier transform
+in a few minutes.</li>
+<li>Easy communication with collaborators, students, customers, to make the code
+live within a lab or a company: the code should be as readable as a book.
+Thus, the language should contain as few syntax symbols or unneeded routines
+as possible that would divert the reader from the mathematical or scientific
+understanding of the code.</li>
+<li>Efficient code that executes quickly... but needless to say that a very fast
+code becomes useless if we spend too much time writing it. So, we need both a
+quick development time and a quick execution time.</li>
+<li>A single environment/language for everything, if possible, to avoid learning
+a new software for each new problem.</li>
+</ul>
+</div>
+<div class="section" id="existing-solutions">
+<h3>1.1.1.3. Existing solutions<a class="headerlink" href="#existing-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Which solutions do scientists use to work?</p>
+<p><strong>Compiled languages: C, C++, Fortran, etc.</strong></p>
+<ul class="simple">
+<li>Advantages:<ul>
+<li>Very fast. Very optimized compilers. For heavy computations, it&#8217;s difficult
+to outperform these languages.</li>
+<li>Some very optimized scientific libraries have been written for these
+languages. Example: BLAS (vector/matrix operations)</li>
+</ul>
+</li>
+<li>Drawbacks:<ul>
+<li>Painful usage: no interactivity during development,
+mandatory compilation steps, verbose syntax (&amp;, ::, }}, ; etc.),
+manual memory management (tricky in C). These are <strong>difficult
+languages</strong> for non computer scientists.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Scripting languages: Matlab</strong></p>
+<ul class="simple">
+<li>Advantages:<ul>
+<li>Very rich collection of libraries with numerous algorithms, for many
+different domains. Fast execution because these libraries are often written
+in a compiled language.</li>
+<li>Pleasant development environment: comprehensive and well organized help,
+integrated editor, etc.</li>
+<li>Commercial support is available.</li>
+</ul>
+</li>
+<li>Drawbacks:<ul>
+<li>Base language is quite poor and can become restrictive for advanced users.</li>
+<li>Not free.</li>
+</ul>
+</li>
+</ul>
+<p><strong>Other scripting languages: Scilab, Octave, Igor, R, IDL, etc.</strong></p>
+<ul class="simple">
+<li>Advantages:<ul>
+<li>Open-source, free, or at least cheaper than Matlab.</li>
+<li>Some features can be very advanced (statistics in R, figures in Igor, etc.)</li>
+</ul>
+</li>
+<li>Drawbacks:<ul>
+<li>Fewer available algorithms than in Matlab, and the language
+is not more advanced.</li>
+<li>Some software are dedicated to one domain. Ex: Gnuplot or xmgrace
+to draw curves. These programs are very powerful, but they are
+restricted to a single type of usage, such as plotting.</li>
+</ul>
+</li>
+</ul>
+<p><strong>What about Python?</strong></p>
+<ul class="simple">
+<li>Advantages:<ul>
+<li>Very rich scientific computing libraries (a bit less than Matlab,
+though)</li>
+<li>Well thought out language, allowing to write very readable and well
+structured code: we &#8220;code what we think&#8221;.</li>
+<li>Many libraries for other tasks than scientific computing (web server
+management, serial port access, etc.)</li>
+<li>Free and open-source software, widely spread, with a vibrant community.</li>
+</ul>
+</li>
+<li>Drawbacks:<ul>
+<li>less pleasant development environment than, for example, Matlab. (More
+geek-oriented).</li>
+<li>Not all the algorithms that can be found in more specialized
+software or toolboxes.</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="scientific-python-building-blocks">
+<h2>1.1.2. Scientific Python building blocks<a class="headerlink" href="#scientific-python-building-blocks" title="Permalink to this headline">¶</a></h2>
+<p>Unlike Matlab, Scilab or R, Python does not come with a pre-bundled set
+of modules for scientific computing. Below are the basic building blocks
+that can be combined to obtain a scientific computing environment:</p>
+<ul>
+<li><p class="first"><strong>Python</strong>, a generic and modern computing language</p>
+<blockquote>
+<div><ul class="simple">
+<li>Python language: data types (<tt class="docutils literal"><span class="pre">string</span></tt>, <tt class="docutils literal"><span class="pre">int</span></tt>), flow control,
+data collections (lists, dictionaries), patterns, etc.</li>
+<li>Modules of the standard library.</li>
+<li>A large number of specialized modules or applications written in
+Python: web protocols, web framework, etc. ... and scientific
+computing.</li>
+<li>Development tools (automatic testing, documentation generation)</li>
+</ul>
+</div></blockquote>
+<a class="reference internal image-reference" href="../_images/snapshot_ipython.png"><img alt="../_images/snapshot_ipython.png" class="align-right" src="../_images/snapshot_ipython.png" style="width: 316.0px; height: 158.0px;" /></a>
+</li>
+<li><p class="first"><strong>IPython</strong>, an advanced <strong>Python shell</strong> <a class="reference external" href="http://ipython.scipy.org/moin/">http://ipython.scipy.org/moin/</a></p>
+</li>
+<li><p class="first"><strong>Numpy</strong> : provides powerful <strong>numerical arrays</strong> objects, and routines to
+manipulate them. <a class="reference external" href="http://www.numpy.org/">http://www.numpy.org/</a></p>
+</li>
+</ul>
+<ul>
+<li><p class="first"><strong>Scipy</strong> : high-level data processing routines.
+Optimization, regression, interpolation, etc <a class="reference external" href="http://www.scipy.org/">http://www.scipy.org/</a></p>
+<a class="reference internal image-reference" href="../_images/random_c.jpg"><img alt="../_images/random_c.jpg" class="align-right" src="../_images/random_c.jpg" style="width: 340.0px; height: 210.0px;" /></a>
+</li>
+<li><p class="first"><strong>Matplotlib</strong> : 2-D visualization, &#8220;publication-ready&#8221; plots
+<a class="reference external" href="http://matplotlib.sourceforge.net/">http://matplotlib.sourceforge.net/</a></p>
+<p><div style="clear: both"></div></p>
+<a class="reference internal image-reference" href="../_images/example_surface_from_irregular_data.jpg"><img alt="../_images/example_surface_from_irregular_data.jpg" class="align-right" src="../_images/example_surface_from_irregular_data.jpg" style="width: 240.0px; height: 190.8px;" /></a>
+</li>
+<li><p class="first"><strong>Mayavi</strong> : 3-D visualization
+<a class="reference external" href="http://code.enthought.com/projects/mayavi/">http://code.enthought.com/projects/mayavi/</a></p>
+<p><div style="clear: both"></div></p>
+</li>
+</ul>
+</div>
+<div class="section" id="the-interactive-workflow-ipython-and-a-text-editor">
+<h2>1.1.3. The interactive workflow: IPython and a text editor<a class="headerlink" href="#the-interactive-workflow-ipython-and-a-text-editor" title="Permalink to this headline">¶</a></h2>
+<p><strong>Interactive work to test and understand algorithms:</strong> In this section, we
+describe an interactive workflow with <a class="reference external" href="http://ipython.org">IPython</a> that is
+handy to explore and understand algorithms.</p>
+<p>Python is a general-purpose language. As such, there is not one blessed
+environment to work in, and not only one way of using it. Although
+this makes it harder for beginners to find their way, it makes it
+possible for Python to be used to write programs, in web servers, or
+embedded devices.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Reference document for this section:</p>
+<p class="last"><strong>IPython user manual:</strong> <a class="reference external" href="http://ipython.org/ipython-doc/dev/index.html">http://ipython.org/ipython-doc/dev/index.html</a></p>
+</div>
+<div class="section" id="command-line-interaction">
+<h3>1.1.3.1. Command line interaction<a class="headerlink" href="#command-line-interaction" title="Permalink to this headline">¶</a></h3>
+<p>Start <tt class="xref py py-obj docutils literal"><span class="pre">ipython</span></tt>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="k">print</span><span class="p">(</span><span class="s">&#39;Hello world&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="go">Hello world</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Getting help by using the <strong>?</strong> operator after an object:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="k">print</span><span class="err">?</span>
+<div class="newline"></div><span class="go">Type:               builtin_function_or_method</span>
+<div class="newline"></div><span class="go">Base Class:         &lt;type &#39;builtin_function_or_method&#39;&gt;</span>
+<div class="newline"></div><span class="go">String Form:        &lt;built-in function print&gt;</span>
+<div class="newline"></div><span class="go">Namespace:          Python builtin</span>
+<div class="newline"></div><span class="go">Docstring:</span>
+<div class="newline"></div><span class="go">    print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">    Prints the values to a stream, or to sys.stdout by default.</span>
+<div class="newline"></div><span class="go">    Optional keyword arguments:</span>
+<div class="newline"></div><span class="go">    file: a file-like object (stream); defaults to the current sys.stdout.</span>
+<div class="newline"></div><span class="go">    sep:  string inserted between values, default a space.</span>
+<div class="newline"></div><span class="go">    end:  string appended after the last value, default a newline.</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<div class="section" id="elaboration-of-the-algorithm-in-an-editor">
+<h3>1.1.3.2. Elaboration of the algorithm in an editor<a class="headerlink" href="#elaboration-of-the-algorithm-in-an-editor" title="Permalink to this headline">¶</a></h3>
+<p>Create a file <tt class="xref py py-obj docutils literal"><span class="pre">my_file.py</span></tt> in a text editor. Under EPD (Enthought Python
+Distribution), you can use <tt class="xref py py-obj docutils literal"><span class="pre">Scite</span></tt>, available from the start menu. Under
+Python(x,y), you can use Spyder. Under Ubuntu, if you don&#8217;t already have your
+favorite editor, we would advise installing <tt class="xref py py-obj docutils literal"><span class="pre">Stani's</span> <span class="pre">Python</span> <span class="pre">editor</span></tt>. In the
+file, add the following lines:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">s</span> <span class="o">=</span> <span class="s">&#39;Hello world&#39;</span>
+<div class="newline"></div><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Now, you can run it in IPython and explore the resulting variables:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="o">%</span><span class="n">run</span> <span class="n">my_file</span><span class="o">.</span><span class="n">py</span>
+<div class="newline"></div><span class="go">Hello world</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">s</span>
+<div class="newline"></div><span class="gr">Out[2]: </span><span class="s">&#39;Hello world&#39;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="o">%</span><span class="n">whos</span>
+<div class="newline"></div><span class="go">Variable   Type    Data/Info</span>
+<div class="newline"></div><span class="go">----------------------------</span>
+<div class="newline"></div><span class="go">s          str     Hello world</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="topic">
+<p class="topic-title first"><strong>From a script to functions</strong></p>
+<p>While it is tempting to work only with scripts, that is a file full
+of instructions following each other, do plan to progressively evolve
+the script to a set of functions:</p>
+<ul class="simple">
+<li>A script is not reusable, functions are.</li>
+<li>Thinking in terms of functions helps breaking the problem in small
+blocks.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ipython-tips-and-tricks">
+<h3>1.1.3.3. IPython Tips and Tricks<a class="headerlink" href="#ipython-tips-and-tricks" title="Permalink to this headline">¶</a></h3>
+<p>The IPython user manual contains a wealth of information about using IPython,
+but to get you started we want to give you a quick introduction to three useful
+features: <em>history</em>, <em>magic functions</em>, <em>aliases</em> and <em>tab completion</em>.</p>
+<p>Like a UNIX shell, IPython supports command history. Type <em>up</em> and <em>down</em> to
+navigate previously typed commands:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="o">&lt;</span><span class="n">UP</span><span class="o">&gt;</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>IPython supports so called <em>magic</em> functions by prefixing a command with the
+<tt class="docutils literal"><span class="pre">%</span></tt> character. For example, the <tt class="docutils literal"><span class="pre">run</span></tt> and <tt class="docutils literal"><span class="pre">whos</span></tt> functions from the
+previous section are magic functions. Note that, the setting <tt class="docutils literal"><span class="pre">automagic</span></tt>,
+which is enabled by default, allows you to omit the preceding <tt class="docutils literal"><span class="pre">%</span></tt> sign. Thus,
+you can just type the magic function and it will work.</p>
+<p>Other useful magic functions are:</p>
+<ul>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%cd</span></tt> to change the current directory.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [2]: </span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
+<div class="newline"></div><span class="go">/tmp</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%timeit</span></tt> allows you to time the execution of short snippets using the
+<tt class="docutils literal"><span class="pre">timeit</span></tt> module from the standard library:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="n">timeit</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 39 ns per loop</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%cpaste</span></tt> allows you to paste code, especially code from websites which has
+been prefixed with the standard python prompt (e.g. <tt class="docutils literal"><span class="pre">&gt;&gt;&gt;</span></tt>) or with an ipython
+prompt, (e.g. <tt class="docutils literal"><span class="pre">in</span> <span class="pre">[3]</span></tt>):</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [5]: </span><span class="n">cpaste</span>
+<div class="newline"></div><span class="go">Pasting code; enter &#39;--&#39; alone on the line to stop or use Ctrl-D.</span>
+<div class="newline"></div><span class="go">:In [3]: timeit x = 10</span>
+<div class="newline"></div><span class="go">:--</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 85.9 ns per loop</span>
+<div class="newline"></div><span class="gp">In [6]: </span><span class="n">cpaste</span>
+<div class="newline"></div><span class="go">Pasting code; enter &#39;--&#39; alone on the line to stop or use Ctrl-D.</span>
+<div class="newline"></div><span class="go">:&gt;&gt;&gt; timeit x = 10</span>
+<div class="newline"></div><span class="go">:--</span>
+<div class="newline"></div><span class="go">10000000 loops, best of 3: 86 ns per loop</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">%debug</span></tt> allows you to enter post-mortem debugging. That is to say, if the
+code you try to execute, raises an exception, using <tt class="docutils literal"><span class="pre">%debug</span></tt> will enter the
+debugger at the point where the exception was thrown.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [7]: </span><span class="n">x</span> <span class="o">===</span> <span class="mi">10</span>
+<div class="newline"></div><span class="go">  File &quot;&lt;ipython-input-6-12fd421b5f28&gt;&quot;, line 1</span>
+<div class="newline"></div><span class="go">    x === 10</span>
+<div class="newline"></div><span class="go">        ^</span>
+<div class="newline"></div><span class="go">SyntaxError: invalid syntax</span>
+<div class="newline"></div>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [8]: </span><span class="n">debug</span>
+<div class="newline"></div><span class="go">&gt; /home/esc/anaconda/lib/python2.7/site-packages/IPython/core/compilerop.py(87)ast_parse()</span>
+<div class="newline"></div><span class="go">     86         and are passed to the built-in compile function.&quot;&quot;&quot;</span>
+<div class="newline"></div><span class="go">---&gt; 87         return compile(source, filename, symbol, self.flags | PyCF_ONLY_AST, 1)</span>
+<div class="newline"></div><span class="go">     88</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">ipdb&gt;locals()</span>
+<div class="newline"></div><span class="go">{&#39;source&#39;: u&#39;x === 10\n&#39;, &#39;symbol&#39;: &#39;exec&#39;, &#39;self&#39;:</span>
+<div class="newline"></div><span class="go">&lt;IPython.core.compilerop.CachingCompiler instance at 0x2ad8ef0&gt;,</span>
+<div class="newline"></div><span class="go">&#39;filename&#39;: &#39;&lt;ipython-input-6-12fd421b5f28&gt;&#39;}</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The built-in IPython cheat-sheet is accessible via the <tt class="docutils literal"><span class="pre">%quickref</span></tt> magic
+function.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A list of all available magic functions is shown when typing <tt class="docutils literal"><span class="pre">%magic</span></tt>.</p>
+</div>
+<p>Furthermore IPython ships with various <em>aliases</em> which emulate common UNIX
+command line tools such as <tt class="docutils literal"><span class="pre">ls</span></tt> to list files, <tt class="docutils literal"><span class="pre">cp</span></tt> to copy files and <tt class="docutils literal"><span class="pre">rm</span></tt> to
+remove files. A list of aliases is shown when typing <tt class="docutils literal"><span class="pre">alias</span></tt>:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">alias</span>
+<div class="newline"></div><span class="go">Total number of aliases: 16</span>
+<div class="newline"></div><span class="go">Out[1]:</span>
+<div class="newline"></div><span class="go">[(&#39;cat&#39;, &#39;cat&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;clear&#39;, &#39;clear&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;cp&#39;, &#39;cp -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ldir&#39;, &#39;ls -F -o --color %l | grep /$&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;less&#39;, &#39;less&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lf&#39;, &#39;ls -F -o --color %l | grep ^-&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lk&#39;, &#39;ls -F -o --color %l | grep ^l&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ll&#39;, &#39;ls -F -o --color&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;ls&#39;, &#39;ls -F --color&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;lx&#39;, &#39;ls -F -o --color %l | grep ^-..x&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;man&#39;, &#39;man&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;mkdir&#39;, &#39;mkdir&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;more&#39;, &#39;more&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;mv&#39;, &#39;mv -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;rm&#39;, &#39;rm -i&#39;),</span>
+<div class="newline"></div><span class="go">(&#39;rmdir&#39;, &#39;rmdir&#39;)]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Lastly, we would like to mention the <em>tab completion</em> feature, whose
+description we cite directly from the IPython manual:</p>
+<p><em>Tab completion, especially for attributes, is a convenient way to explore the
+structure of any object you’re dealing with. Simply type object_name.&lt;TAB&gt; to
+view the object’s attributes. Besides Python objects and keywords, tab
+completion also works on file and directory names.</em></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">x</span><span class="o">.&lt;</span><span class="n">TAB</span><span class="o">&gt;</span>
+<div class="newline"></div><span class="go">x.bit_length   x.conjugate    x.denominator  x.imag         x.numerator</span>
+<div class="newline"></div><span class="go">x.real</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span>
+<div class="newline"></div><span class="go">x.real.bit_length   x.real.denominator  x.real.numerator</span>
+<div class="newline"></div><span class="go">x.real.conjugate    x.real.imag         x.real.real</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="language/python_language.html" title="1.2. The Python language"
+             >next</a></li>
+        <li class="right" >
+          <a href="index.html" title="1. Getting started with Python for science"
+             >previous</a> |</li>
+        <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="index.html" >1. Getting started with Python for science</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

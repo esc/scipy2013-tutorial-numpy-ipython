@@ -1,0 +1,309 @@
+/*
+ * nature.css_t
+ * ~~~~~~~~~~~~
+ *
+ * Sphinx stylesheet -- nature theme.
+ *
+ * :copyright: Copyright 2007-2010 by the Sphinx team, see AUTHORS.
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+@import url("basic.css");
+@import url("default.css");
+
+/************************ Header *****************************/
+
+div.related li.left {
+    margin-right: .5ex;
+    position: absolute;
+    left: -.8ex;
+    top: .2ex;
+}
+
+div.related ul {
+    margin-left: .8ex;
+}
+
+div.related li.left img {
+    padding: 0ex;
+}
+
+span.hiddenlink {
+    display: none;
+    z-index: 100;
+    background-color: rgb(355, 253, 242);
+    position: absolute;
+    left: 4px;
+    top: 20px;
+    width: 20ex;
+    padding: 3px;
+    border: 1px solid #888;
+    color: black;
+    line-height: 100%;
+}
+
+li.left:hover span.hiddenlink {
+    display: block;
+}
+
+li.transparent:hover span.hiddenlink {
+    display: none;
+}
+
+/* -- page layout ----------------------------------------------------------- */
+
+/* Restrict the width of the body, to avoid very long lines */
+div.body {
+    max-width: 90ex;
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+/* special colors for exercises */
+div.green {
+    background-color: #e4ffe4;
+    border: 1px solid #6f6;
+}
+
+/* bold section titles */
+div.body h1, div.body h2 {
+    font-weight: bold;
+}
+
+/* clear both after section titles */
+div.body h1, div.body h2, div.body h3, div.body h4, hr {
+    clear: both;
+}
+
+/* pre */
+div.body pre {
+    font-weight: 500;
+    font-family: "Droid Sans Mono", "Liberation Mono", Courier, monospace;
+    color: black;
+    margin-top: 3px;
+    /* The following lines ensure that no horizontal scrolling is
+     * necessary to see code lines */
+    overflow: visible;
+    text-overflow: ellipsis;
+}
+
+div.highlight pre {
+    /* Hack to have indented line wraps */
+    white-space: pre-wrap;
+    padding-left: 3.6em;
+    text-indent: -3.5em;
+}
+/* Hack to have indented line wraps */
+div.highlight pre div.newline {
+    margin-right: -4.5em;
+    padding-left: 1em;
+    display: inline-block;
+    visibility: hidden;
+}
+
+div.body p {
+    margin-bottom : .3em;
+    margin-top : .7em;
+}
+
+div.body ul, div.body ol, div.body blockquote {
+    margin-top : .3em;
+}
+
+/* alternating colors in table rows */
+table.docutils tr:nth-child(even) {
+    background-color: #F3F3FF;
+}
+table.docutils tr:nth-child(odd) {
+    background-color: #FFFFEE;
+}
+
+table.docutils tr {
+    border-style: solid none solid none;
+    border-width: 1px 0 1px 0;
+    border-color: #AAAAAA;
+}
+
+/* Content div */
+div.contents {
+      background-color: #FFFFF6;
+}
+
+div.contents li {
+      list-style-type: none;
+      font-size: 110% ;
+      font-weight: bold;
+}
+
+div.contents p {
+    margin-bottom : 0px;
+    margin-top : 0px;
+}
+
+div.contents ul {
+    margin-bottom : 4px;
+    margin-top : 0px;
+}
+
+div.contents li li {
+      list-style-type: none;
+      list-style-type: square;
+      font-size: 90% ;
+      font-weight: normal;
+}
+
+
+/* toctree */
+div.toctree-wrapper ul {
+    padding-left: 4px;
+}
+
+li.toctree-l1 {
+    padding: 0 0 0.5em 0 ;
+    list-style-type: none;
+    font-size: 110% ;
+    font-weight: bold;
+    }
+
+li.toctree-l1 ul {
+    padding-left: 40px ;
+}
+
+li.toctree-l2 {
+    font-size: 80% ;
+    list-style-type: square;
+    font-weight: normal;
+    }
+
+
+li.toctree-l3 {
+    font-size: 90% ;
+    list-style-type: circle;
+    font-weight: normal;
+    }
+ 
+table.hlist td {
+    width: 50%;
+    vertical-align: top;
+}
+
+
+table.hlist ul {
+    margin-top: 0em;
+}
+
+
+/************************ Admonitions ************************/
+
+div.admonition p {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+}
+div.admonition ul {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+div.admonition .first {
+    font-weight: bold;
+}
+
+/* hint */
+div.hint {
+    line-height: 1.5em;
+    margin: 0;
+    padding:          3px 5px;
+    width:            260px;
+    border:     1px solid #cccccc;
+    background-color: #FFD;	
+}
+
+/* tip */
+div.tip .first {
+    visibility: hidden;
+    display: inline-block;
+    /*overflow: hidden;*/
+    margin-right: -2ex;
+    margin-left: -2ex;
+    height: auto;
+}
+
+
+div.tip {
+    font-size: 95% ;
+    margin: 0px;
+    padding: 0px;
+    margin-left: -2ex;
+    padding-left: 2ex;
+    display: inline;
+    background-image: none;
+}
+
+div.tip:hover {
+    background-image: url("minus.png");
+    background-repeat: no-repeat;
+    background-position: .1ex, 1ex;
+}
+
+div.collapsed {
+    color: #CCC;
+    background-position: .1ex, 1ex;*/
+    font-size: 90% ;
+}
+
+div.collapsed:hover {
+    background-image: none;
+}
+
+div.collapsed p.summary img {
+    margin-left: -1.9ex;
+    margin-right: .6ex;
+    opacity: .5;
+}
+
+div.collapsed p.admonition-title + p, div.collapsed p.admonition-title, 
+div.collapsed p, div.collapsed img, div.collapsed div, div.collapsed ul, 
+div.collapsed ol {
+    display: none;
+}
+
+div.collapsed p.summary {
+    display: inline;
+}
+
+div.collapsed:hover p.summary img {
+    opacity: 1;
+}
+
+div.collapsed p.summary img {
+    display: inline;
+}
+
+div.collapsed:hover {
+    background-position: .1ex, 1ex;
+    color: #999;
+}
+
+.transparent img {
+    opacity: .5;
+}
+
+.collapsed a {
+    color: #CCC;
+}
+
+div.tip p.summary {
+    display: inline;
+}
+
+
+/* sidebar */
+div.sidebar ul {
+    padding-top: 0px;
+    margin-top: 0px;
+    margin-bottom: 7px;
+}
+div.sidebar .first {
+    margin-bottom: 5px;
+}
+

@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.2.6. Input and Output &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
+    <link rel="up" title="1.2. The Python language" href="python_language.html" />
+    <link rel="next" title="1.2.7. Standard Library" href="standard_library.html" />
+    <link rel="prev" title="1.2.5. Reusing code: scripts and modules" href="reusing_code.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="standard_library.html" title="1.2.7. Standard Library"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="reusing_code.html" title="1.2.5. Reusing code: scripts and modules"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
+          <li><a href="python_language.html" accesskey="U">1.2. The Python language</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="input-and-output">
+<h1>1.2.6. Input and Output<a class="headerlink" href="#input-and-output" title="Permalink to this headline">¶</a></h1>
+<p>To be exhaustive, here are some information about input and output in
+Python. Since we will use the Numpy methods to read and write files,
+<strong>you may skip this chapter at first reading</strong>.</p>
+<p>We write or read <strong>strings</strong> to/from files (other types must be converted to
+strings). To write in a file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;workfile&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="c"># opens the workfile file</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<div class="newline"></div><span class="go">&lt;type &#39;file&#39;&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;This is a test </span><span class="se">\n</span><span class="s">and another test&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>To read from a file</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [1]: </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;workfile&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [2]: </span><span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [3]: </span><span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<div class="newline"></div><span class="go">This is a test</span>
+<div class="newline"></div><span class="go">and another test</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>For more details: <a class="reference external" href="http://docs.python.org/tutorial/inputoutput.html">http://docs.python.org/tutorial/inputoutput.html</a></p>
+<div class="section" id="iterating-over-a-file">
+<h2>1.2.6.1. Iterating over a file<a class="headerlink" href="#iterating-over-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;workfile&#39;</span><span class="p">,</span> <span class="s">&#39;r&#39;</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [7]: </span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<div class="newline"></div><span class="go">...:     print line</span>
+<div class="newline"></div><span class="go">...:</span>
+<div class="newline"></div><span class="go">...:</span>
+<div class="newline"></div><span class="go">This is a test</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="go">and another test</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">In [8]: </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<div class="section" id="file-modes">
+<h3>1.2.6.1.1. File modes<a class="headerlink" href="#file-modes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Read-only: <tt class="docutils literal"><span class="pre">r</span></tt></li>
+<li>Write-only: <tt class="docutils literal"><span class="pre">w</span></tt><ul>
+<li>Note: Create a new file or <em>overwrite</em> existing file.</li>
+</ul>
+</li>
+<li>Append a file: <tt class="docutils literal"><span class="pre">a</span></tt></li>
+<li>Read and Write: <tt class="docutils literal"><span class="pre">r+</span></tt></li>
+<li>Binary mode: <tt class="docutils literal"><span class="pre">b</span></tt><ul>
+<li>Note: Use for binary files, especially on Windows.</li>
+</ul>
+</li>
+</ul>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="standard_library.html" title="1.2.7. Standard Library"
+             >next</a></li>
+        <li class="right" >
+          <a href="reusing_code.html" title="1.2.5. Reusing code: scripts and modules"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
+          <li><a href="python_language.html" >1.2. The Python language</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <style type="text/css">
+.figure {
+    float: left;
+    margin: 10px;
+    width: auto;
+    height: 200px;
+    width: 180px;
+}
+
+.figure img {
+    display: inline;
+    }
+
+.figure .caption {
+    width: 170px;
+    text-align: center !important;
+}
+</style><div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="examples-index">
+<a class="reference external image-reference" href="./plot_aliased.html"><img alt="../../../_images/plot_aliased.png" src="../../../_images/plot_aliased.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_aliased.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_alpha.html"><img alt="../../../_images/plot_alpha.png" src="../../../_images/plot_alpha.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_alpha.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_antialiased.html"><img alt="../../../_images/plot_antialiased.png" src="../../../_images/plot_antialiased.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_antialiased.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_axes-2.html"><img alt="../../../_images/plot_axes-2.png" src="../../../_images/plot_axes-2.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_axes-2.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_axes.html"><img alt="../../../_images/plot_axes.png" src="../../../_images/plot_axes.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_axes.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_bad.html"><img alt="../../../_images/plot_bad.png" src="../../../_images/plot_bad.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_bad.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_bar.html"><img alt="../../../_images/plot_bar.png" src="../../../_images/plot_bar.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_bar.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_bar_ex.html"><img alt="../../../_images/plot_bar_ex.png" src="../../../_images/plot_bar_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_bar_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_boxplot.html"><img alt="../../../_images/plot_boxplot.png" src="../../../_images/plot_boxplot.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_boxplot.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_color.html"><img alt="../../../_images/plot_color.png" src="../../../_images/plot_color.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_color.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_colormaps.html"><img alt="../../../_images/plot_colormaps.png" src="../../../_images/plot_colormaps.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_colormaps.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_contour.html"><img alt="../../../_images/plot_contour.png" src="../../../_images/plot_contour.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_contour.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_contour_ex.html"><img alt="../../../_images/plot_contour_ex.png" src="../../../_images/plot_contour_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_contour_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_dash_capstyle.html"><img alt="../../../_images/plot_dash_capstyle.png" src="../../../_images/plot_dash_capstyle.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_dash_capstyle.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_dash_joinstyle.html"><img alt="../../../_images/plot_dash_joinstyle.png" src="../../../_images/plot_dash_joinstyle.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_dash_joinstyle.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_1.html"><img alt="../../../_images/plot_exercice_1.png" src="../../../_images/plot_exercice_1.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_1.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_10.html"><img alt="../../../_images/plot_exercice_10.png" src="../../../_images/plot_exercice_10.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_10.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_2.html"><img alt="../../../_images/plot_exercice_2.png" src="../../../_images/plot_exercice_2.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_2.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_3.html"><img alt="../../../_images/plot_exercice_3.png" src="../../../_images/plot_exercice_3.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_3.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_4.html"><img alt="../../../_images/plot_exercice_4.png" src="../../../_images/plot_exercice_4.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_4.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_5.html"><img alt="../../../_images/plot_exercice_5.png" src="../../../_images/plot_exercice_5.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_5.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_6.html"><img alt="../../../_images/plot_exercice_6.png" src="../../../_images/plot_exercice_6.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_6.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_7.html"><img alt="../../../_images/plot_exercice_7.png" src="../../../_images/plot_exercice_7.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_7.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_8.html"><img alt="../../../_images/plot_exercice_8.png" src="../../../_images/plot_exercice_8.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_8.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercice_9.html"><img alt="../../../_images/plot_exercice_9.png" src="../../../_images/plot_exercice_9.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_exercice_9.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_good.html"><img alt="../../../_images/plot_good.png" src="../../../_images/plot_good.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_good.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_grid.html"><img alt="../../../_images/plot_grid.png" src="../../../_images/plot_grid.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_grid.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_grid_ex.html"><img alt="../../../_images/plot_grid_ex.png" src="../../../_images/plot_grid_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_grid_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_gridspec.html"><img alt="../../../_images/plot_gridspec.png" src="../../../_images/plot_gridspec.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_gridspec.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_imshow.html"><img alt="../../../_images/plot_imshow.png" src="../../../_images/plot_imshow.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_imshow.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_imshow_ex.html"><img alt="../../../_images/plot_imshow_ex.png" src="../../../_images/plot_imshow_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_imshow_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_linestyles.html"><img alt="../../../_images/plot_linestyles.png" src="../../../_images/plot_linestyles.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_linestyles.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_linewidth.html"><img alt="../../../_images/plot_linewidth.png" src="../../../_images/plot_linewidth.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_linewidth.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_markers.html"><img alt="../../../_images/plot_markers.png" src="../../../_images/plot_markers.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_markers.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_mec.html"><img alt="../../../_images/plot_mec.png" src="../../../_images/plot_mec.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_mec.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_mew.html"><img alt="../../../_images/plot_mew.png" src="../../../_images/plot_mew.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_mew.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_mfc.html"><img alt="../../../_images/plot_mfc.png" src="../../../_images/plot_mfc.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_mfc.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_ms.html"><img alt="../../../_images/plot_ms.png" src="../../../_images/plot_ms.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_ms.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_multiplot.html"><img alt="../../../_images/plot_multiplot.png" src="../../../_images/plot_multiplot.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_multiplot.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_multiplot_ex.html"><img alt="../../../_images/plot_multiplot_ex.png" src="../../../_images/plot_multiplot_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_multiplot_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_pie.html"><img alt="../../../_images/plot_pie.png" src="../../../_images/plot_pie.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_pie.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_pie_ex.html"><img alt="../../../_images/plot_pie_ex.png" src="../../../_images/plot_pie_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_pie_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_plot.html"><img alt="../../../_images/plot_plot.png" src="../../../_images/plot_plot.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_plot.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_plot3d-2.html"><img alt="../../../_images/plot_plot3d-2.png" src="../../../_images/plot_plot3d-2.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_plot3d-2.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_plot3d.html"><img alt="../../../_images/plot_plot3d.png" src="../../../_images/plot_plot3d.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_plot3d.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_plot3d_ex.html"><img alt="../../../_images/plot_plot3d_ex.png" src="../../../_images/plot_plot3d_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_plot3d_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_plot_ex.html"><img alt="../../../_images/plot_plot_ex.png" src="../../../_images/plot_plot_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_plot_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_polar.html"><img alt="../../../_images/plot_polar.png" src="../../../_images/plot_polar.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_polar.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_polar_ex.html"><img alt="../../../_images/plot_polar_ex.png" src="../../../_images/plot_polar_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_polar_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_quiver.html"><img alt="../../../_images/plot_quiver.png" src="../../../_images/plot_quiver.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_quiver.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_quiver_ex.html"><img alt="../../../_images/plot_quiver_ex.png" src="../../../_images/plot_quiver_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_quiver_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_scatter.html"><img alt="../../../_images/plot_scatter.png" src="../../../_images/plot_scatter.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_scatter.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_scatter_ex.html"><img alt="../../../_images/plot_scatter_ex.png" src="../../../_images/plot_scatter_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_scatter_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_solid_capstyle.html"><img alt="../../../_images/plot_solid_capstyle.png" src="../../../_images/plot_solid_capstyle.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_solid_capstyle.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_solid_joinstyle.html"><img alt="../../../_images/plot_solid_joinstyle.png" src="../../../_images/plot_solid_joinstyle.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_solid_joinstyle.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_subplot-grid.html"><img alt="../../../_images/plot_subplot-grid.png" src="../../../_images/plot_subplot-grid.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_subplot-grid.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_subplot-horizontal.html"><img alt="../../../_images/plot_subplot-horizontal.png" src="../../../_images/plot_subplot-horizontal.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_subplot-horizontal.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_subplot-vertical.html"><img alt="../../../_images/plot_subplot-vertical.png" src="../../../_images/plot_subplot-vertical.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_subplot-vertical.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_text.html"><img alt="../../../_images/plot_text.png" src="../../../_images/plot_text.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_text.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_text_ex.html"><img alt="../../../_images/plot_text_ex.png" src="../../../_images/plot_text_ex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_text_ex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_ticks.html"><img alt="../../../_images/plot_ticks.png" src="../../../_images/plot_ticks.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_ticks.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_ugly.html"><img alt="../../../_images/plot_ugly.png" src="../../../_images/plot_ugly.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_ugly.py</em></p>
+</div>
+<div style="clear: both"></div><p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

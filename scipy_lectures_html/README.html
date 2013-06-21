@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Scipy-Lecture-Notes &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="index.html" />
+    <link rel="next" title="How to contribute" href="guide/index.html" />
+    <link rel="prev" title="What’s new" href="CHANGES.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guide/index.html" title="How to contribute"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="CHANGES.html" title="What’s new"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="scipy-lecture-notes">
+<h1>Scipy-Lecture-Notes<a class="headerlink" href="#scipy-lecture-notes" title="Permalink to this headline">¶</a></h1>
+<p>This repository gathers some lecture notes on the scientific Python
+ecosystem that can be used for a full course of scientific computing with
+Python.</p>
+<p>These documents are written with the rest markup language (<tt class="docutils literal"><span class="pre">.rst</span></tt>
+extension) and built using Sphinx: <a class="reference external" href="http://sphinx.pocoo.org/">http://sphinx.pocoo.org/</a>.</p>
+<p>You can view the online version at: <a class="reference external" href="http://scipy-lectures.github.com">http://scipy-lectures.github.com</a></p>
+<div class="section" id="reusing-and-distributing">
+<h2>Reusing and distributing<a class="headerlink" href="#reusing-and-distributing" title="Permalink to this headline">¶</a></h2>
+<p>As stated in the <tt class="docutils literal"><span class="pre">LICENSE.txt</span></tt> file, this material comes with no strings
+attached. Feel free to reuse and modify for your own teaching purposes.</p>
+<p>However, we would like this reference material to be improved over time,
+thus we encourage people to contribute back changes. These will be
+reviewed and edited by the original authors and the editors.</p>
+</div>
+<div class="section" id="building-instructions">
+<h2>Building instructions<a class="headerlink" href="#building-instructions" title="Permalink to this headline">¶</a></h2>
+<p>To generate the html output for on-screen display, Type:</p>
+<div class="highlight-python"><pre>make html</pre>
+</div>
+<p>the generated html files can be found in <tt class="docutils literal"><span class="pre">build/html</span></tt></p>
+<p>The first build takes a long time, but information is cached and
+subsequent builds will be faster.</p>
+<p>To generate the pdf file for printing:</p>
+<div class="highlight-python"><pre>make pdf</pre>
+</div>
+<p>The pdf builder is a bit pointy and you might have some TeX errors. Tweaking
+the layout in the <tt class="docutils literal"><span class="pre">*.rst</span></tt> files is usually enough to work around these
+problems.</p>
+<div class="section" id="requirements">
+<h3>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
+<p><em>probably incomplete</em></p>
+<ul class="simple">
+<li>make</li>
+<li>sphinx (&gt;= 1.0)</li>
+<li>pdflatex</li>
+<li>pdfjam</li>
+<li>matplotlib</li>
+<li>scikit-learn (&gt;= 0.8)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h2>
+<div class="topic">
+<p class="topic-title first">Contributing guide and chapter example</p>
+<p>The directory <tt class="docutils literal"><span class="pre">guide</span></tt> contains an example chapter with specific
+instructions on how to contribute.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="guide/index.html">How to contribute</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#id1">How to contribute ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#keeping-it-concise-collapsing-paragraphs">Keeping it concise: collapsing paragraphs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#figures-and-code-examples">Figures and code examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#using-markup">Using Markup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#linking-to-package-documentations">Linking to package documentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#chapter-section-subsection-paragraph">Chapter, section, subsection, paragraph</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#using-github">Using Github</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#admonitions">Admonitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#clearing-floats">Clearing floats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guide/index.html#references">References</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="guide/index.html" title="How to contribute"
+             >next</a></li>
+        <li class="right" >
+          <a href="CHANGES.html" title="What’s new"
+             >previous</a> |</li>
+        <li><a href="index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

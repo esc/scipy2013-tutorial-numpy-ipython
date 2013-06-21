@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <style type="text/css">
+.figure {
+    float: left;
+    margin: 10px;
+    width: auto;
+    height: 200px;
+    width: 180px;
+}
+
+.figure img {
+    display: inline;
+    }
+
+.figure .caption {
+    width: 170px;
+    text-align: center !important;
+}
+</style><div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="examples-index">
+<a class="reference external image-reference" href="./compare_optimizers.html"><img alt="../../../_images/compare_optimizers.png" src="../../../_images/compare_optimizers.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_compare_optimizers.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./cost_functions.html"><img alt="../../../_images/cost_functions.png" src="../../../_images/cost_functions.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_cost_functions.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_1d_optim.html"><img alt="../../../_images/plot_1d_optim.png" src="../../../_images/plot_1d_optim.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_1d_optim.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_compare_optimizers.html"><img alt="../../../_images/plot_compare_optimizers.png" src="../../../_images/plot_compare_optimizers.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_compare_optimizers.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_constraints.html"><img alt="../../../_images/plot_constraints.png" src="../../../_images/plot_constraints.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_constraints.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_convex.html"><img alt="../../../_images/plot_convex.png" src="../../../_images/plot_convex.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_convex.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_curve_fit.html"><img alt="../../../_images/plot_curve_fit.png" src="../../../_images/plot_curve_fit.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_curve_fit.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercise_flat_minimum.html"><img alt="../../../_images/plot_exercise_flat_minimum.png" src="../../../_images/plot_exercise_flat_minimum.png" /></a>
+<p class="caption"><a class="reference internal" href="plot_exercise_flat_minimum.html#example-plot-exercise-flat-minimum-py"><em>Finding a minimum in a flat neighborhood</em></a></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_exercise_ill_conditioned.html"><img alt="../../../_images/plot_exercise_ill_conditioned.png" src="../../../_images/plot_exercise_ill_conditioned.png" /></a>
+<p class="caption"><a class="reference internal" href="plot_exercise_ill_conditioned.html#example-plot-exercise-ill-conditioned-py"><em>Alternating optimization</em></a></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_gradient_descent.html"><img alt="../../../_images/plot_gradient_descent.png" src="../../../_images/plot_gradient_descent.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_gradient_descent.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_noisy.html"><img alt="../../../_images/plot_noisy.png" src="../../../_images/plot_noisy.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_noisy.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_non_bounds_constraints.html"><img alt="../../../_images/plot_non_bounds_constraints.png" src="../../../_images/plot_non_bounds_constraints.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_non_bounds_constraints.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_smooth.html"><img alt="../../../_images/plot_smooth.png" src="../../../_images/plot_smooth.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_smooth.py</em></p>
+</div>
+<div style="clear: both"></div><p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

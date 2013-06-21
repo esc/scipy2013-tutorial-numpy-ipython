@@ -1,0 +1,41 @@
+
+
+.. _example_plot_exercise_flat_minimum.py:
+
+
+Finding a minimum in a flat neighborhood
+=========================================
+
+An excercise of finding minimum. This excercise is hard because the
+function is very flat around the minimum (all its derivatives are zero).
+Thus gradient information is unreliable.
+
+The function admits a minimum in [0, 0]. The challenge is to get within
+1e-7 of this minimum, starting at x0 = [1, 1].
+
+The solution that we adopt here is to give up on using gradient or
+information based on local differences, and to rely on the Powell
+algorithm. With 162 function evaluations, we get to 1e-8 of the
+solution.
+
+
+
+.. rst-class:: horizontal
+
+
+    *
+
+      .. image:: images/plot_exercise_flat_minimum_0.png
+            :scale: 50
+
+    *
+
+      .. image:: images/plot_exercise_flat_minimum_1.png
+            :scale: 50
+
+
+**Python source code:** :download:`plot_exercise_flat_minimum.py <plot_exercise_flat_minimum.py>`
+
+.. literalinclude:: plot_exercise_flat_minimum.py
+    :lines: 17-
+    

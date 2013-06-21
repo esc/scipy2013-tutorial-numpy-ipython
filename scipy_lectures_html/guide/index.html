@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to contribute &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../index.html" />
+    <link rel="up" title="Scipy-Lecture-Notes" href="../README.html" />
+    <link rel="next" title="License" href="../LICENSE.html" />
+    <link rel="prev" title="Scipy-Lecture-Notes" href="../README.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../LICENSE.html" title="License"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="../README.html" title="Scipy-Lecture-Notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../README.html" accesskey="U">Scipy-Lecture-Notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="how-to-contribute">
+<h1>How to contribute<a class="headerlink" href="#how-to-contribute" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">authors:</th><td class="field-body">Nicolas Rougier</td>
+</tr>
+</tbody>
+</table>
+<div class="topic">
+<p class="topic-title first">Foreword</p>
+<p>Use the <tt class="docutils literal"><span class="pre">topic</span></tt> keyword for any forewords</p>
+</div>
+<div class="contents local topic" id="chapters-contents">
+<p class="topic-title first">Chapters contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#id1" id="id6">How to contribute ?</a></li>
+<li><a class="reference internal" href="#keeping-it-concise-collapsing-paragraphs" id="id7">Keeping it concise: collapsing paragraphs</a></li>
+<li><a class="reference internal" href="#figures-and-code-examples" id="id8">Figures and code examples</a></li>
+<li><a class="reference internal" href="#using-markup" id="id9">Using Markup</a></li>
+<li><a class="reference internal" href="#linking-to-package-documentations" id="id10">Linking to package documentations</a></li>
+<li><a class="reference internal" href="#chapter-section-subsection-paragraph" id="id11">Chapter, section, subsection, paragraph</a></li>
+<li><a class="reference internal" href="#using-github" id="id12">Using Github</a></li>
+<li><a class="reference internal" href="#admonitions" id="id13">Admonitions</a></li>
+<li><a class="reference internal" href="#clearing-floats" id="id14">Clearing floats</a></li>
+<li><a class="reference internal" href="#references" id="id15">References</a></li>
+</ul>
+</div>
+<p>Make sure to read this <a class="reference external" href="http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html">Documentation style guide</a> <a class="footnote-reference" href="#id2" id="id3">[1]</a> as well as these
+<a class="reference external" href="http://docness.readthedocs.org/en/latest/index.html">tips, tricks</a> <a class="footnote-reference" href="#id4" id="id5">[2]</a> and conventions about documentation content and workflows.</p>
+<div class="section" id="id1">
+<h2><a class="toc-backref" href="#id6">How to contribute ?</a><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Choose a topic that is not yet covered and write it up !</p>
+<p>Create a new directory in either the <tt class="docutils literal"><span class="pre">intro</span></tt> or <tt class="docutils literal"><span class="pre">advanded</span></tt> part and start
+writing into <tt class="docutils literal"><span class="pre">index.rst</span></tt>. Don&#8217;t forget to also update the <tt class="docutils literal"><span class="pre">index.rst</span></tt> in
+the corresponding part such that your new tutorial appear in the table of
+contents.</p>
+<p>Also keep in mind that these tutorials are to being taught at different places
+and different parts may be combined into a course on Python for scientific
+computing. Thus you want them to be quite interactive and reasonably short
+(one to two hours) or your audience might just fall asleep long before you&#8217;ve
+finished talking...</p>
+<p>Last but not least, the goal of this material is to provide a concise text
+useful to learning the main features of the scipy ecosystem. If you want to
+contribute to reference material, we suggest that you contribute to the
+documentation of the specific packages that you are interested in.</p>
+</div>
+<div class="section" id="keeping-it-concise-collapsing-paragraphs">
+<h2><a class="toc-backref" href="#id7">Keeping it concise: collapsing paragraphs</a><a class="headerlink" href="#keeping-it-concise-collapsing-paragraphs" title="Permalink to this headline">¶</a></h2>
+<p>The HTML output is used for displaying on screen while teaching. The goal
+is to have the same material displayed as in the notes. Thus there needs
+to be a very concise display, with bullet-lists rather than full-blown
+paragraphs and sentences. However, in the long run, it is useful to have
+more elaborate discussions that people can read and refer to. For this,
+the <tt class="docutils literal"><span class="pre">tip</span></tt> sphinx directive will create collapsible paragraphs, that can
+be hidden during an oral presentation:</p>
+<div class="highlight-python"><pre>.. tip::
+
+    Here insert a full-blown discussion, that will be collapsable in
+    the HTML version.
+
+    It can span on multiple paragraphs</pre>
+</div>
+<p>This renders as following:</p>
+<blockquote>
+<div><div class="admonition tip">
+<p class="first admonition-title">Tip</p>
+<p>Here insert a full-blown discussion, that will be collapsable in
+the HTML version.</p>
+<p class="last">It can span on multiple paragraphs</p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="figures-and-code-examples">
+<h2><a class="toc-backref" href="#id8">Figures and code examples</a><a class="headerlink" href="#figures-and-code-examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>We do not check figures in the repository</strong>.
+Any figure must be generated from a python script that needs to be named
+<tt class="docutils literal"><span class="pre">plot_xxx.py</span></tt> (xxx can be anything of course) and put into the <tt class="docutils literal"><span class="pre">examples</span></tt>
+directory. The generated image will be named from the script name.</p>
+<a class="reference external image-reference" href="auto_examples/plot_simple.html"><img alt="../_images/plot_simple_1.png" src="../_images/plot_simple_1.png" /></a>
+<p>This is the way to include your image and link it to the code:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="p">..</span> <span class="ow">image</span><span class="p">::</span>  auto_examples/images/plot_simple_1.png
+<div class="newline"></div>   <span class="nc">:target:</span> <span class="nf">auto_examples/plot_simple.html</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>You can display the corresponding code using the <tt class="docutils literal"><span class="pre">literal-include</span></tt>
+directive.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code to provide this style of plot inclusion was adopted from the
+scikits.learn project and can be found in <tt class="docutils literal"><span class="pre">sphinxext/gen_rst.py</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="using-markup">
+<h2><a class="toc-backref" href="#id9">Using Markup</a><a class="headerlink" href="#using-markup" title="Permalink to this headline">¶</a></h2>
+<p>There are three main kinds of markup that should be used: <em>italics</em>, <strong>bold</strong>
+and <tt class="docutils literal"><span class="pre">fixed-font</span></tt>. <em>Italics</em> should be used when introducing a new technical
+term, <strong>bold</strong> should be used for emphasis and <tt class="docutils literal"><span class="pre">fixed-font</span></tt> for source code.</p>
+<div class="topic">
+<p class="topic-title first">Example:</p>
+<p>When using <em>object-oriented programming</em> in Python you <strong>must</strong> use the
+<tt class="docutils literal"><span class="pre">class</span></tt> keyword to define your <em>classes</em>.</p>
+</div>
+<p>In restructured-text markup this is:</p>
+<div class="highlight-python"><pre>when using *object-oriented programming* in Python you **must** use the
+``class`` keyword to define your *classes*.</pre>
+</div>
+</div>
+<div class="section" id="linking-to-package-documentations">
+<h2><a class="toc-backref" href="#id10">Linking to package documentations</a><a class="headerlink" href="#linking-to-package-documentations" title="Permalink to this headline">¶</a></h2>
+<p>The goal of the scipy lecture notes is not to duplicate or replace the
+documentation of the various packages. You should link as much as
+possible to the original documentation.</p>
+<p>For cross-referencing API documentation we prefer to use the <a class="reference external" href="http://sphinx-doc.org/latest/ext/intersphinx.html">intersphinx
+extension</a>. This provides
+the directives <tt class="xref py py-obj docutils literal"><span class="pre">:mod:</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">:class:</span></tt> and <tt class="xref py py-obj docutils literal"><span class="pre">:func:</span></tt> to cross-link to modules,
+classes and functions respectively. For example the <tt class="docutils literal"><span class="pre">:func:`numpy.var`</span></tt> will
+create a link like <a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.var.html#numpy.var" title="(in NumPy v1.7)"><tt class="xref py py-func docutils literal"><span class="pre">numpy.var()</span></tt></a>.</p>
+</div>
+<div class="section" id="chapter-section-subsection-paragraph">
+<h2><a class="toc-backref" href="#id11">Chapter, section, subsection, paragraph</a><a class="headerlink" href="#chapter-section-subsection-paragraph" title="Permalink to this headline">¶</a></h2>
+<p>Try to avoid to go below paragraph granularity or your document might become
+difficult to read:</p>
+<div class="highlight-rst"><div class="highlight"><pre><span class="gh">=============</span>
+<div class="newline"></div><span class="gh">Chapter title</span>
+<div class="newline"></div><span class="gh">=============</span>
+<div class="newline"></div>
+<div class="newline"></div>Sample content.
+<div class="newline"></div>
+<div class="newline"></div><span class="gh">Section</span>
+<div class="newline"></div><span class="gh">=======</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gh">Subsection</span>
+<div class="newline"></div><span class="gh">----------</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gh">Paragraph</span>
+<div class="newline"></div><span class="gh">.........</span>
+<div class="newline"></div>
+<div class="newline"></div>And some text.
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<div class="section" id="using-github">
+<h2><a class="toc-backref" href="#id12">Using Github</a><a class="headerlink" href="#using-github" title="Permalink to this headline">¶</a></h2>
+<p>The easiest way to make your own version of this teaching material
+is to fork it under Github, and use the git version control system to
+maintain your own fork. For this, all you have to do is create an account
+on github (this site) and click on the <em>fork</em> button, on the top right of this
+page. You can use git to pull from your <em>fork</em>, and push back to it the
+changes. If you want to contribute the changes back, just fill a
+<em>pull request</em>, using the button on the top of your fork&#8217;s page.</p>
+<p>Please refrain from modifying the Makefile unless it is absolutely
+necessary.</p>
+</div>
+<div class="section" id="admonitions">
+<h2><a class="toc-backref" href="#id13">Admonitions</a><a class="headerlink" href="#admonitions" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a note</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is a warning</p>
+</div>
+</div>
+<div class="section" id="clearing-floats">
+<h2><a class="toc-backref" href="#id14">Clearing floats</a><a class="headerlink" href="#clearing-floats" title="Permalink to this headline">¶</a></h2>
+<p>Figures positionned with <tt class="xref py py-obj docutils literal"><span class="pre">:align:</span> <span class="pre">right</span></tt> are float. To flush them, use:</p>
+<div class="highlight-python"><pre>|clear-floats|</pre>
+</div>
+</div>
+<div class="section" id="references">
+<h2><a class="toc-backref" href="#id15">References</a><a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td><a class="reference external" href="http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html">http://documentation-style-guide-sphinx.readthedocs.org/en/latest/style-guide.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td><a class="reference external" href="http://docness.readthedocs.org/en/latest/index.html">http://docness.readthedocs.org/en/latest/index.html</a></td></tr>
+</tbody>
+</table>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../LICENSE.html" title="License"
+             >next</a></li>
+        <li class="right" >
+          <a href="../README.html" title="Scipy-Lecture-Notes"
+             >previous</a> |</li>
+        <li><a href="../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../README.html" >Scipy-Lecture-Notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

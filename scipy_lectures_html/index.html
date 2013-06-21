@@ -1,0 +1,1112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Python Scientific Lecture Notes &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="#" />
+    <link rel="next" title="Authors" href="AUTHORS.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="AUTHORS.html" title="Authors"
+             accesskey="N">next</a></li>
+        <li><a href="#">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="python-scientific-lecture-notes">
+<h1>Python Scientific Lecture Notes<a class="headerlink" href="#python-scientific-lecture-notes" title="Permalink to this headline">¶</a></h1>
+<style type="text/css">
+  div.documentwrapper h1 {
+      text-align: center;
+      font-size: 200% ;
+      font-weight: bold;
+  }
+
+</style> <SCRIPT>
+ function preload_images() {
+     var img = new Image();
+     img.src="_images/plusBox.png";
+     img.src="_images/minBox.png";
+     img.src="_images/plusBoxHighlight.png";
+     img.src="_images/minBoxHighlight.png";
+     img.src="_images/noneBox.png";
+ }
+ preload_images();
+
+ //Function to make the index toctree collapsible
+ $(function () {
+     $('.toctree-l3')
+         .click(function(event){
+             if (event.target.tagName.toLowerCase() != "a") {
+                 if ($(this).children('ul').length > 0) {
+                     $(this).css('list-style-image',
+                     (!$(this).children('ul').is(':hidden')) ? 'url(_images/plusBoxHighlight.png)' : 'url(_images/minBoxHighlight.png)');
+                     $(this).children('ul').toggle();
+                 }
+                 return true; //Makes links clickable
+             }
+         })
+         .mousedown(function(event){ return false; }) //Firefox highlighting fix
+         .css({cursor:'pointer', 'list-style-image':'url(_images/plusBox.png)'})
+         .children('ul').hide();
+     $('ul li ul li:not(:has(ul))').css({cursor:'default', 'list-style-image':'url(_images/noneBox.png)'});
+     $('.toctree-l4').css({cursor:'default', 'list-style-image':'url(_images/noneBox.png)'});
+     var sidebarbutton = $('#sidebarbutton');
+     sidebarbutton.css({
+         'display': 'none'
+     });
+
+     $('.toctree-l3').hover(
+         function () {
+             if ($(this).children('ul').length > 0) {
+                 $(this).css('background-color', '#D0D0D0').children('ul').css('background-color', '#F0F0F0');
+                 $(this).css('list-style-image',
+                     (!$(this).children('ul').is(':hidden')) ? 'url(_images/minBoxHighlight.png)' : 'url(_images/plusBoxHighlight.png)');
+             }
+             else {
+                 $(this).css('background-color', '#F9F9F9');
+             }
+         },
+         function () {
+             $(this).css('background-color', 'white').children('ul').css('background-color', 'white');
+             if ($(this).children('ul').length > 0) {
+                 $(this).css('list-style-image',
+                     (!$(this).children('ul').is(':hidden')) ? 'url(_images/minBox.png)' : 'url(_images/plusBox.png)');
+             }
+         }
+     );
+ });
+
+ </SCRIPT>
+
+<style type="text/css">
+  div.bodywrapper blockquote {
+      margin: 0 ;
+  }
+
+  div.toctree-wrapper ul {
+      margin: 0 ;
+      padding-left: 0px ;
+  }
+
+  li.toctree-l1 {
+      padding: 0 ;
+      list-style-type: none;
+      font-size: 150% ;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      font-weight: normal;
+      color: #20435c;
+      margin-left: 0;
+      margin-bottom: 1em;
+      font-weight: bold;
+      }
+
+  li.toctree-l1 a {
+      padding: 0 0 0 10px ;
+  }
+
+  li.toctree-l2 {
+      padding: 0.25em 0 0.25em 0 ;
+      list-style-type: none;
+      background-color: #FFFFFF;
+      font-size: 90% ;
+      font-weight: bold;
+  }
+
+  li.toctree-l2 ul {
+      padding-left: 40px ;
+  }
+
+  li.toctree-l3 {
+      font-size: 70% ;
+      list-style-type: square;
+      font-weight: normal;
+  }
+
+  li.toctree-l4 {
+      font-size: 85% ;
+      list-style-type: circle;
+      font-weight: normal;
+  }
+
+  div.topic li.toctree-l1 {
+      font-size: 100% ;
+      font-weight: bold;
+      background-color: transparent;
+      margin-bottom: 0;
+      margin-left: 1.5em;
+      display:inline;
+  }
+
+  div.topic p {
+      font-size: 90% ;
+      margin: 0.4ex;
+  }
+
+  div.topic p.topic-title {
+      display:inline;
+      font-size: 100% ;
+      margin-bottom: 0;
+  }
+
+  div.sidebar {
+      width: 25ex ;
+  }
+
+</style><div class="sidebar">
+<p class="first sidebar-title">Download</p>
+<ul class="last simple">
+<li><a class="reference external" href="./_downloads/PythonScientific.pdf">PDF, 2 pages per side</a></li>
+<li><a class="reference external" href="./_downloads/PythonScientific-simple.pdf">PDF, 1 page per side</a></li>
+<li><a class="reference external" href="https://github.com/scipy-lectures/scipy-lectures.github.com/zipball/master">HTML and example files</a></li>
+<li><a class="reference external" href="https://github.com/scipy-lectures/scipy-lecture-notes">Source code (github)</a></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">This document</p>
+<p>Teaching material on the scientific Python ecosystem, a quick
+introduction to central tools and techniques. The different chapters
+each correspond to a 1 to 2 hours course with increasing level of
+expertise, from beginner to expert.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="AUTHORS.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CHANGES.html">What&#8217;s new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">Scipy-Lecture-Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LICENSE.html">License</a></li>
+</ul>
+</div>
+</div>
+<hr class="docutils" />
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro/index.html">1. Getting started with Python for science</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro/intro.html">1.1. Scientific computing with tools and workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro/intro.html#why-python">1.1.1. Why Python?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#the-scientist-s-needs">1.1.1.1. The scientist&#8217;s needs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#specifications">1.1.1.2. Specifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#existing-solutions">1.1.1.3. Existing solutions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/intro.html#scientific-python-building-blocks">1.1.2. Scientific Python building blocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/intro.html#the-interactive-workflow-ipython-and-a-text-editor">1.1.3. The interactive workflow: IPython and a text editor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#command-line-interaction">1.1.3.1. Command line interaction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#elaboration-of-the-algorithm-in-an-editor">1.1.3.2. Elaboration of the algorithm in an editor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/intro.html#ipython-tips-and-tricks">1.1.3.3. IPython Tips and Tricks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro/language/python_language.html">1.2. The Python language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/first_steps.html">1.2.1. First steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/basic_types.html">1.2.2. Basic types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/basic_types.html#numerical-types">1.2.2.1. Numerical types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/basic_types.html#containers">1.2.2.2. Containers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/basic_types.html#lists">1.2.2.2.1. Lists</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/basic_types.html#strings">1.2.2.2.2. Strings</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/basic_types.html#dictionaries">1.2.2.2.3. Dictionaries</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/basic_types.html#more-container-types">1.2.2.2.4. More container types</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/basic_types.html#assignment-operator">1.2.2.3. Assignment operator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/control_flow.html">1.2.3. Control Flow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#if-elif-else">1.2.3.1. if/elif/else</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#for-range">1.2.3.2. for/range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#while-break-continue">1.2.3.3. while/break/continue</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#conditional-expressions">1.2.3.4. Conditional Expressions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#advanced-iteration">1.2.3.5. Advanced iteration</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/control_flow.html#iterate-over-any-sequence">1.2.3.5.1. Iterate over any <em>sequence</em></a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/control_flow.html#keeping-track-of-enumeration-number">1.2.3.5.2. Keeping track of enumeration number</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/control_flow.html#looping-over-a-dictionary">1.2.3.5.3. Looping over a dictionary</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/control_flow.html#list-comprehensions">1.2.3.6. List Comprehensions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/functions.html">1.2.4. Defining functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#function-definition">1.2.4.1. Function definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#return-statement">1.2.4.2. Return statement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#parameters">1.2.4.3. Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#passing-by-value">1.2.4.4. Passing by value</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#global-variables">1.2.4.5. Global variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#variable-number-of-parameters">1.2.4.6. Variable number of parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#docstrings">1.2.4.7. Docstrings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#functions-are-objects">1.2.4.8. Functions are objects</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#methods">1.2.4.9. Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/functions.html#exercises">1.2.4.10. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/reusing_code.html">1.2.5. Reusing code: scripts and modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#scripts">1.2.5.1. Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#importing-objects-from-modules">1.2.5.2. Importing objects from modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#creating-modules">1.2.5.3. Creating modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#main-and-module-loading">1.2.5.4. &#8216;__main__&#8217; and module loading</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#scripts-or-modules-how-to-organize-your-code">1.2.5.5. Scripts or modules? How to organize your code</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/reusing_code.html#how-module-are-found-and-imported">1.2.5.5.1. How module are found and imported</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#packages">1.2.5.6. Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/reusing_code.html#good-practices">1.2.5.7. Good practices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/io.html">1.2.6. Input and Output</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/io.html#iterating-over-a-file">1.2.6.1. Iterating over a file</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/io.html#file-modes">1.2.6.1.1. File modes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/standard_library.html">1.2.7. Standard Library</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/standard_library.html#os-module-operating-system-functionality">1.2.7.1. <tt class="docutils literal"><span class="pre">os</span></tt> module: operating system functionality</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/standard_library.html#directory-and-file-manipulation">1.2.7.1.1. Directory and file manipulation</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/standard_library.html#os-path-path-manipulations">1.2.7.1.2. <tt class="docutils literal"><span class="pre">os.path</span></tt>: path manipulations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/standard_library.html#running-an-external-command">1.2.7.1.3. Running an external command</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/standard_library.html#walking-a-directory">1.2.7.1.4. Walking a directory</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/standard_library.html#environment-variables">1.2.7.1.5. Environment variables:</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/standard_library.html#shutil-high-level-file-operations">1.2.7.2. <tt class="docutils literal"><span class="pre">shutil</span></tt>: high-level file operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/standard_library.html#glob-pattern-matching-on-files">1.2.7.3. <tt class="docutils literal"><span class="pre">glob</span></tt>: Pattern matching on files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/standard_library.html#sys-module-system-specific-information">1.2.7.4. <tt class="docutils literal"><span class="pre">sys</span></tt> module: system-specific information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/standard_library.html#pickle-easy-persistence">1.2.7.5. <tt class="docutils literal"><span class="pre">pickle</span></tt>: easy persistence</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/exceptions.html">1.2.8. Exception handling in Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/exceptions.html#exceptions">1.2.8.1. Exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/exceptions.html#catching-exceptions">1.2.8.2. Catching exceptions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/exceptions.html#try-except">1.2.8.2.1. try/except</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/exceptions.html#try-finally">1.2.8.2.2. try/finally</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/language/exceptions.html#easier-to-ask-for-forgiveness-than-for-permission">1.2.8.2.3. Easier to ask for forgiveness than for permission</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/language/exceptions.html#raising-exceptions">1.2.8.3. Raising exceptions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/language/oop.html">1.2.9. Object-oriented programming (OOP)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro/numpy/index.html">1.3. NumPy: creating and manipulating numerical data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro/numpy/array_object.html">1.3.1. The Numpy array object</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#what-are-numpy-and-numpy-arrays">1.3.1.1. What are Numpy and Numpy arrays?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#reference-documentation">1.3.1.2. Reference documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#import-conventions">1.3.1.3. Import conventions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#creating-arrays">1.3.1.4. Creating arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#functions-for-creating-arrays">1.3.1.5. Functions for creating arrays</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#basic-data-types">1.3.1.6. Basic data types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#basic-visualization">1.3.1.7. Basic visualization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#indexing-and-slicing">1.3.1.8. Indexing and slicing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#copies-and-views">1.3.1.9. Copies and views</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/array_object.html#fancy-indexing">1.3.1.10. Fancy indexing</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/array_object.html#using-boolean-masks">1.3.1.10.1. Using boolean masks</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/array_object.html#indexing-with-an-array-of-integers">1.3.1.10.2. Indexing with an array of integers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/numpy/operations.html">1.3.2. Numerical operations on arrays</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#elementwise-operations">1.3.2.1. Elementwise operations</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#basic-operations">1.3.2.1.1. Basic operations</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#other-operations">1.3.2.1.2. Other operations</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#basic-reductions">1.3.2.2. Basic reductions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#other-reductions">1.3.2.2.1. Other reductions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#broadcasting">1.3.2.3. Broadcasting</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#array-shape-manipulation">1.3.2.4. Array shape manipulation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#flattening">1.3.2.4.1. Flattening</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#reshaping">1.3.2.4.2. Reshaping</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#adding-a-dimension">1.3.2.4.3. Adding a dimension</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#dimension-shuffling">1.3.2.4.4. Dimension shuffling</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/operations.html#resizing">1.3.2.4.5. Resizing</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#sorting-data">1.3.2.5. Sorting data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/operations.html#summary">1.3.2.6. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/numpy/elaborate_arrays.html">1.3.3. More elaborate arrays</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/elaborate_arrays.html#more-data-types">1.3.3.1. More data types</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/elaborate_arrays.html#casting">1.3.3.1.1. Casting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/elaborate_arrays.html#different-data-type-sizes">1.3.3.1.2. Different data type sizes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/elaborate_arrays.html#structured-data-types">1.3.3.2. Structured data types</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/elaborate_arrays.html#maskedarray-dealing-with-propagation-of-missing-data">1.3.3.3. <tt class="docutils literal"><span class="pre">maskedarray</span></tt>: dealing with (propagation of) missing data</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/numpy/advanced_operations.html">1.3.4. Advanced operations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/advanced_operations.html#polynomials">1.3.4.1. Polynomials</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/advanced_operations.html#more-polynomials-with-more-bases">1.3.4.1.1. More polynomials (with more bases)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/numpy/advanced_operations.html#loading-data-files">1.3.4.2. Loading data files</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/advanced_operations.html#text-files">1.3.4.2.1. Text files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/advanced_operations.html#images">1.3.4.2.2. Images</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/advanced_operations.html#numpy-s-own-format">1.3.4.2.3. Numpy&#8217;s own format</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/numpy/advanced_operations.html#well-known-more-obscure-file-formats">1.3.4.2.4. Well-known (&amp; more obscure) file formats</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/numpy/exercises.html">1.3.5. Some exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro/matplotlib/matplotlib.html">1.4. Matplotlib: plotting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#introduction">1.4.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#ipython-and-the-pylab-mode">1.4.1.1. IPython and the pylab mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#pylab">1.4.1.2. pylab</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#simple-plot">1.4.2. Simple plot</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#plotting-with-default-settings">1.4.2.1. Plotting with default settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#instantiating-defaults">1.4.2.2. Instantiating defaults</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#changing-colors-and-line-widths">1.4.2.3. Changing colors and line widths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#setting-limits">1.4.2.4. Setting limits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#setting-ticks">1.4.2.5. Setting ticks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#setting-tick-labels">1.4.2.6. Setting tick labels</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#moving-spines">1.4.2.7. Moving spines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#adding-a-legend">1.4.2.8. Adding a legend</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#annotate-some-points">1.4.2.9. Annotate some points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#devil-is-in-the-details">1.4.2.10. Devil is in the details</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#figures-subplots-axes-and-ticks">1.4.3. Figures, Subplots, Axes and Ticks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#figures">1.4.3.1. Figures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#subplots">1.4.3.2. Subplots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#axes">1.4.3.3. Axes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#ticks">1.4.3.4. Ticks</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/matplotlib/matplotlib.html#tick-locators">1.4.3.4.1. Tick Locators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#other-types-of-plots-examples-and-exercises">1.4.4. Other Types of Plots: examples and exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#regular-plots">1.4.4.1. Regular Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#scatter-plots">1.4.4.2. Scatter Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#bar-plots">1.4.4.3. Bar Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#contour-plots">1.4.4.4. Contour Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#imshow">1.4.4.5. Imshow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#pie-charts">1.4.4.6. Pie Charts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#quiver-plots">1.4.4.7. Quiver Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#grids">1.4.4.8. Grids</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#multi-plots">1.4.4.9. Multi Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#polar-axis">1.4.4.10. Polar Axis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#d-plots">1.4.4.11. 3D Plots</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#text">1.4.4.12. Text</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#beyond-this-tutorial">1.4.5. Beyond this tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#tutorials">1.4.5.1. Tutorials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#matplotlib-documentation">1.4.5.2. Matplotlib documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#code-documentation">1.4.5.3. Code documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#galleries">1.4.5.4. Galleries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#mailing-lists">1.4.5.5. Mailing lists</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/matplotlib/matplotlib.html#quick-references">1.4.6. Quick references</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#line-properties">1.4.6.1. Line properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#line-styles">1.4.6.2. Line styles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#markers">1.4.6.3. Markers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/matplotlib/matplotlib.html#colormaps">1.4.6.4. Colormaps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro/scipy.html">1.5. Scipy : high-level scientific computing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#file-input-output-scipy-io">1.5.1. File input/output: <tt class="docutils literal"><span class="pre">scipy.io</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#special-functions-scipy-special">1.5.2. Special functions: <tt class="docutils literal"><span class="pre">scipy.special</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#linear-algebra-operations-scipy-linalg">1.5.3. Linear algebra operations: <tt class="docutils literal"><span class="pre">scipy.linalg</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#fast-fourier-transforms-scipy-fftpack">1.5.4. Fast Fourier transforms: <tt class="docutils literal"><span class="pre">scipy.fftpack</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#optimization-and-fit-scipy-optimize">1.5.5. Optimization and fit: <tt class="docutils literal"><span class="pre">scipy.optimize</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#statistics-and-random-numbers-scipy-stats">1.5.6. Statistics and random numbers: <tt class="docutils literal"><span class="pre">scipy.stats</span></tt></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#histogram-and-probability-density-function">1.5.6.1. Histogram and probability density function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#percentiles">1.5.6.2. Percentiles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#statistical-tests">1.5.6.3. Statistical tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#interpolation-scipy-interpolate">1.5.7. Interpolation: <tt class="docutils literal"><span class="pre">scipy.interpolate</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#numerical-integration-scipy-integrate">1.5.8. Numerical integration: <tt class="docutils literal"><span class="pre">scipy.integrate</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#signal-processing-scipy-signal">1.5.9. Signal processing: <tt class="docutils literal"><span class="pre">scipy.signal</span></tt></a></li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#image-processing-scipy-ndimage">1.5.10. Image processing: <tt class="docutils literal"><span class="pre">scipy.ndimage</span></tt></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#geometrical-transformations-on-images">1.5.10.1. Geometrical transformations on images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#image-filtering">1.5.10.2. Image filtering</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#mathematical-morphology">1.5.10.3. Mathematical morphology</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/scipy.html#measurements-on-images">1.5.10.4. Measurements on images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="intro/scipy.html#summary-exercises-on-scientific-computing">1.5.11. Summary exercises on scientific computing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html">1.5.11.13. Maximum wind speed prediction at the Sprogø station</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#statistical-approach">1.5.11.13.1. Statistical approach</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#computing-the-cumulative-probabilities">1.5.11.13.2. Computing the cumulative probabilities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#prediction-with-univariatespline">1.5.11.13.3. Prediction with UnivariateSpline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#exercise-with-the-gumbell-distribution">1.5.11.13.4. Exercise with the Gumbell distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html">1.5.11.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#introduction">1.5.11.14.1. Introduction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#loading-and-visualization">1.5.11.14.2. Loading and visualization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fitting-a-waveform-with-a-simple-gaussian-model">1.5.11.14.3. Fitting a waveform with a simple Gaussian model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#model">1.5.11.14.3.1. Model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#initial-solution">1.5.11.14.3.2. Initial solution</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fit">1.5.11.14.3.3. Fit</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#going-further">1.5.11.14.4. Going further</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/image-processing.html">1.5.11.15. Image processing application: counting bubbles and unmolten grains</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#statement-of-the-problem">1.5.11.15.1. Statement of the problem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#proposed-solution">1.5.11.15.2. Proposed solution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/answers_image_processing.html">1.5.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html">1.5.11.13. Maximum wind speed prediction at the Sprogø station</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#statistical-approach">1.5.11.13.1. Statistical approach</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#computing-the-cumulative-probabilities">1.5.11.13.2. Computing the cumulative probabilities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#prediction-with-univariatespline">1.5.11.13.3. Prediction with UnivariateSpline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#exercise-with-the-gumbell-distribution">1.5.11.13.4. Exercise with the Gumbell distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html">1.5.11.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#introduction">1.5.11.14.1. Introduction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#loading-and-visualization">1.5.11.14.2. Loading and visualization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fitting-a-waveform-with-a-simple-gaussian-model">1.5.11.14.3. Fitting a waveform with a simple Gaussian model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#model">1.5.11.14.3.1. Model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#initial-solution">1.5.11.14.3.2. Initial solution</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fit">1.5.11.14.3.3. Fit</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#going-further">1.5.11.14.4. Going further</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/image-processing.html">1.5.11.15. Image processing application: counting bubbles and unmolten grains</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#statement-of-the-problem">1.5.11.15.1. Statement of the problem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#proposed-solution">1.5.11.15.2. Proposed solution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/answers_image_processing.html">1.5.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html">1.5.11.13. Maximum wind speed prediction at the Sprogø station</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#statistical-approach">1.5.11.13.1. Statistical approach</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#computing-the-cumulative-probabilities">1.5.11.13.2. Computing the cumulative probabilities</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#prediction-with-univariatespline">1.5.11.13.3. Prediction with UnivariateSpline</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/stats-interpolate.html#exercise-with-the-gumbell-distribution">1.5.11.13.4. Exercise with the Gumbell distribution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html">1.5.11.14. Non linear least squares curve fitting: application to point extraction in topographical lidar data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#introduction">1.5.11.14.1. Introduction</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#loading-and-visualization">1.5.11.14.2. Loading and visualization</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fitting-a-waveform-with-a-simple-gaussian-model">1.5.11.14.3. Fitting a waveform with a simple Gaussian model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#model">1.5.11.14.3.1. Model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#initial-solution">1.5.11.14.3.2. Initial solution</a></li>
+<li class="toctree-l6"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#fit">1.5.11.14.3.3. Fit</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/optimize-fit.html#going-further">1.5.11.14.4. Going further</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/image-processing.html">1.5.11.15. Image processing application: counting bubbles and unmolten grains</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#statement-of-the-problem">1.5.11.15.1. Statement of the problem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="intro/summary-exercises/image-processing.html#proposed-solution">1.5.11.15.2. Proposed solution</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="intro/summary-exercises/answers_image_processing.html">1.5.11.16. Example of solution for the image processing exercise: unmolten grains in glass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intro/help/help.html">1.6. Getting help and finding documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced/index.html">2. Advanced topics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="advanced/advanced_python/index.html">2.1. Advanced Python Constructs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_python/index.html#iterators-generator-expressions-and-generators">2.1.1. Iterators, generator expressions and generators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#iterators">2.1.1.1. Iterators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#generator-expressions">2.1.1.2. Generator expressions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#generators">2.1.1.3. Generators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#bidirectional-communication">2.1.1.4. Bidirectional communication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#chaining-generators">2.1.1.5. Chaining generators</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_python/index.html#decorators">2.1.2. Decorators</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#replacing-or-tweaking-the-original-object">2.1.2.1. Replacing or tweaking the original object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#decorators-implemented-as-classes-and-as-functions">2.1.2.2. Decorators implemented as classes and as functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#copying-the-docstring-and-other-attributes-of-the-original-function">2.1.2.3. Copying the docstring and other attributes of the original function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#examples-in-the-standard-library">2.1.2.4. Examples in the standard library</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#deprecation-of-functions">2.1.2.5. Deprecation of functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#a-while-loop-removing-decorator">2.1.2.6. A <tt class="docutils literal"><span class="pre">while</span></tt>-loop removing decorator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#a-plugin-registration-system">2.1.2.7. A plugin registration system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#more-examples-and-reading">2.1.2.8. More examples and reading</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_python/index.html#context-managers">2.1.3. Context managers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#catching-exceptions">2.1.3.1. Catching exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_python/index.html#using-generators-to-define-context-managers">2.1.3.2. Using generators to define context managers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/advanced_numpy/index.html">2.2. Advanced Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#life-of-ndarray">2.2.1. Life of ndarray</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#it-s">2.2.1.1. It&#8217;s...</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#block-of-memory">2.2.1.2. Block of memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#data-types">2.2.1.3. Data types</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#the-descriptor">2.2.1.3.1. The descriptor</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#example-reading-wav-files">2.2.1.3.2. Example: reading <tt class="docutils literal"><span class="pre">.wav</span></tt> files</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#casting-and-re-interpretation-views">2.2.1.3.3. Casting and re-interpretation/views</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/advanced_numpy/index.html#casting">2.2.1.3.3.1. Casting</a></li>
+<li class="toctree-l6"><a class="reference internal" href="advanced/advanced_numpy/index.html#re-interpretation-viewing">2.2.1.3.3.2. Re-interpretation / viewing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#indexing-scheme-strides">2.2.1.4. Indexing scheme: strides</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#main-point">2.2.1.4.1. Main point</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/advanced_numpy/index.html#c-and-fortran-order">2.2.1.4.1.1. C and Fortran order</a></li>
+<li class="toctree-l6"><a class="reference internal" href="advanced/advanced_numpy/index.html#slicing-with-integers">2.2.1.4.1.2. Slicing with integers</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#example-fake-dimensions-with-strides">2.2.1.4.2. Example: fake dimensions with strides</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#broadcasting">2.2.1.4.3. Broadcasting</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#more-tricks-diagonals">2.2.1.4.4. More tricks: diagonals</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#cpu-cache-effects">2.2.1.4.5. CPU cache effects</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#example-inplace-operations-caveat-emptor">2.2.1.4.6. Example: inplace operations (caveat emptor)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#findings-in-dissection">2.2.1.5. Findings in dissection</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#universal-functions">2.2.2. Universal functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#what-they-are">2.2.2.1. What they are?</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#parts-of-an-ufunc">2.2.2.1.1. Parts of an Ufunc</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#making-it-easier">2.2.2.1.2. Making it easier</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#exercise-building-an-ufunc-from-scratch">2.2.2.2. Exercise: building an ufunc from scratch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#solution-building-an-ufunc-from-scratch">2.2.2.3. Solution: building an ufunc from scratch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#generalized-ufuncs">2.2.2.4. Generalized ufuncs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#interoperability-features">2.2.3. Interoperability features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#sharing-multidimensional-typed-data">2.2.3.1. Sharing multidimensional, typed data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#the-old-buffer-protocol">2.2.3.2. The old buffer protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#id3">2.2.3.3. The old buffer protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#array-interface-protocol">2.2.3.4. Array interface protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#array-siblings-chararray-maskedarray-matrix">2.2.4. Array siblings: <tt class="docutils literal"><span class="pre">chararray</span></tt>, <tt class="docutils literal"><span class="pre">maskedarray</span></tt>, <tt class="docutils literal"><span class="pre">matrix</span></tt></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#chararray-vectorized-string-operations">2.2.4.1. <tt class="docutils literal"><span class="pre">chararray</span></tt>: vectorized string operations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#masked-array-missing-data">2.2.4.2. <tt class="docutils literal"><span class="pre">masked_array</span></tt> missing data</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#the-mask">2.2.4.2.1. The mask</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#domain-aware-functions">2.2.4.2.2. Domain-aware functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#recarray-purely-convenience">2.2.4.3. <tt class="docutils literal"><span class="pre">recarray</span></tt>: purely convenience</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#matrix-convenience">2.2.4.4. <tt class="docutils literal"><span class="pre">matrix</span></tt>: convenience?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#summary">2.2.5. Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/advanced_numpy/index.html#contributing-to-numpy-scipy">2.2.6. Contributing to Numpy/Scipy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#why">2.2.6.1. Why</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#reporting-bugs">2.2.6.2. Reporting bugs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/advanced_numpy/index.html#good-bug-report">2.2.6.2.1. Good bug report</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#contributing-to-documentation">2.2.6.3. Contributing to documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#contributing-features">2.2.6.4. Contributing features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/advanced_numpy/index.html#how-to-help-in-general">2.2.6.5. How to help, in general</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/debugging/index.html">2.3. Debugging code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/debugging/index.html#avoiding-bugs">2.3.1. Avoiding bugs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/debugging/index.html#coding-best-practices-to-avoid-getting-in-trouble">2.3.1.1. Coding best practices to avoid getting in trouble</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/debugging/index.html#pyflakes-fast-static-analysis">2.3.1.2. pyflakes: fast static analysis</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#running-pyflakes-on-the-current-edited-file">2.3.1.2.1. Running pyflakes on the current edited file</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#a-type-as-go-spell-checker-like-integration">2.3.1.2.2. A type-as-go spell-checker like integration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/debugging/index.html#debugging-workflow">2.3.2. Debugging workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/debugging/index.html#using-the-python-debugger">2.3.3. Using the Python debugger</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/debugging/index.html#invoking-the-debugger">2.3.3.1. Invoking the debugger</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#postmortem">2.3.3.1.1. Postmortem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#step-by-step-execution">2.3.3.1.2. Step-by-step execution</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#other-ways-of-starting-a-debugger">2.3.3.1.3. Other ways of starting a debugger</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/debugging/index.html#debugger-commands-and-interaction">2.3.3.2. Debugger commands and interaction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/debugging/index.html#getting-help-when-in-the-debugger">2.3.3.2.1. Getting help when in the debugger</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/debugging/index.html#debugging-segmentation-faults-using-gdb">2.3.4. Debugging segmentation faults using gdb</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/optimizing/index.html">2.4. Optimizing code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/optimizing/index.html#optimization-workflow">2.4.1. Optimization workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/optimizing/index.html#profiling-python-code">2.4.2. Profiling Python code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#timeit">2.4.2.1. Timeit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#profiler">2.4.2.2. Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#id1">2.4.2.3. Line-profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#running-cprofile">2.4.2.4. Running <tt class="docutils literal"><span class="pre">cProfile</span></tt></a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#using-gprof2dot">2.4.2.5. Using <tt class="docutils literal"><span class="pre">gprof2dot</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/optimizing/index.html#making-code-go-faster">2.4.3. Making code go faster</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#algorithmic-optimization">2.4.3.1. Algorithmic optimization</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/optimizing/index.html#example-of-the-svd">2.4.3.1.1. Example of the SVD</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/optimizing/index.html#writing-faster-numerical-code">2.4.4. Writing faster numerical code</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/optimizing/index.html#additional-links">2.4.4.1. Additional Links</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/scipy_sparse/index.html">2.5. Sparse Matrices in SciPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scipy_sparse/introduction.html">2.5.1. Introduction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/introduction.html#why-sparse-matrices">2.5.1.1. Why Sparse Matrices?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/introduction.html#sparse-matrices-vs-sparse-matrix-storage-schemes">2.5.1.2. Sparse Matrices vs. Sparse Matrix Storage Schemes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/introduction.html#typical-applications">2.5.1.3. Typical Applications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/introduction.html#prerequisites">2.5.1.4. Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/introduction.html#sparsity-structure-visualization">2.5.1.5. Sparsity Structure Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scipy_sparse/storage_schemes.html">2.5.2. Storage Schemes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/storage_schemes.html#common-methods">2.5.2.1. Common Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/storage_schemes.html#sparse-matrix-classes">2.5.2.2. Sparse Matrix Classes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/dia_matrix.html">2.5.2.2.1. Diagonal Format (DIA)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/dia_matrix.html#examples">2.5.2.2.1.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/lil_matrix.html">2.5.2.2.2. List of Lists Format (LIL)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/lil_matrix.html#examples">2.5.2.2.2.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/dok_matrix.html">2.5.2.2.3. Dictionary of Keys Format (DOK)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/dok_matrix.html#examples">2.5.2.2.3.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/coo_matrix.html">2.5.2.2.4. Coordinate Format (COO)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/coo_matrix.html#examples">2.5.2.2.4.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/csr_matrix.html">2.5.2.2.5. Compressed Sparse Row Format (CSR)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/csr_matrix.html#examples">2.5.2.2.5.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/csc_matrix.html">2.5.2.2.6. Compressed Sparse Column Format (CSC)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/csc_matrix.html#examples">2.5.2.2.6.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/bsr_matrix.html">2.5.2.2.7. Block Compressed Row Format (BSR)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="advanced/scipy_sparse/bsr_matrix.html#examples">2.5.2.2.7.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/storage_schemes.html#summary">2.5.2.3. Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scipy_sparse/solvers.html">2.5.3. Linear System Solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#sparse-direct-solvers">2.5.3.1. Sparse Direct Solvers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#examples">2.5.3.1.1. Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#iterative-solvers">2.5.3.2. Iterative Solvers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#common-parameters">2.5.3.2.1. Common Parameters</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#linearoperator-class">2.5.3.2.2. LinearOperator Class</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#a-few-notes-on-preconditioning">2.5.3.2.3. A Few Notes on Preconditioning</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#eigenvalue-problem-solvers">2.5.3.3. Eigenvalue Problem Solvers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scipy_sparse/solvers.html#the-eigen-module">2.5.3.3.1. The <tt class="docutils literal"><span class="pre">eigen</span></tt> module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scipy_sparse/other_packages.html">2.5.4. Other Interesting Packages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/image_processing/index.html">2.6. Image manipulation and processing using Numpy and Scipy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#opening-and-writing-to-image-files">2.6.1. Opening and writing to image files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#displaying-images">2.6.2. Displaying images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#basic-manipulations">2.6.3. Basic manipulations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#statistical-information">2.6.3.1. Statistical information</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#geometrical-transformations">2.6.3.2. Geometrical transformations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#image-filtering">2.6.4. Image filtering</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#blurring-smoothing">2.6.4.1. Blurring/smoothing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#sharpening">2.6.4.2. Sharpening</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#denoising">2.6.4.3. Denoising</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#mathematical-morphology">2.6.4.4. Mathematical morphology</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#feature-extraction">2.6.5. Feature extraction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#edge-detection">2.6.5.1. Edge detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/image_processing/index.html#segmentation">2.6.5.2. Segmentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/image_processing/index.html#measuring-objects-properties-ndimage-measurements">2.6.6. Measuring objects properties: <tt class="docutils literal"><span class="pre">ndimage.measurements</span></tt></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/mathematical_optimization/index.html">2.7. Mathematical optimization: finding minima of functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/mathematical_optimization/index.html#knowing-your-problem">2.7.1. Knowing your problem</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#convex-versus-non-convex-optimization">2.7.1.1. Convex versus non-convex optimization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#smooth-and-non-smooth-problems">2.7.1.2. Smooth and non-smooth problems</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#noisy-versus-exact-cost-functions">2.7.1.3. Noisy versus exact cost functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#constraints">2.7.1.4. Constraints</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/mathematical_optimization/index.html#a-review-of-the-different-optimizers">2.7.2. A review of the different optimizers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#getting-started-1d-optimization">2.7.2.1. Getting started: 1D optimization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#gradient-based-methods">2.7.2.2. Gradient based methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#some-intuitions-about-gradient-descent">2.7.2.2.1. Some intuitions about gradient descent</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#conjugate-gradient-descent">2.7.2.2.2. Conjugate gradient descent</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#newton-and-quasi-newton-methods">2.7.2.3. Newton and quasi-newton methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#newton-methods-using-the-hessian-2nd-differential">2.7.2.3.1. Newton methods: using the Hessian (2nd differential)</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#quasi-newton-methods-approximating-the-hessian-on-the-fly">2.7.2.3.2. Quasi-Newton methods: approximating the Hessian on the fly</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#gradient-less-methods">2.7.2.4. Gradient-less methods</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#a-shooting-method-the-powell-algorithm">2.7.2.4.1. A shooting method: the Powell algorithm</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#simplex-method-the-nelder-mead">2.7.2.4.2. Simplex method: the Nelder-Mead</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#global-optimizers">2.7.2.5. Global optimizers</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#brute-force-a-grid-search">2.7.2.5.1. Brute force: a grid search</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/mathematical_optimization/index.html#simulated-annealing">2.7.2.5.2. Simulated annealing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/mathematical_optimization/index.html#practical-guide-to-optimization-with-scipy">2.7.3. Practical guide to optimization with scipy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#choosing-a-method">2.7.3.1. Choosing a method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#making-your-optimizer-faster">2.7.3.2. Making your optimizer faster</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#computing-gradients">2.7.3.3. Computing gradients</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#synthetic-exercices">2.7.3.4. Synthetic exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/mathematical_optimization/index.html#special-case-non-linear-least-squares">2.7.4. Special case: non-linear least-squares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#minimizing-the-norm-of-a-vector-function">2.7.4.1. Minimizing the norm of a vector function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#curve-fitting">2.7.4.2. Curve fitting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/mathematical_optimization/index.html#optimization-with-constraints">2.7.5. Optimization with constraints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#box-bounds">2.7.5.1. Box bounds</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/mathematical_optimization/index.html#general-constraints">2.7.5.2. General constraints</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/traits/index.html">2.8. Traits</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/traits/index.html#introduction">2.8.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/traits/index.html#example">2.8.2. Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/traits/index.html#what-are-traits">2.8.3. What are Traits</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#initialisation">2.8.3.1. Initialisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#validation">2.8.3.2. Validation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#documentation">2.8.3.3. Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#visualisation">2.8.3.4. Visualisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#deferral">2.8.3.5. Deferral</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#notification">2.8.3.6. Notification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/traits/index.html#some-more-advanced-traits">2.8.3.7. Some more advanced traits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/traits/index.html#references">2.8.4. References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/3d_plotting/index.html">2.9. 3D plotting with Mayavi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/3d_plotting/index.html#mlab-the-scripting-interface">2.9.1. Mlab: the scripting interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/3d_plotting/index.html#d-plotting-functions">2.9.1.1. 3D plotting functions</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#points">2.9.1.1.1. Points</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#lines">2.9.1.1.2. Lines</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#elevation-surface">2.9.1.1.3. Elevation surface</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#arbitrary-regular-mesh">2.9.1.1.4. Arbitrary regular mesh</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#volumetric-data">2.9.1.1.5. Volumetric data</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/3d_plotting/index.html#figures-and-decorations">2.9.1.2. Figures and decorations</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#figure-management">2.9.1.2.1. Figure management</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#changing-plot-properties">2.9.1.2.2. Changing plot properties</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/3d_plotting/index.html#decorations">2.9.1.2.3. Decorations</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/3d_plotting/index.html#interactive-work">2.9.2. Interactive work</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/3d_plotting/index.html#the-pipeline-dialog">2.9.2.1. The &#8220;pipeline dialog&#8221;</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/3d_plotting/index.html#the-script-recording-button">2.9.2.2. The script recording button</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/sympy.html">2.10. Sympy : Symbolic Mathematics in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/sympy.html#first-steps-with-sympy">2.10.1. First Steps with SymPy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#using-sympy-as-a-calculator">2.10.1.1. Using SymPy as a calculator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#exercises">2.10.1.2. Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#symbols">2.10.1.3. Symbols</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/sympy.html#algebraic-manipulations">2.10.2. Algebraic manipulations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#expand">2.10.2.1. Expand</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#simplify">2.10.2.2. Simplify</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#id3">2.10.2.3. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/sympy.html#calculus">2.10.3. Calculus</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#limits">2.10.3.1. Limits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#differentiation">2.10.3.2. Differentiation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#series-expansion">2.10.3.3. Series expansion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#id4">2.10.3.4. Exercises</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#integration">2.10.3.5. Integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#index-2">2.10.3.6. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/sympy.html#equation-solving">2.10.4. Equation solving</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#id6">2.10.4.1. Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/sympy.html#linear-algebra">2.10.5. Linear Algebra</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#matrices">2.10.5.1. Matrices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#differential-equations">2.10.5.2. Differential Equations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/sympy.html#id7">2.10.5.3. Exercises</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/scikit-learn/index.html">2.11. scikit-learn: machine learning in Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#loading-an-example-dataset">2.11.1. Loading an example dataset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#learning-and-predicting">2.11.1.1. Learning and Predicting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#classification">2.11.2. Classification</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#k-nearest-neighbors-classifier">2.11.2.1. k-Nearest neighbors classifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#support-vector-machines-svms-for-classification">2.11.2.2. Support vector machines (SVMs) for classification</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scikit-learn/index.html#linear-support-vector-machines">2.11.2.2.1. Linear Support Vector Machines</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scikit-learn/index.html#using-kernels">2.11.2.2.2. Using kernels</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#clustering-grouping-observations-together">2.11.3. Clustering: grouping observations together</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#k-means-clustering">2.11.3.1. K-means clustering</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#dimension-reduction-with-principal-component-analysis">2.11.4. Dimension Reduction with Principal Component Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#putting-it-all-together-face-recognition">2.11.5. Putting it all together: face recognition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#linear-model-from-regression-to-sparsity">2.11.6. Linear model: from regression to sparsity</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#sparse-models">2.11.6.1. Sparse models</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/scikit-learn/index.html#model-selection-choosing-estimators-and-their-parameters">2.11.7. Model selection: choosing estimators and their parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/scikit-learn/index.html#grid-search-and-cross-validated-estimators">2.11.7.1. Grid-search and cross-validated estimators</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scikit-learn/index.html#grid-search">2.11.7.1.1. Grid-search</a></li>
+<li class="toctree-l5"><a class="reference internal" href="advanced/scikit-learn/index.html#cross-validated-estimators">2.11.7.1.2. Cross-validated estimators</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html">2.12. Interfacing with C</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#introduction">2.12.1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id1">2.12.2. Python-C-Api</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#example">2.12.2.1. Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#numpy-support">2.12.2.2. Numpy Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id5">2.12.3. Ctypes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id7">2.12.3.1. Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id8">2.12.3.2. Numpy Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#swig">2.12.4. SWIG</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id10">2.12.4.1. Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id11">2.12.4.2. Numpy Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id12">2.12.5. Cython</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id14">2.12.5.1. Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id15">2.12.5.2. Numpy Support</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#summary">2.12.6. Summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#further-reading-and-references">2.12.7. Further Reading and References</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#exercises">2.12.8. Exercises</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id16">2.12.8.1. Python-C-API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id17">2.12.8.2. Ctypes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id18">2.12.8.3. SWIG</a></li>
+<li class="toctree-l4"><a class="reference internal" href="advanced/interfacing_with_c/interfacing_with_c.html#id19">2.12.8.4. Cython</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<hr class="docutils" />
+<small><p>Version: 2013.1-112-gf7e8b7483f (output of <tt class="docutils literal"><span class="pre">git</span> <span class="pre">describe</span></tt> for <a class="reference external" href="https://github.com/scipy-lectures/scipy-lecture-notes">project repository</a>)</p>
+<div style='visibility: hidden ; height=0'><p><tt class="xref download docutils literal"><span class="pre">PythonScientific.pdf</span></tt> <tt class="xref download docutils literal"><span class="pre">PythonScientific-simple.pdf</span></tt></p>
+<img alt="_images/minBox.png" src="_images/minBox.png" />
+<img alt="_images/plusBox.png" src="_images/plusBox.png" />
+<img alt="_images/noneBox.png" src="_images/noneBox.png" />
+<img alt="_images/minBoxHighlight.png" src="_images/minBoxHighlight.png" />
+<img alt="_images/plusBoxHighlight.png" src="_images/plusBoxHighlight.png" />
+</div>
+</small><p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="AUTHORS.html" title="Authors"
+             >next</a></li>
+        <li><a href="#">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

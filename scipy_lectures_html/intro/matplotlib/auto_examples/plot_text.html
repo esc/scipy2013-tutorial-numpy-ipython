@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>&lt;no title&gt; &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <img alt="../../../_images/plot_text_1.png" class="align-center" id="example-plot-text-py" src="../../../_images/plot_text_1.png" />
+<p><strong>Python source code:</strong> <a class="reference download internal" href="../../../_downloads/plot_text.py"><tt class="xref download docutils literal"><span class="pre">plot_text.py</span></tt></a></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">fig</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">xticks</span><span class="p">(())</span>
+<div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">yticks</span><span class="p">(())</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">eqs</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="newline"></div><span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">r&quot;$W^{3\beta}_{\delta_1 \rho_1 \sigma_2} = U^{3\beta}_{\delta_1 \rho_1} + \frac{1}{8 \pi 2} \int^{\alpha_2}_{\alpha_2} d \alpha^\prime_2 \left[\frac{ U^{2\beta}_{\delta_1 \rho_1} - \alpha^\prime_2U^{1\beta}_{\rho_1 \sigma_2} }{U^{0\beta}_{\rho_1 \sigma_2}}\right]$&quot;</span><span class="p">))</span>
+<div class="newline"></div><span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">r&quot;$\frac{d\rho}{d t} + \rho \vec{v}\cdot\nabla\vec{v} = -\nabla p + \mu\nabla^2 \vec{v} + \rho \vec{g}$&quot;</span><span class="p">))</span>
+<div class="newline"></div><span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">r&quot;$\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\pi}$&quot;</span><span class="p">))</span>
+<div class="newline"></div><span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">r&quot;$E = mc^2 = \sqrt{{m_0}^2c^4 + p^2c^2}$&quot;</span><span class="p">))</span>
+<div class="newline"></div><span class="n">eqs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s">r&quot;$F_G = G\frac{m_1m_2}{r^2}$&quot;</span><span class="p">))</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">24</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">eqs</span><span class="p">))</span>
+<div class="newline"></div>    <span class="n">eq</span> <span class="o">=</span> <span class="n">eqs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+<div class="newline"></div>    <span class="n">size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span><span class="o">.</span><span class="mi">75</span><span class="p">)</span>
+<div class="newline"></div>    <span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">eq</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">&quot;#11557c&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span>
+<div class="newline"></div>         <span class="n">transform</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">clip_on</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.02</span><span class="p">,</span> <span class="s">&quot; Text:                   pl.text(...)</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">verticalalignment</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">size</span><span class="o">=</span><span class="s">&#39;xx-large&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">bbox</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s">&#39;white&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">65</span><span class="p">),</span>
+<div class="newline"></div>        <span class="n">transform</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="s">&quot;</span><span class="se">\n\n</span><span class="s">     Draw any kind of text &quot;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">horizontalalignment</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">verticalalignment</span><span class="o">=</span><span class="s">&#39;top&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">size</span><span class="o">=</span><span class="s">&#39;large&#39;</span><span class="p">,</span>
+<div class="newline"></div>        <span class="n">transform</span><span class="o">=</span><span class="n">pl</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">pl</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><div style="clear: both"></div></p>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

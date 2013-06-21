@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <style type="text/css">
+.figure {
+    float: left;
+    margin: 10px;
+    width: auto;
+    height: 200px;
+    width: 180px;
+}
+
+.figure img {
+    display: inline;
+    }
+
+.figure .caption {
+    width: 170px;
+    text-align: center !important;
+}
+</style><div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="examples-index">
+<a class="reference external image-reference" href="./mandelplot.html"><img alt="../../../_images/mandelplot.png" src="../../../_images/mandelplot.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_mandelplot.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./myobject_test.html"><img alt="../../../_images/myobject_test.png" src="../../../_images/myobject_test.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_myobject_test.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./pilbuffer-answer.html"><img alt="../../../_images/pilbuffer-answer.png" src="../../../_images/pilbuffer-answer.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_pilbuffer-answer.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./pilbuffer.html"><img alt="../../../_images/pilbuffer.png" src="../../../_images/pilbuffer.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_pilbuffer.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./setup.html"><img alt="../../../_images/setup.png" src="../../../_images/setup.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_setup.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./setup_myobject.html"><img alt="../../../_images/setup_myobject.png" src="../../../_images/setup_myobject.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_setup_myobject.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./stride-diagonals-answer.html"><img alt="../../../_images/stride-diagonals-answer.png" src="../../../_images/stride-diagonals-answer.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_stride-diagonals-answer.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./stride-diagonals.html"><img alt="../../../_images/stride-diagonals.png" src="../../../_images/stride-diagonals.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_stride-diagonals.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./stride-fakedims.html"><img alt="../../../_images/stride-fakedims.png" src="../../../_images/stride-fakedims.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_stride-fakedims.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./stride_tricks.html"><img alt="../../../_images/stride_tricks.png" src="../../../_images/stride_tricks.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_stride_tricks.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./view-colors.html"><img alt="../../../_images/view-colors.png" src="../../../_images/view-colors.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_view-colors.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./wavreader.html"><img alt="../../../_images/wavreader.png" src="../../../_images/wavreader.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_wavreader.py</em></p>
+</div>
+<div style="clear: both"></div><p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

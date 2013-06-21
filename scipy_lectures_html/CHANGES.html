@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="index.html" />
+    <link rel="next" title="Scipy-Lecture-Notes" href="README.html" />
+    <link rel="prev" title="Authors" href="AUTHORS.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="README.html" title="Scipy-Lecture-Notes"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="AUTHORS.html" title="Authors"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new">
+<h1>What&#8217;s new<a class="headerlink" href="#what-s-new" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="release-2013-1-10-feb-2013">
+<h2>Release 2013.1 (10 Feb 2013)<a class="headerlink" href="#release-2013-1-10-feb-2013" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Improvements to the advanced image manipulation chapter (Emmanuelle Gouillart)</li>
+<li>Upgrade of the introductory language chapter (Valentin Haenel)</li>
+<li>Upgrade of the introductory numpy chapter (Valentin Haenel)</li>
+<li>New advanced chapter on interfacing with C (Valentin Haenel)</li>
+<li>Minor fixes and improvements in various places (Robert Gieseke, Ozan Çağlayan,
+Sergio Oller, kikocorreo, Valentin Haenel)</li>
+</ul>
+</div>
+<div class="section" id="release-2012-3-26-nov-2012">
+<h2>Release 2012.3 (26 Nov 2012)<a class="headerlink" href="#release-2012-3-26-nov-2012" title="Permalink to this headline">¶</a></h2>
+<p>This release integrates the changes written for the Euroscipy conference:</p>
+<ul class="simple">
+<li>Matplotlib chapter completely redone (Nicolas Rougier, Gaël Varoquaux)</li>
+<li>New advanced chapter on mathematical optimization (Gaël Varoquaux)</li>
+<li>Mayavi chapter redone (Gaël Varoquaux)</li>
+<li>Front page layout slightly improved: folding TOC (Gaël Varoquaux)</li>
+</ul>
+</div>
+<div class="section" id="release-2012-2-22-jun-2012">
+<h2>Release 2012.2 (22 Jun 2012)<a class="headerlink" href="#release-2012-2-22-jun-2012" title="Permalink to this headline">¶</a></h2>
+<p>Minor release with a few clean ups (Gael Varoquaux).</p>
+</div>
+<div class="section" id="release-2012-1-20-jun-2012">
+<h2>Release 2012.1 (20 Jun 2012)<a class="headerlink" href="#release-2012-1-20-jun-2012" title="Permalink to this headline">¶</a></h2>
+<p>This is a minor release with many clean ups. In particular, clean up of
+the layout (Gael Varoquaux), shortening of the numpy chapters and
+deduplications across the intro and advanced chapters (Gael Varoquaux)
+and doctesting of all the code (Gael Varoquaux).</p>
+</div>
+<div class="section" id="release-2012-0-22-apr-2012">
+<h2>Release 2012.0 (22 Apr 2012)<a class="headerlink" href="#release-2012-0-22-apr-2012" title="Permalink to this headline">¶</a></h2>
+<p>This is a minor release with a few clean ups. In particular, clean up the
+scikit-learn chapter (Lars Buitinck), more informative section titles
+(Gael Varoquaux), and misc fixes (Valentin Haenel, Virgile Fritsch).</p>
+</div>
+<div class="section" id="release-2011-1-16-oct-2011">
+<h2>Release 2011.1 (16 Oct 2011)<a class="headerlink" href="#release-2011-1-16-oct-2011" title="Permalink to this headline">¶</a></h2>
+<p>This release is a reworked version of the Euroscipy 2011 tutorial. Layout
+has been cleaned and optimized (Valentin Haenel and many others), the Traits
+chapter has been merged in (Didrik Pinte)</p>
+</div>
+<div class="section" id="release-2011-1-sept-2011">
+<h2>Release 2011 (1 Sept 2011)<a class="headerlink" href="#release-2011-1-sept-2011" title="Permalink to this headline">¶</a></h2>
+<p>This release is used for the Euroscipy 2011 tutorial. The numpy
+introductory chapter has been rewamped (Pauli Virtanen). The outline of
+the introductory chapters has been simplified (Gaël Varoquaux). Advanced
+chapters have been added: advanced Python constructs (Zbigniew
+Jędrzejewski-Szmek), debugging code (Gaël Varoquaux), optimizing code
+(Gaël Varoquaux), image processing (Emmanuelle Gouillart), scikit-learn
+(Fabian Pedregosa).</p>
+<p><div style="clear: both"></div></p>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="README.html" title="Scipy-Lecture-Notes"
+             >next</a></li>
+        <li class="right" >
+          <a href="AUTHORS.html" title="Authors"
+             >previous</a> |</li>
+        <li><a href="index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

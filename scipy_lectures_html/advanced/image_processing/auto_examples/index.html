@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Examples &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../../index.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <style type="text/css">
+.figure {
+    float: left;
+    margin: 10px;
+    width: auto;
+    height: 200px;
+    width: 180px;
+}
+
+.figure img {
+    display: inline;
+    }
+
+.figure .caption {
+    width: 170px;
+    text-align: center !important;
+}
+</style><div class="section" id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<div class="figure" id="examples-index">
+<a class="reference external image-reference" href="./image_source_canny.html"><img alt="../../../_images/image_source_canny.png" src="../../../_images/image_source_canny.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_image_source_canny.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_GMM.html"><img alt="../../../_images/plot_GMM.png" src="../../../_images/plot_GMM.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_GMM.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_block_mean.html"><img alt="../../../_images/plot_block_mean.png" src="../../../_images/plot_block_mean.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_block_mean.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_blur.html"><img alt="../../../_images/plot_blur.png" src="../../../_images/plot_blur.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_blur.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_canny.html"><img alt="../../../_images/plot_canny.png" src="../../../_images/plot_canny.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_canny.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_clean_morpho.html"><img alt="../../../_images/plot_clean_morpho.png" src="../../../_images/plot_clean_morpho.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_clean_morpho.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_denoising.html"><img alt="../../../_images/plot_denoising.png" src="../../../_images/plot_denoising.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_denoising.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_display_lena.html"><img alt="../../../_images/plot_display_lena.png" src="../../../_images/plot_display_lena.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_display_lena.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_find_edges.html"><img alt="../../../_images/plot_find_edges.png" src="../../../_images/plot_find_edges.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_find_edges.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_find_object.html"><img alt="../../../_images/plot_find_object.png" src="../../../_images/plot_find_object.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_find_object.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_geom_lena.html"><img alt="../../../_images/plot_geom_lena.png" src="../../../_images/plot_geom_lena.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_geom_lena.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_granulo.html"><img alt="../../../_images/plot_granulo.png" src="../../../_images/plot_granulo.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_granulo.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_greyscale_dilation.html"><img alt="../../../_images/plot_greyscale_dilation.png" src="../../../_images/plot_greyscale_dilation.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_greyscale_dilation.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_histo_segmentation.html"><img alt="../../../_images/plot_histo_segmentation.png" src="../../../_images/plot_histo_segmentation.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_histo_segmentation.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_interpolation_lena.html"><img alt="../../../_images/plot_interpolation_lena.png" src="../../../_images/plot_interpolation_lena.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_interpolation_lena.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_lena.html"><img alt="../../../_images/plot_lena.png" src="../../../_images/plot_lena.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_lena.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_lena_denoise.html"><img alt="../../../_images/plot_lena_denoise.png" src="../../../_images/plot_lena_denoise.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_lena_denoise.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_lena_tv_denoise.html"><img alt="../../../_images/plot_lena_tv_denoise.png" src="../../../_images/plot_lena_tv_denoise.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_lena_tv_denoise.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_measure_data.html"><img alt="../../../_images/plot_measure_data.png" src="../../../_images/plot_measure_data.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_measure_data.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_numpy_array.html"><img alt="../../../_images/plot_numpy_array.png" src="../../../_images/plot_numpy_array.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_numpy_array.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_propagation.html"><img alt="../../../_images/plot_propagation.png" src="../../../_images/plot_propagation.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_propagation.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_radial_mean.html"><img alt="../../../_images/plot_radial_mean.png" src="../../../_images/plot_radial_mean.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_radial_mean.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_sharpen.html"><img alt="../../../_images/plot_sharpen.png" src="../../../_images/plot_sharpen.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_sharpen.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_spectral_clustering.html"><img alt="../../../_images/plot_spectral_clustering.png" src="../../../_images/plot_spectral_clustering.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_spectral_clustering.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_synthetic_data.html"><img alt="../../../_images/plot_synthetic_data.png" src="../../../_images/plot_synthetic_data.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_synthetic_data.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./plot_watershed_segmentation.html"><img alt="../../../_images/plot_watershed_segmentation.png" src="../../../_images/plot_watershed_segmentation.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_plot_watershed_segmentation.py</em></p>
+</div>
+<div class="figure">
+<a class="reference external image-reference" href="./tv_denoise.html"><img alt="../../../_images/tv_denoise.png" src="../../../_images/tv_denoise.png" /></a>
+<p class="caption"><em class="xref std std-ref">example_tv_denoise.py</em></p>
+</div>
+<div style="clear: both"></div><p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="../../../index.html">Scipy lecture notes</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

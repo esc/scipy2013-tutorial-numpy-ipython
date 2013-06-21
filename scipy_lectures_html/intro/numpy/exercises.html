@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.3.5. Some exercises &mdash; Scipy lecture notes</title>
+    
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2013.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Scipy lecture notes" href="../../index.html" />
+    <link rel="up" title="1.3. NumPy: creating and manipulating numerical data" href="index.html" />
+    <link rel="next" title="1.4. Matplotlib: plotting" href="../matplotlib/matplotlib.html" />
+    <link rel="prev" title="1.3.4. Advanced operations" href="advanced_operations.html" /> 
+  </head>
+  <body>
+   <!-- Use the header to add javascript -->
+    
+    <script type="text/javascript">
+    // Function to collapse the tip divs
+    function collapse_tip_div(obj){
+	// Update the representation on the tip div based on whether it
+	// has the 'collapsed' css class or not: we only want to
+	// collapse divs that are not already collapsed
+	if($(obj).hasClass("collapsed")) {
+	} else {
+	    $(obj).find("p.summary").remove();
+	    var content = $(obj).text();
+	    var html = $(obj).html();
+
+	    if(content.length > 40) {
+		if ($.browser.msie) {
+		    // We start at '3' to avoid 'tip', as IE
+		    // does not count whitespace
+		    var content = content.substr(3, 50);
+		} else {
+		    // We start at '5' to avoid 'tip '
+		    var content = content.substr(5, 50);
+		}
+	    }
+	    $(obj).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+	}
+    }
+    </script>
+
+    <script type="text/javascript">
+    $(function () {
+	$(".tip")
+	    .click(function(event){
+		$(this).toggleClass("collapsed");
+		// Change state of the global button
+		$('div.related li.transparent').removeClass('transparent')
+		$(this).find("p.summary").remove();
+		if($(this).hasClass("collapsed")) {
+		    var content = $(this).text();
+		    var html = $(this).html();
+    
+		    if(content.length > 40) {
+			if ($.browser.msie) {
+			    // We start at '3' to avoid 'tip', as IE
+			    // does not count whitespace
+			    var content = content.substr(3, 50);
+			} else {
+			    // We start at '5' to avoid 'tip '
+			    var content = content.substr(5, 50);
+			}
+		    }
+		    $(this).html('<p class="summary"><img src="../../_static/plus.png">' + content + '...</p>' + html);
+		}
+		if (event.target.tagName.toLowerCase() != "a") {
+                   return true; //Makes links clickable
+		}
+	});
+    });
+    </script>
+
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../matplotlib/matplotlib.html" title="1.4. Matplotlib: plotting"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="advanced_operations.html" title="1.3.4. Advanced operations"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">1.3. NumPy: creating and manipulating numerical data</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="some-exercises">
+<h1>1.3.5. Some exercises<a class="headerlink" href="#some-exercises" title="Permalink to this headline">¶</a></h1>
+<div class="green topic">
+<p class="topic-title first">Worked example: Framing Lena</p>
+<p>Let&#8217;s do some manipulations on numpy arrays by starting with the
+famous image of Lena (<a class="reference external" href="http://www.cs.cmu.edu/~chuck/lennapg/">http://www.cs.cmu.edu/~chuck/lennapg/</a>).
+<tt class="docutils literal"><span class="pre">scipy</span></tt> provides a 2D array of this image with the <tt class="docutils literal"><span class="pre">scipy.lena</span></tt>
+function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">misc</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<div class="newline"></div></pre></div>
+</div>
+<p><strong>Note:</strong> In older versions of scipy, you will find lena under
+<tt class="docutils literal"><span class="pre">scipy.lena()</span></tt></p>
+<p>Here are a few images we will be able to obtain with our manipulations:
+use different colormaps, crop the image, change some parts of the image.</p>
+<img alt="../../_images/lenas.png" class="align-center" src="../../_images/lenas.png" />
+<ul>
+<li><p class="first">Let&#8217;s use the imshow function of pylab to display the image.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [3]: </span><span class="kn">import</span> <span class="nn">pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="gp">In [4]: </span><span class="n">lena</span> <span class="o">=</span> <span class="n">misc</span><span class="o">.</span><span class="n">lena</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">In [5]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first">Lena is then displayed in false colors. A colormap must be
+specified for her to be displayed in grey.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [6]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lena</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first">Create an array of the image with a narrower centering : for example,
+remove 30 pixels from all the borders of the image. To check the result,
+display this new array with <tt class="docutils literal"><span class="pre">imshow</span></tt>.</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [9]: </span><span class="n">crop_lena</span> <span class="o">=</span> <span class="n">lena</span><span class="p">[</span><span class="mi">30</span><span class="p">:</span><span class="o">-</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">:</span><span class="o">-</span><span class="mi">30</span><span class="p">]</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first">We will now frame Lena&#8217;s face with a black locket. For this, we
+need to create a mask corresponding to the pixels we want to be
+black. The mask is defined by this condition <tt class="docutils literal"><span class="pre">(y-256)**2</span> <span class="pre">+</span>
+<span class="pre">(x-256)**2</span></tt></p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [15]: </span><span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ogrid</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">]</span> <span class="c"># x and y indices of pixels</span>
+<div class="newline"></div><span class="gp">In [16]: </span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<div class="newline"></div><span class="gr">Out[16]: </span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+<div class="newline"></div><span class="gp">In [17]: </span><span class="n">centerx</span><span class="p">,</span> <span class="n">centery</span> <span class="o">=</span> <span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="c"># center of the image</span>
+<div class="newline"></div><span class="gp">In [18]: </span><span class="n">mask</span> <span class="o">=</span> <span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">centery</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">centerx</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">230</span><span class="o">**</span><span class="mi">2</span> <span class="c"># circle</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>then we assign the value 0 to the pixels of the image corresponding
+to the mask. The syntax is extremely simple and intuitive:</p>
+<div class="highlight-ipython"><div class="highlight"><pre><span class="gp">In [19]: </span><span class="n">lena</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="newline"></div><span class="gp">In [20]: </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">lena</span><span class="p">)</span>
+<div class="newline"></div><span class="gr">Out[20]: </span><span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">AxesImage</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0xa36534c</span><span class="o">&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+</li>
+<li><p class="first">Follow-up: copy all instructions of this exercise in a script called
+<tt class="docutils literal"><span class="pre">lena_locket.py</span></tt> then execute this script in IPython with <tt class="docutils literal"><span class="pre">%run</span>
+<span class="pre">lena_locket.py</span></tt>.</p>
+<p>Change the circle to an ellipsoid.</p>
+</li>
+</ul>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Array manipulations</p>
+<ol class="arabic">
+<li><p class="first">Form the 2-D array (without typing it in explicitly):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">2</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">3</span><span class="p">,</span>  <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">4</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>and generate a new array containing its 2nd and 4th rows.</p>
+</li>
+<li><p class="first">Divide each column of the array:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>elementwise with the array <tt class="docutils literal"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">np.array([1.,</span> <span class="pre">5,</span> <span class="pre">10,</span> <span class="pre">15,</span> <span class="pre">20])</span></tt>.
+(Hint: <tt class="docutils literal"><span class="pre">np.newaxis</span></tt>).</p>
+</li>
+<li><p class="first">Harder one: Generate a 10 x 3 array of random numbers (in range [0,1]).
+For each row, pick the number closest to 0.5.</p>
+<ul class="simple">
+<li>Use <tt class="docutils literal"><span class="pre">abs</span></tt> and <tt class="docutils literal"><span class="pre">argsort</span></tt> to find the column <tt class="docutils literal"><span class="pre">j</span></tt> closest for
+each row.</li>
+<li>Use fancy indexing to extract the numbers.  (Hint: <tt class="docutils literal"><span class="pre">a[i,j]</span></tt> &#8211;
+the array <tt class="docutils literal"><span class="pre">i</span></tt> must contain the row numbers corresponding to stuff in
+<tt class="docutils literal"><span class="pre">j</span></tt>.)</li>
+</ul>
+</li>
+</ol>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Data statistics</p>
+<p>The data in <a class="reference download internal" href="../../_downloads/populations.txt"><tt class="xref download docutils literal"><span class="pre">populations.txt</span></tt></a>::
+describes the populations of hares and lynxes (and carrots) in
+northern Canada during 20 years:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s">&#39;data/populations.txt&#39;</span><span class="p">)</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">year</span><span class="p">,</span> <span class="n">hares</span><span class="p">,</span> <span class="n">lynxes</span><span class="p">,</span> <span class="n">carrots</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">T</span>  <span class="c"># trick: columns to variables</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.axes.Axes object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">hares</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">lynxes</span><span class="p">,</span> <span class="n">year</span><span class="p">,</span> <span class="n">carrots</span><span class="p">)</span> 
+<div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;, ...]</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s">&#39;Hare&#39;</span><span class="p">,</span> <span class="s">&#39;Lynx&#39;</span><span class="p">,</span> <span class="s">&#39;Carrot&#39;</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="p">(</span><span class="mf">1.05</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.legend.Legend object at ...&gt;</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>[<a class="reference external" href="../../plot_directive/pyplots/numpy_intro_7.py">source code</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_7.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/pyplots/numpy_intro_7.pdf">pdf</a>]</p>
+<img alt="../../_images/numpy_intro_7.png" src="../../_images/numpy_intro_7.png" />
+<p>Computes and print, based on the data in <tt class="docutils literal"><span class="pre">populations.txt</span></tt>...</p>
+<ol class="arabic simple">
+<li>The mean and std of the populations of each species for the years
+in the period.</li>
+<li>Which year each species had the largest population.</li>
+<li>Which species has the largest population for each year.
+(Hint: <tt class="docutils literal"><span class="pre">argsort</span></tt> &amp; fancy indexing of
+<tt class="docutils literal"><span class="pre">np.array(['H',</span> <span class="pre">'L',</span> <span class="pre">'C'])</span></tt>)</li>
+<li>Which years any of the populations is above 50000.
+(Hint: comparisons and <tt class="docutils literal"><span class="pre">np.any</span></tt>)</li>
+<li>The top 2 years for each species when they had the lowest
+populations. (Hint: <tt class="docutils literal"><span class="pre">argsort</span></tt>, fancy indexing)</li>
+<li>Compare (plot) the change in hare population (see
+<tt class="docutils literal"><span class="pre">help(np.gradient)</span></tt>) and the number of lynxes. Check correlation
+(see <tt class="docutils literal"><span class="pre">help(np.corrcoef)</span></tt>).</li>
+</ol>
+<p>... all without for-loops.</p>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Crude integral approximations</p>
+<p>Write a function <tt class="docutils literal"><span class="pre">f(a,</span> <span class="pre">b,</span> <span class="pre">c)</span></tt> that returns <span class="math">\(a^b - c\)</span>.  Form
+a 24x12x6 array containing its values in parameter ranges <tt class="docutils literal"><span class="pre">[0,1]</span> <span class="pre">x</span>
+<span class="pre">[0,1]</span> <span class="pre">x</span> <span class="pre">[0,1]</span></tt>.</p>
+<p>Approximate the 3-d integral</p>
+<div class="math">
+\[\int_0^1\int_0^1\int_0^1(a^b-c)da\,db\,dc\]</div>
+<p>over this volume with the mean.  The exact result is: <span class="math">\(\ln 2 -
+\frac{1}{2}\approx0.1931\ldots\)</span> &#8212; what is your relative error?</p>
+<p>(Hints: use elementwise operations and broadcasting.
+You can make <tt class="docutils literal"><span class="pre">np.ogrid</span></tt> give a number of points in given range
+with <tt class="docutils literal"><span class="pre">np.ogrid[0:1:20j]</span></tt>.)</p>
+<p><strong>Reminder</strong> Python functions:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+<div class="newline"></div>    <span class="k">return</span> <span class="n">some_result</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Mandelbrot set</p>
+<blockquote>
+<div><p>[<a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.py">source code</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.pdf">pdf</a>]</p>
+<img alt="../../_images/2_4_mandelbrot.png" src="../../_images/2_4_mandelbrot.png" />
+<p>Write a script that computes the Mandelbrot fractal. The Mandelbrot
+iteration:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">N_max</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="newline"></div><span class="n">some_threshold</span> <span class="o">=</span> <span class="mi">50</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="n">c</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1j</span><span class="o">*</span><span class="n">y</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="n">N_max</span><span class="p">):</span>
+<div class="newline"></div>    <span class="n">z</span> <span class="o">=</span> <span class="n">z</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">c</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Point (x, y) belongs to the Mandelbrot set if <span class="math">\(|c|\)</span> &lt;
+<tt class="docutils literal"><span class="pre">some_threshold</span></tt>.</p>
+<p>Do this computation by:</p>
+<ol class="arabic simple">
+<li>Construct a grid of c = x + 1j*y values in range [-2, 1] x [-1.5, 1.5]</li>
+<li>Do the iteration</li>
+<li>Form the 2-d boolean mask indicating which points are in the set</li>
+<li>Save the result to an image with:</li>
+</ol>
+</div></blockquote>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span> 
+<div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">gray</span><span class="p">()</span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;mandelbrot.png&#39;</span><span class="p">)</span>
+<div class="newline"></div></pre></div>
+</div>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Markov chain</p>
+<blockquote>
+<div><img alt="intro/numpy/image/markov-chain.png" src="intro/numpy/image/markov-chain.png" />
+<p>Markov chain transition matrix <tt class="docutils literal"><span class="pre">P</span></tt>, and probability distribution on
+the states <tt class="docutils literal"><span class="pre">p</span></tt>:</p>
+<ol class="arabic simple">
+<li><tt class="docutils literal"><span class="pre">0</span> <span class="pre">&lt;=</span> <span class="pre">P[i,j]</span> <span class="pre">&lt;=</span> <span class="pre">1</span></tt>: probability to go from state <tt class="docutils literal"><span class="pre">i</span></tt> to state <tt class="docutils literal"><span class="pre">j</span></tt></li>
+<li>Transition rule: <span class="math">\(p_{new} = P^T p_{old}\)</span></li>
+<li><tt class="docutils literal"><span class="pre">all(sum(P,</span> <span class="pre">axis=1)</span> <span class="pre">==</span> <span class="pre">1)</span></tt>, <tt class="docutils literal"><span class="pre">p.sum()</span> <span class="pre">==</span> <span class="pre">1</span></tt>: normalization</li>
+</ol>
+<p>Write a script that works with 5 states, and:</p>
+<ul class="simple">
+<li>Constructs a random matrix, and normalizes each row so that it
+is a transition matrix.</li>
+<li>Starts from a random (normalized) probability distribution
+<tt class="docutils literal"><span class="pre">p</span></tt> and takes 50 steps =&gt; <tt class="docutils literal"><span class="pre">p_50</span></tt></li>
+<li>Computes the stationary distribution: the eigenvector of <tt class="docutils literal"><span class="pre">P.T</span></tt>
+with eigenvalue 1 (numerically: closest to 1) =&gt; <tt class="docutils literal"><span class="pre">p_stationary</span></tt></li>
+</ul>
+<p>Remember to normalize the eigenvector &#8212; I didn&#8217;t...</p>
+<ul class="simple">
+<li>Checks if <tt class="docutils literal"><span class="pre">p_50</span></tt> and <tt class="docutils literal"><span class="pre">p_stationary</span></tt> are equal to tolerance 1e-5</li>
+</ul>
+<p>Toolbox: <tt class="docutils literal"><span class="pre">np.random.rand</span></tt>, <tt class="docutils literal"><span class="pre">.dot()</span></tt>, <tt class="docutils literal"><span class="pre">np.linalg.eig</span></tt>,
+reductions, <tt class="docutils literal"><span class="pre">abs()</span></tt>, <tt class="docutils literal"><span class="pre">argmin</span></tt>, comparisons, <tt class="docutils literal"><span class="pre">all</span></tt>,
+<tt class="docutils literal"><span class="pre">np.linalg.norm</span></tt>, etc.</p>
+</div></blockquote>
+</div>
+<p><div style="clear: both"></div></p>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../matplotlib/matplotlib.html" title="1.4. Matplotlib: plotting"
+             >next</a></li>
+        <li class="right" >
+          <a href="advanced_operations.html" title="1.3.4. Advanced operations"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Scipy lecture notes</a> &raquo;</li>
+          <li><a href="../index.html" >1. Getting started with Python for science</a> &raquo;</li>
+          <li><a href="index.html" >1.3. NumPy: creating and manipulating numerical data</a> &raquo;</li>
+     
+    <!-- Insert a menu in the navigation bar -->
+    <li class="left">
+	<!-- On click toggle the 'tip' on or off-->
+	<a onclick="$('.tip').each(function (index, obj) {
+			    collapse_tip_div(obj);
+		    });
+		    $('.tip').addClass('collapsed');
+		    $('.left').addClass('transparent');">
+	<img src="../../_static/minus.png"
+         alt="Collapse to compact view" style="padding: 1ex;"/>
+	<span class="hiddenlink">Collapse document to compact view</span>
+    </a></li>
+
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012,2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b1.
+    </div>
+  </body>
+</html>

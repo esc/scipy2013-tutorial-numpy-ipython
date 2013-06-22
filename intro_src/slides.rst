@@ -76,7 +76,7 @@ The Scientific Python Ecosystem
 * PyTables
 * Cython
 
-About this tutorial
+About this Tutorial
 -------------------
 
 * **Ipython** (1 hour)
@@ -115,7 +115,7 @@ About the Material
   * The generated HTML is included in the GitHub Repository / Zip file and
     available online
 
-How to follow
+How to Follow
 -------------
 
 * Grab the IPython notebook, try out the examples, work on the exercises, all

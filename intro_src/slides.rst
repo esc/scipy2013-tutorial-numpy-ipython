@@ -143,4 +143,5 @@ About IPython
    \vspace{1cm}
 
 * The URL to access the notebook will be printed
-* Numpy and Matplotlib tools are available
+* Numpy and Matplotlib tools are available (pylab mode)
+* Plots will be displayed inside the notebook (inline mode)

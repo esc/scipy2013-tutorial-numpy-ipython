@@ -277,8 +277,10 @@ operations.</p>
 <div class="green topic">
 <p class="topic-title first"><strong>Exercise: Simple Arrays</strong></p>
 <ul class="simple">
-<li>Create simple one and two dimensional arrays.</li>
-<li>Use <tt class="docutils literal"><span class="pre">len</span></tt>, <tt class="docutils literal"><span class="pre">shape</span></tt> and <tt class="docutils literal"><span class="pre">ndim</span></tt>.</li>
+<li>Create simple one and two dimensional arrays. First, redo the examples
+from above. And then create your own.</li>
+<li>Use the functions <tt class="docutils literal"><span class="pre">len</span></tt>, <tt class="docutils literal"><span class="pre">shape</span></tt> and <tt class="docutils literal"><span class="pre">ndim</span></tt> on some of those
+arrays and observe their output.</li>
 </ul>
 </div>
 </div>
@@ -287,8 +289,7 @@ operations.</p>
 <p>In practice, we rarely enter items one by one...</p>
 <ul>
 <li><p class="first">Evenly spaced:</p>
-<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c"># 0 .. n-1  (!)</span>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c"># 0 .. n-1  (!)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">a</span>
 <div class="newline"></div><span class="go">array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c"># start, end (exclusive), step</span>
@@ -427,46 +428,11 @@ from the input.</p>
 </tr>
 </tbody>
 </table>
-<div class="green topic">
-<p class="topic-title first"><strong>Exercise: Array creation</strong></p>
-<p>Create the following arrays (with correct data types):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<div class="newline"></div>
-<div class="newline"></div><span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">]]</span>
-<div class="newline"></div></pre></div>
-</div>
-<p>Par on course: 3 statements for each</p>
-<p><em>Hint</em>: Individual array elements can be accessed similarly to a list,
-e.g. <tt class="docutils literal"><span class="pre">a[1]</span></tt> or <tt class="docutils literal"><span class="pre">a[1,</span> <span class="pre">2]</span></tt>.</p>
-<p><em>Hint</em>: Examine the docstring for <tt class="docutils literal"><span class="pre">diag</span></tt>.</p>
-</div>
-<div class="green topic">
-<p class="topic-title first">Exercise: Tiling for array creation</p>
-<p>Skim through the documentation for <tt class="docutils literal"><span class="pre">np.tile</span></tt>, and use this function
-to construct the array:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-<div class="newline"></div> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
-<div class="newline"></div></pre></div>
-</div>
-</div>
 </div>
 <div class="section" id="basic-visualization">
 <h2><a class="toc-backref" href="#id7">1.3.1.7. Basic visualization</a><a class="headerlink" href="#basic-visualization" title="Permalink to this headline">¶</a></h2>
-<div class="admonition tip">
-<p class="first admonition-title">Tip</p>
-<p class="last">Now that we have our first data arrays, we are going to visualize them.</p>
-</div>
-<p>Start by launching IPython in <em>pylab</em> mode</p>
+<p>Now that we have our first data arrays, we are going to visualize them.</p>
+<p>Start by launching IPython in <em>pylab</em> mode.</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ipython --pylab
 <div class="newline"></div></pre></div>
 </div>
@@ -474,26 +440,38 @@ to construct the array:</p>
 <div class="highlight-bash"><div class="highlight"><pre><span class="nv">$ </span>ipython notebook --pylab<span class="o">=</span>inline
 <div class="newline"></div></pre></div>
 </div>
+<p>Alternatively, if IPython has already been started:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">pylab</span>  
+<div class="newline"></div></pre></div>
+</div>
+<p>Or, from the notebook:</p>
+<div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="o">%</span><span class="n">pylab</span> <span class="n">inline</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>The <tt class="docutils literal"><span class="pre">inline</span></tt> is important for the notebook, so that plots are displayed in
+the notebook and not in a new window.</p>
 <p><em>Matplotlib</em> is a 2D plotting package. We can import its functions as below:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>  <span class="c"># the tidy way</span>
 <div class="newline"></div></pre></div>
 </div>
 <p>And then use (note that you have to use <tt class="docutils literal"><span class="pre">show</span></tt> explicitly):</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c"># line plot    </span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>               <span class="c"># &lt;-- shows the plot (not needed with pylab) </span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>           <span class="c"># &lt;-- shows the plot (not needed with pylab) </span>
 <div class="newline"></div></pre></div>
 </div>
-<p>Or, if you are using <em>pylab</em> (the plot will display immediately):</p>
+<p>Or, if you are using <em>pylab</em>:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c"># line plot    </span>
 <div class="newline"></div></pre></div>
 </div>
+<p>Using <tt class="docutils literal"><span class="pre">import</span> <span class="pre">matplotlib.pyplot</span> <span class="pre">as</span> <span class="pre">plt</span></tt> is recommended for use in scripts.
+Whereas <tt class="docutils literal"><span class="pre">pylab</span></tt> is recommended for interactive exploratory work.</p>
 <ul>
 <li><p class="first"><strong>1D plotting</strong>:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c"># line plot    </span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c"># line plot    </span>
 <div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;]</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">)</span>  <span class="c"># dot plot    </span>
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s">&#39;o&#39;</span><span class="p">)</span>  <span class="c"># dot plot    </span>
 <div class="newline"></div><span class="go">[&lt;matplotlib.lines.Line2D object at ...&gt;]</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -502,8 +480,8 @@ to construct the array:</p>
 </li>
 <li><p class="first"><strong>2D arrays</strong> (such as images):</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">)</span>    
-<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">colorbar</span><span class="p">()</span>    
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">hot</span><span class="p">)</span>    
+<div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>    
 <div class="newline"></div><span class="go">&lt;matplotlib.colorbar.Colorbar instance at ...&gt;</span>
 <div class="newline"></div></pre></div>
 </div>
@@ -630,6 +608,38 @@ example above.</p>
 does this have?</p>
 </li>
 </ul>
+</div>
+<div class="green topic">
+<p class="topic-title first"><strong>Exercise: Array creation</strong></p>
+<p>Create the following arrays (with correct data types):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<div class="newline"></div>
+<div class="newline"></div><span class="p">[[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">6.</span><span class="p">]]</span>
+<div class="newline"></div></pre></div>
+</div>
+<p>Par on course: 3 statements for each</p>
+<p><em>Hint</em>: Individual array elements can be accessed similarly to a list,
+e.g. <tt class="docutils literal"><span class="pre">a[1]</span></tt> or <tt class="docutils literal"><span class="pre">a[1,</span> <span class="pre">2]</span></tt>.</p>
+<p><em>Hint</em>: Examine the docstring for <tt class="docutils literal"><span class="pre">diag</span></tt>.</p>
+</div>
+<div class="green topic">
+<p class="topic-title first">Exercise: Tiling for array creation</p>
+<p>Skim through the documentation for <tt class="docutils literal"><span class="pre">np.tile</span></tt>, and use this function
+to construct the array:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<div class="newline"></div> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<div class="newline"></div></pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="copies-and-views">

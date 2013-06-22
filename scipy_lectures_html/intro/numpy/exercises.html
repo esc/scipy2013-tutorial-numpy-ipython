@@ -222,7 +222,7 @@ the array <tt class="docutils literal"><span class="pre">i</span></tt> must cont
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise: Data statistics</p>
-<p>The data in <a class="reference download internal" href="../../_downloads/populations.txt"><tt class="xref download docutils literal"><span class="pre">populations.txt</span></tt></a>::
+<p>The data in <a class="reference download internal" href="../../_downloads/populations.txt"><tt class="xref download docutils literal"><span class="pre">populations.txt</span></tt></a>
 describes the populations of hares and lynxes (and carrots) in
 northern Canada during 20 years:</p>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s">&#39;data/populations.txt&#39;</span><span class="p">)</span>
@@ -255,6 +255,7 @@ populations. (Hint: <tt class="docutils literal"><span class="pre">argsort</span
 (see <tt class="docutils literal"><span class="pre">help(np.corrcoef)</span></tt>).</li>
 </ol>
 <p>... all without for-loops.</p>
+<p>Solution: <a class="reference download internal" href="../../_downloads/2_2_data_statistics.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">file</span></tt></a></p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise: Crude integral approximations</p>
@@ -274,11 +275,11 @@ with <tt class="docutils literal"><span class="pre">np.ogrid[0:1:20j]</span></tt
 <div class="newline"></div>    <span class="k">return</span> <span class="n">some_result</span>
 <div class="newline"></div></pre></div>
 </div>
+<p>Solution: <a class="reference download internal" href="../../_downloads/2_3_crude_integration.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">file</span></tt></a></p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise: Mandelbrot set</p>
-<blockquote>
-<div><p>[<a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.py">source code</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.pdf">pdf</a>]</p>
+<p>[<a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.py">source code</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.hires.png">hires.png</a>, <a class="reference external" href="../../plot_directive/intro/numpy/solutions/2_4_mandelbrot.pdf">pdf</a>]</p>
 <img alt="../../_images/2_4_mandelbrot.png" src="../../_images/2_4_mandelbrot.png" />
 <p>Write a script that computes the Mandelbrot fractal. The Mandelbrot
 iteration:</p>
@@ -300,7 +301,6 @@ iteration:</p>
 <li>Form the 2-d boolean mask indicating which points are in the set</li>
 <li>Save the result to an image with:</li>
 </ol>
-</div></blockquote>
 <div class="highlight-pycon"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span> 
 <div class="newline"></div><span class="go">&lt;matplotlib.image.AxesImage object at ...&gt;</span>
@@ -308,11 +308,11 @@ iteration:</p>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s">&#39;mandelbrot.png&#39;</span><span class="p">)</span>
 <div class="newline"></div></pre></div>
 </div>
+<p>Solution: <a class="reference download internal" href="../../_downloads/2_4_mandelbrot.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">file</span></tt></a></p>
 </div>
 <div class="green topic">
 <p class="topic-title first">Exercise: Markov chain</p>
-<blockquote>
-<div><img alt="intro/numpy/image/markov-chain.png" src="intro/numpy/image/markov-chain.png" />
+<img alt="../../_images/markov-chain.png" src="../../_images/markov-chain.png" />
 <p>Markov chain transition matrix <tt class="docutils literal"><span class="pre">P</span></tt>, and probability distribution on
 the states <tt class="docutils literal"><span class="pre">p</span></tt>:</p>
 <ol class="arabic simple">
@@ -336,7 +336,7 @@ with eigenvalue 1 (numerically: closest to 1) =&gt; <tt class="docutils literal"
 <p>Toolbox: <tt class="docutils literal"><span class="pre">np.random.rand</span></tt>, <tt class="docutils literal"><span class="pre">.dot()</span></tt>, <tt class="docutils literal"><span class="pre">np.linalg.eig</span></tt>,
 reductions, <tt class="docutils literal"><span class="pre">abs()</span></tt>, <tt class="docutils literal"><span class="pre">argmin</span></tt>, comparisons, <tt class="docutils literal"><span class="pre">all</span></tt>,
 <tt class="docutils literal"><span class="pre">np.linalg.norm</span></tt>, etc.</p>
-</div></blockquote>
+<p>Solution: <a class="reference download internal" href="../../_downloads/2_5_markov_chain.py"><tt class="xref download docutils literal"><span class="pre">Python</span> <span class="pre">source</span> <span class="pre">file</span></tt></a></p>
 </div>
 <p><div style="clear: both"></div></p>
 </div>

@@ -195,19 +195,19 @@ making things more readable, and interoperable as well.</p>
 <div><em>Guido van Rossum</em> &#8212; <a class="reference external" href="http://www.artima.com/weblogs/viewpost.jsp?thread=86641">Adding Optional Static Typing to Python</a></div></blockquote>
 </div>
 <p>An iterator is an object adhering to the <a class="reference external" href="http://docs.python.org/dev/library/stdtypes.html#iterator-types">iterator protocol</a>
-&#8212; basically this means that it has a <a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#iterator.next" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt></a> method,
+&#8212; basically this means that it has a <tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt> method,
 which, when called, returns the next item in the sequence, and when
 there&#8217;s nothing to return, raises the
-<a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.StopIteration" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">StopIteration</span></tt></a> exception.</p>
+<tt class="xref py py-obj docutils literal"><span class="pre">StopIteration</span></tt> exception.</p>
 <p>An iterator object allows to loop just once. It
 holds the state (position) of a single iteration, or from the other
 side, each loop over a sequence requires a single iterator
 object. This means that we can iterate over the same sequence more
 than once concurrently. Separating the iteration logic from the
 sequence allows us to have more than one way of iteration.</p>
-<p>Calling the <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__iter__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__iter__</span></tt></a> method on a container to
+<p>Calling the <tt class="xref py py-obj docutils literal"><span class="pre">__iter__</span></tt> method on a container to
 create an iterator object is the most straightforward way to get hold
-of an iterator. The <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#iter" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">iter</span></tt></a> function does that for us, saving a few
+of an iterator. The <tt class="xref py py-obj docutils literal"><span class="pre">iter</span></tt> function does that for us, saving a few
 keystrokes.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>      <span class="c"># note that ... varies: these are different objects</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="nb">iter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>                           
@@ -231,7 +231,7 @@ keystrokes.</p>
 <div class="newline"></div><span class="gr">StopIteration</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>When used in a loop, <a class="reference external" href="http://docs.python.org/2.7/library/exceptions.html#exceptions.StopIteration" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">StopIteration</span></tt></a> is
+<p>When used in a loop, <tt class="xref py py-obj docutils literal"><span class="pre">StopIteration</span></tt> is
 swallowed and causes the loop to finish. But with explicit invocation,
 we can see that once the iterator is exhausted, accessing it raises an
 exception.</p>
@@ -401,12 +401,12 @@ execution after a <tt class="docutils literal"><span class="pre">yield</span></t
 the generator object to either pass a value <strong>into</strong> the generator,
 which then is returned by the <tt class="docutils literal"><span class="pre">yield</span></tt> statement, or a
 different method to inject an exception into the generator.</p>
-<p>The first of the new methods is <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.send" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">send(value)</span></tt></a>, which
-is similar to <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.next" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">next()</span></tt></a>, but passes <tt class="docutils literal"><span class="pre">value</span></tt> into
+<p>The first of the new methods is <tt class="xref py py-obj docutils literal"><span class="pre">send(value)</span></tt>, which
+is similar to <tt class="xref py py-obj docutils literal"><span class="pre">next()</span></tt>, but passes <tt class="docutils literal"><span class="pre">value</span></tt> into
 the generator to be used for the value of the <tt class="docutils literal"><span class="pre">yield</span></tt> expression. In
 fact, <tt class="docutils literal"><span class="pre">g.next()</span></tt> and <tt class="docutils literal"><span class="pre">g.send(None)</span></tt> are equivalent.</p>
 <p>The second of the new methods is
-<a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.throw" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">throw(type,</span> <span class="pre">value=None,</span> <span class="pre">traceback=None)</span></tt></a>
+<tt class="xref py py-obj docutils literal"><span class="pre">throw(type,</span> <span class="pre">value=None,</span> <span class="pre">traceback=None)</span></tt>
 which is equivalent to:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">raise</span> <span class="nb">type</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span>
 <div class="newline"></div></pre></div>
@@ -425,9 +425,9 @@ standard manner: it can be intercepted by an <tt class="docutils literal"><span 
 clause, or otherwise it causes the execution of the generator function
 to be aborted and propagates in the caller.</p>
 <p>For completeness&#8217; sake, it&#8217;s worth mentioning that generator iterators
-also have a <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.close" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">close()</span></tt></a> method, which can be used to
+also have a <tt class="xref py py-obj docutils literal"><span class="pre">close()</span></tt> method, which can be used to
 force a generator that would otherwise be able to provide more values
-to finish immediately. It allows the generator <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__del__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__del__</span></tt></a>
+to finish immediately. It allows the generator <tt class="xref py py-obj docutils literal"><span class="pre">__del__</span></tt>
 method to destroy objects holding the state of generator.</p>
 <p>Let&#8217;s define a generator which just prints what is passed in through
 send and throw.</p>
@@ -467,18 +467,18 @@ send and throw.</p>
 <p class="first admonition-title">Note</p>
 <p><tt class="docutils literal"><span class="pre">next</span></tt> or <tt class="docutils literal"><span class="pre">__next__</span></tt>?</p>
 <p class="last">In Python 2.x, the iterator method to retrieve the next value is
-called <a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#iterator.next" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt></a>. It is invoked implicitly through the
-global function <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#next" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt></a>, which means that it should be called <tt class="docutils literal"><span class="pre">__next__</span></tt>.
-Just like the global function <a class="reference external" href="http://docs.python.org/2.7/library/functions.html#iter" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">iter</span></tt></a> calls <a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#iterator.__iter__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__iter__</span></tt></a>.
+called <tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt>. It is invoked implicitly through the
+global function <tt class="xref py py-obj docutils literal"><span class="pre">next</span></tt>, which means that it should be called <tt class="docutils literal"><span class="pre">__next__</span></tt>.
+Just like the global function <tt class="xref py py-obj docutils literal"><span class="pre">iter</span></tt> calls <tt class="xref py py-obj docutils literal"><span class="pre">__iter__</span></tt>.
 This inconsistency is corrected in Python 3.x, where <tt class="docutils literal"><span class="pre">it.next</span></tt>
 becomes <tt class="docutils literal"><span class="pre">it.__next__</span></tt>.  For other generator methods &#8212; <tt class="docutils literal"><span class="pre">send</span></tt>
 and <tt class="docutils literal"><span class="pre">throw</span></tt> &#8212; the situation is more complicated, because they
 are not called implicitly by the interpreter. Nevertheless, there&#8217;s
 a proposed syntax extension to allow <tt class="docutils literal"><span class="pre">continue</span></tt> to take an
-argument which will be passed to <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.send" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">send</span></tt></a> of the
+argument which will be passed to <tt class="xref py py-obj docutils literal"><span class="pre">send</span></tt> of the
 loop&#8217;s iterator. If this extension is accepted, it&#8217;s likely that
 <tt class="docutils literal"><span class="pre">gen.send</span></tt> will become <tt class="docutils literal"><span class="pre">gen.__send__</span></tt>. The last of generator
-methods, <a class="reference external" href="http://docs.python.org/2.7/reference/expressions.html#generator.close" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">close</span></tt></a>, is pretty obviously named
+methods, <tt class="xref py py-obj docutils literal"><span class="pre">close</span></tt>, is pretty obviously named
 incorrectly, because it is already invoked implicitly.</p>
 </div>
 </div>
@@ -604,7 +604,7 @@ type is sufficient, it is better to use it, because it is simpler.</p>
 <h3><a class="toc-backref" href="#id9">2.1.2.2. Decorators implemented as classes and as functions</a><a class="headerlink" href="#decorators-implemented-as-classes-and-as-functions" title="Permalink to this headline">¶</a></h3>
 <p>The only <em>requirement</em> on decorators is that they can be called with a
 single argument. This means that decorators can be implemented as
-normal functions, or as classes with a <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__call__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__call__</span></tt></a>
+normal functions, or as classes with a <tt class="xref py py-obj docutils literal"><span class="pre">__call__</span></tt>
 method, or in theory, even as lambda functions.</p>
 <p>Let&#8217;s compare the function and class approaches. The decorator
 expression (the part after <tt class="docutils literal"><span class="pre">&#64;</span></tt>) can be either just a name, or a
@@ -672,7 +672,7 @@ just passes everything to the wrapped function. One unfortunate
 consequence is that the apparent argument list is misleading.</p>
 <p>Compared to decorators defined as functions, complex decorators
 defined as classes are simpler.  When an object is created, the
-<a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__init__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt></a> method is only allowed to return <a class="reference external" href="http://docs.python.org/2.7/library/constants.html#None" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">None</span></tt></a>,
+<tt class="xref py py-obj docutils literal"><span class="pre">__init__</span></tt> method is only allowed to return <tt class="xref py py-obj docutils literal"><span class="pre">None</span></tt>,
 and the type of the created object cannot be changed. This means that
 when a decorator is defined as a class, it doesn&#8217;t make much sense to
 use the argument-less form: the final decorated object would just be
@@ -744,9 +744,9 @@ to the new function by setting <tt class="docutils literal"><span class="pre">__
 and <tt class="docutils literal"><span class="pre">__name__</span></tt> (the full name of the function), and
 <tt class="docutils literal"><span class="pre">__annotations__</span></tt> (extra information about arguments and the return
 value of the function available in Python 3). This can be done
-automatically by using <a class="reference external" href="http://docs.python.org/2.7/library/functools.html#functools.update_wrapper" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">functools.update_wrapper</span></tt></a>.</p>
+automatically by using <tt class="xref py py-obj docutils literal"><span class="pre">functools.update_wrapper</span></tt>.</p>
 <div class="sidebar">
-<p class="first sidebar-title"><a class="reference external" href="http://docs.python.org/2.7/library/functools.html#functools.update_wrapper" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">functools.update_wrapper(wrapper,</span> <span class="pre">wrapped)</span></tt></a></p>
+<p class="first sidebar-title"><tt class="xref py py-obj docutils literal"><span class="pre">functools.update_wrapper(wrapper,</span> <span class="pre">wrapped)</span></tt></p>
 <p class="last">&#8220;Update a wrapper function to look like the wrapped function.&#8221;</p>
 </div>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">functools</span>
@@ -793,7 +793,7 @@ or some other means of copying function attributes.</p>
 decorators available in the standard library. There are three decorators
 which really form a part of the language:</p>
 <ul>
-<li><p class="first"><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#classmethod" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">classmethod</span></tt></a> causes a method to become a &#8220;class method&#8221;,
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">classmethod</span></tt> causes a method to become a &#8220;class method&#8221;,
 which means that it can be invoked without creating an instance of
 the class. When a normal method is invoked, the interpreter inserts
 the instance object as the first positional parameter,
@@ -814,14 +814,14 @@ to provide alternative constructors:</p>
 </div>
 <p>This is cleaner then using a multitude of flags to <tt class="docutils literal"><span class="pre">__init__</span></tt>.</p>
 </li>
-<li><p class="first"><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#staticmethod" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">staticmethod</span></tt></a> is applied to methods to make them &#8220;static&#8221;,
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">staticmethod</span></tt> is applied to methods to make them &#8220;static&#8221;,
 i.e. basically a normal function, but accessible through the class
 namespace. This can be useful when the function is only needed
 inside this class (its name would then be prefixed with <tt class="docutils literal"><span class="pre">_</span></tt>), or when we
 want the user to think of the method as connected to the class,
 despite an implementation which doesn&#8217;t require this.</p>
 </li>
-<li><p class="first"><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#property" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">property</span></tt></a> is the pythonic answer to the problem of getters
+<li><p class="first"><tt class="xref py py-obj docutils literal"><span class="pre">property</span></tt> is the pythonic answer to the problem of getters
 and setters. A method decorated with <tt class="docutils literal"><span class="pre">property</span></tt> becomes a getter
 which is automatically called on attribute access.</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -917,10 +917,10 @@ deleter methods.</p>
 <ul class="simple">
 <li><tt class="xref py py-obj docutils literal"><span class="pre">functools.lru_cache</span></tt> memoizes an arbitrary function
 maintaining a limited cache of arguments:answer pairs (Python 3.2)</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/functools.html#functools.total_ordering" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">functools.total_ordering</span></tt></a> is a class decorator which fills in
+<li><tt class="xref py py-obj docutils literal"><span class="pre">functools.total_ordering</span></tt> is a class decorator which fills in
 missing ordering methods
-(<a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__lt__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__lt__</span></tt></a>, <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__gt__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__gt__</span></tt></a>,
-<a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__le__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__le__</span></tt></a>, ...)
+(<tt class="xref py py-obj docutils literal"><span class="pre">__lt__</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">__gt__</span></tt>,
+<tt class="xref py py-obj docutils literal"><span class="pre">__le__</span></tt>, ...)
 based on a single available one (Python 2.7).</li>
 </ul>
 </div>
@@ -1060,8 +1060,8 @@ the source of a program.</p>
 </div>
 <div class="section" id="context-managers">
 <h2><a class="toc-backref" href="#id16">2.1.3. Context managers</a><a class="headerlink" href="#context-managers" title="Permalink to this headline">¶</a></h2>
-<p>A context manager is an object with <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__enter__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__enter__</span></tt></a> and
-<a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__exit__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__exit__</span></tt></a> methods which can be used in the <a class="reference external" href="http://docs.python.org/2.7/reference/compound_stmts.html#with">with</a>
+<p>A context manager is an object with <tt class="xref py py-obj docutils literal"><span class="pre">__enter__</span></tt> and
+<tt class="xref py py-obj docutils literal"><span class="pre">__exit__</span></tt> methods which can be used in the <a class="reference external" href="http://docs.python.org/2.7/reference/compound_stmts.html#with">with</a>
 statement:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">manager</span> <span class="k">as</span> <span class="n">var</span><span class="p">:</span>
 <div class="newline"></div>    <span class="n">do_something</span><span class="p">(</span><span class="n">var</span><span class="p">)</span>
@@ -1081,7 +1081,7 @@ permits the extraction of the boring part of a
 <a class="reference external" href="http://docs.python.org/2.7/reference/compound_stmts.html#try">try..except..finally</a> structure into a separate class
 leaving only the interesting <tt class="docutils literal"><span class="pre">do_something</span></tt> block.</p>
 <ol class="arabic simple">
-<li>The <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__enter__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__enter__</span></tt></a> method is called first.  It can
+<li>The <tt class="xref py py-obj docutils literal"><span class="pre">__enter__</span></tt> method is called first.  It can
 return a value which will be assigned to <tt class="docutils literal"><span class="pre">var</span></tt>.
 The <tt class="docutils literal"><span class="pre">as</span></tt>-part is optional: if it isn&#8217;t present, the value
 returned by <tt class="docutils literal"><span class="pre">__enter__</span></tt> is simply ignored.</li>
@@ -1089,7 +1089,7 @@ returned by <tt class="docutils literal"><span class="pre">__enter__</span></tt>
 <tt class="docutils literal"><span class="pre">try</span></tt> clauses, it can either execute successfully to the end, or
 it can <a class="reference external" href="http://docs.python.org/2.7/reference/simple_stmts.html#break">break</a>, <a class="reference external" href="http://docs.python.org/2.7/reference/simple_stmts.html#continue`">continue`</a> or <a class="reference external" href="http://docs.python.org/2.7/reference/simple_stmts.html#return">return</a>, or
 it can throw an exception. Either way, after the block is finished,
-the <a class="reference external" href="http://docs.python.org/2.7/reference/datamodel.html#object.__exit__" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">__exit__</span></tt></a> method is called.
+the <tt class="xref py py-obj docutils literal"><span class="pre">__exit__</span></tt> method is called.
 If an exception was thrown, the information about the exception is
 passed to <tt class="docutils literal"><span class="pre">__exit__</span></tt>, which is described below in the next
 subsection. In the normal case, exceptions can be ignored, just
@@ -1127,23 +1127,23 @@ used and it is most convenient to have the support built in. With each
 release, Python provides support in more places:</p>
 <ul class="simple">
 <li>all file-like objects:<ul>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/functions.html#file" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt></a> ➔ automatically closed</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/fileinput.html#fileinput" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">fileinput</span></tt></a>, <a class="reference external" href="http://docs.python.org/2.7/library/tempfile.html#tempfile" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">tempfile</span></tt></a> (py &gt;= 3.2)</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/bz2.html#bz2.BZ2File" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">bz2.BZ2File</span></tt></a>, <a class="reference external" href="http://docs.python.org/2.7/library/gzip.html#gzip.GzipFile" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">gzip.GzipFile</span></tt></a>,
-<a class="reference external" href="http://docs.python.org/2.7/library/tarfile.html#tarfile.TarFile" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">tarfile.TarFile</span></tt></a>, <a class="reference external" href="http://docs.python.org/2.7/library/zipfile.html#zipfile.ZipFile" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">zipfile.ZipFile</span></tt></a></li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/ftplib.html#ftplib" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">ftplib</span></tt></a>, <a class="reference external" href="http://docs.python.org/2.7/library/nntplib.html#nntplib" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">nntplib</span></tt></a> ➔ close connection (py &gt;= 3.2 or 3.3)</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">file</span></tt> ➔ automatically closed</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">fileinput</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">tempfile</span></tt> (py &gt;= 3.2)</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">bz2.BZ2File</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">gzip.GzipFile</span></tt>,
+<tt class="xref py py-obj docutils literal"><span class="pre">tarfile.TarFile</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">zipfile.ZipFile</span></tt></li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">ftplib</span></tt>, <tt class="xref py py-obj docutils literal"><span class="pre">nntplib</span></tt> ➔ close connection (py &gt;= 3.2 or 3.3)</li>
 </ul>
 </li>
 <li>locks<ul>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/multiprocessing.html#multiprocessing.RLock" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">multiprocessing.RLock</span></tt></a> ➔ lock and unlock</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/multiprocessing.html#multiprocessing.Semaphore" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">multiprocessing.Semaphore</span></tt></a></li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/stdtypes.html#memoryview" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">memoryview</span></tt></a> ➔ automatically release (py &gt;= 3.2 and 2.7)</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">multiprocessing.RLock</span></tt> ➔ lock and unlock</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">multiprocessing.Semaphore</span></tt></li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">memoryview</span></tt> ➔ automatically release (py &gt;= 3.2 and 2.7)</li>
 </ul>
 </li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/decimal.html#decimal.localcontext" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">decimal.localcontext</span></tt></a> ➔ modify precision of computations temporarily</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/_winreg.html#_winreg.OpenKey" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">_winreg.PyHKEY</span></tt></a> ➔ open and close hive key</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/warnings.html#warnings.catch_warnings" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">warnings.catch_warnings</span></tt></a> ➔ kill warnings temporarily</li>
-<li><a class="reference external" href="http://docs.python.org/2.7/library/contextlib.html#contextlib.closing" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">contextlib.closing</span></tt></a> ➔ the same as the example above, call <tt class="docutils literal"><span class="pre">close</span></tt></li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">decimal.localcontext</span></tt> ➔ modify precision of computations temporarily</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">_winreg.PyHKEY</span></tt> ➔ open and close hive key</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">warnings.catch_warnings</span></tt> ➔ kill warnings temporarily</li>
+<li><tt class="xref py py-obj docutils literal"><span class="pre">contextlib.closing</span></tt> ➔ the same as the example above, call <tt class="docutils literal"><span class="pre">close</span></tt></li>
 <li>parallel programming<ul>
 <li><tt class="xref py py-obj docutils literal"><span class="pre">concurrent.futures.ThreadPoolExecutor</span></tt> ➔ invoke in parallel then kill thread pool (py &gt;= 3.2)</li>
 <li><tt class="xref py py-obj docutils literal"><span class="pre">concurrent.futures.ProcessPoolExecutor</span></tt> ➔ invoke in parallel then kill process pool (py &gt;= 3.2)</li>
@@ -1155,7 +1155,7 @@ release, Python provides support in more places:</p>
 <h3><a class="toc-backref" href="#id17">2.1.3.1. Catching exceptions</a><a class="headerlink" href="#catching-exceptions" title="Permalink to this headline">¶</a></h3>
 <p>When an exception is thrown in the <tt class="docutils literal"><span class="pre">with</span></tt>-block, it is passed as
 arguments to <tt class="docutils literal"><span class="pre">__exit__</span></tt>. Three arguments are used, the same as
-returned by <a class="reference external" href="http://docs.python.org/2.7/library/sys.html#sys.exc_info" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">sys.exc_info()</span></tt></a>: type, value, traceback. When no
+returned by <tt class="xref py py-func docutils literal"><span class="pre">sys.exc_info()</span></tt>: type, value, traceback. When no
 exception is thrown, <tt class="docutils literal"><span class="pre">None</span></tt> is used for all three arguments.  The
 context manager can &#8220;swallow&#8221; the exception by returning a true value
 from <tt class="docutils literal"><span class="pre">__exit__</span></tt>. Exceptions can be easily ignored, because if
@@ -1203,7 +1203,7 @@ support this use case.</p>
 <div class="newline"></div>        <span class="o">&lt;</span><span class="n">cleanup</span><span class="o">&gt;</span>
 <div class="newline"></div></pre></div>
 </div>
-<p>The <a class="reference external" href="http://docs.python.org/2.7/library/contextlib.html#contextlib.contextmanager" title="(in Python v2.7)"><tt class="xref py py-obj docutils literal"><span class="pre">contextlib.contextmanager</span></tt></a> helper takes a generator and turns it
+<p>The <tt class="xref py py-obj docutils literal"><span class="pre">contextlib.contextmanager</span></tt> helper takes a generator and turns it
 into a context manager. The generator has to obey some rules which are
 enforced by the wrapper function &#8212; most importantly it must
 <tt class="docutils literal"><span class="pre">yield</span></tt> exactly once. The part before the <tt class="docutils literal"><span class="pre">yield</span></tt> is executed from

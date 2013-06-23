@@ -137,7 +137,7 @@
 problem of finding numerically minimums (or maximums or zeros) of
 a function. In this context, the function is called <em>cost function</em>, or
 <em>objective function</em>, or <em>energy</em>.</p>
-<p>Here, we are interested in using <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html#scipy.optimize" title="(in SciPy v0.12)"><tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt></a> for black-box
+<p>Here, we are interested in using <tt class="xref py py-mod docutils literal"><span class="pre">scipy.optimize</span></tt> for black-box
 optimization: we do not rely on the mathematical expression of the
 function that we are optimizing. Note that this expression can often be
 used for more efficient, non black-box, optimization.</p>
@@ -352,7 +352,7 @@ function is not noisy,</p>
 <h2><a class="toc-backref" href="#id8">2.7.2. A review of the different optimizers</a><a class="headerlink" href="#a-review-of-the-different-optimizers" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="getting-started-1d-optimization">
 <h3><a class="toc-backref" href="#id9">2.7.2.1. Getting started: 1D optimization</a><a class="headerlink" href="#getting-started-1d-optimization" title="Permalink to this headline">¶</a></h3>
-<p>Use <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brent.html#scipy.optimize.brent" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.brent()</span></tt></a> to minimize 1D functions.
+<p>Use <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.brent()</span></tt> to minimize 1D functions.
 It combines a bracketing strategy with a parabolic approximation.</p>
 <table border="1" class="docutils">
 <colgroup>
@@ -386,11 +386,11 @@ optimizer avoided the local minimum is a matter of luck.</td>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Brent&#8217;s method can be used for optimization constraint to an
-intervale using <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fminbound.html#scipy.optimize.fminbound" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></tt></a></p>
+intervale using <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></tt></p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In scipy 0.11, <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.minimize_scalar.html#scipy.optimize.minimize_scalar" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize_scalar()</span></tt></a> gives a generic
+<p class="last">In scipy 0.11, <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.minimize_scalar()</span></tt> gives a generic
 interface to 1D scalar minimization</p>
 </div>
 </div>
@@ -493,7 +493,7 @@ gradient and sharp turns are reduced.</p>
 </table>
 <p>Methods based on conjugate gradient are named with <em>&#8216;cg&#8217;</em> in scipy. The
 simple conjugate gradient method to minimize a function is
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cg.html#scipy.optimize.fmin_cg" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_cg()</span></tt></a>:</p>
+<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_cg()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cg</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -559,9 +559,9 @@ and leads to oscillations.</p>
 </tbody>
 </table>
 <p>In scipy, the Newton method for optimization is implemented in
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_ncg.html#scipy.optimize.fmin_ncg" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_ncg()</span></tt></a> (cg here refers to that fact that an
+<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_ncg()</span></tt> (cg here refers to that fact that an
 inner operation, the inversion of the Hessian, is performed by conjugate
-gradient). <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_tnc.html#scipy.optimize.fmin_tnc" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_tnc()</span></tt></a> can be use for constraint
+gradient). <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_tnc()</span></tt> can be use for constraint
 problems, although it is less versatile:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
@@ -601,7 +601,7 @@ and unstable (large scale &gt; 250).</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Newton optimizers should not to be confused with Newton&#8217;s root finding
-method, based on the same principles, <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html#scipy.optimize.newton" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.newton()</span></tt></a>.</p>
+method, based on the same principles, <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.newton()</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="quasi-newton-methods-approximating-the-hessian-on-the-fly">
@@ -651,7 +651,7 @@ curvature is better than that given by the Hessian.</p>
 <p><strong>L-BFGS:</strong> Limited-memory BFGS Sits between BFGS and conjugate gradient:
 in very high dimensions (&gt; 250) the Hessian matrix is too costly to
 compute and invert. L-BFGS keeps a low-rank version. In addition, the
-scipy version, <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt></a>, includes box bounds:</p>
+scipy version, <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt>, includes box bounds:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -720,7 +720,7 @@ methods on smooth, non-noisy functions.</p>
 </tr>
 </tbody>
 </table>
-<p>In scipy, <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy.optimize.fmin" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt></a> implements the Nelder-Mead
+<p>In scipy, <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt> implements the Nelder-Mead
 approach:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
@@ -742,10 +742,10 @@ information to initialize the optimization close to the solution, you
 may need a global optimizer.</p>
 <div class="section" id="brute-force-a-grid-search">
 <h4><a class="toc-backref" href="#id20">2.7.2.5.1. Brute force: a grid search</a><a class="headerlink" href="#brute-force-a-grid-search" title="Permalink to this headline">¶</a></h4>
-<p><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.brute.html#scipy.optimize.brute" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.brute()</span></tt></a> evaluates the function on a given grid of
+<p><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.brute()</span></tt> evaluates the function on a given grid of
 parameters and returns the parameters corresponding to the minimum
 value. The parameters are specified with ranges given to
-<a class="reference external" href="http://docs.scipy.org/doc/numpy/reference/generated/numpy.mgrid.html#numpy.mgrid" title="(in NumPy v1.7)"><tt class="xref py py-obj docutils literal"><span class="pre">numpy.mgrid</span></tt></a>. By default, 20 steps are taken in each direction:</p>
+<tt class="xref py py-obj docutils literal"><span class="pre">numpy.mgrid</span></tt>. By default, 20 steps are taken in each direction:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">brute</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
@@ -759,7 +759,7 @@ value. The parameters are specified with ranges given to
 does random jumps around the starting point to explore its vicinity,
 progressively narrowing the jumps around the minimum points it finds. Its
 output depends on the random number generator. In scipy, it is
-implemented in <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.anneal.html#scipy.optimize.anneal" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.anneal()</span></tt></a>:</p>
+implemented in <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.anneal()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>   <span class="c"># The rosenbrock function</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="o">.</span><span class="mi">5</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
 <div class="newline"></div><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">anneal</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -791,20 +791,20 @@ simulated annealing.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name" colspan="2">Without knowledge of the gradient:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
-<li>In general, prefer BFGS (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_bfgs.html#scipy.optimize.fmin_bfgs" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></tt></a>) or L-BFGS
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt></a>), even if you have to approximate
+<li>In general, prefer BFGS (<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></tt>) or L-BFGS
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt>), even if you have to approximate
 numerically gradients</li>
 <li>On well-conditioned problems, Powell
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_powell.html#scipy.optimize.fmin_powell" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></tt></a>) and Nelder-Mead
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy.optimize.fmin" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt></a>), both gradient-free methods, work well in
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></tt>) and Nelder-Mead
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt>), both gradient-free methods, work well in
 high dimension, but they collapse for ill-conditioned problems.</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">With knowledge of the gradient:</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
-<li>BFGS (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_bfgs.html#scipy.optimize.fmin_bfgs" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></tt></a>) or L-BFGS
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt></a>).</li>
+<li>BFGS (<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_bfgs()</span></tt>) or L-BFGS
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt>).</li>
 <li>Computational overhead of BFGS is larger than that L-BFGS, itself
 larger than that of conjugate gradient. On the other side, BFGS usually
 needs less function evaluations than CG. Thus conjugate gradient method
@@ -815,14 +815,14 @@ is better than BFGS at optimizing computationally cheap functions.</li>
 <tr class="field-odd field"><th class="field-name" colspan="2">With the Hessian:</th></tr>
 <tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><ul class="first simple">
 <li>If you can compute the Hessian, prefer the Newton method
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_ncg.html#scipy.optimize.fmin_ncg" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_ncg()</span></tt></a>).</li>
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_ncg()</span></tt>).</li>
 </ul>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name" colspan="2">If you have noisy measurements:</th></tr>
 <tr class="field-even field"><td>&nbsp;</td><td class="field-body"><ul class="first last simple">
-<li>Use Nelder-Mead (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin.html#scipy.optimize.fmin" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt></a>) or Powell
-(<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_powell.html#scipy.optimize.fmin_powell" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></tt></a>).</li>
+<li>Use Nelder-Mead (<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin()</span></tt>) or Powell
+(<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_powell()</span></tt>).</li>
 </ul>
 </td>
 </tr>
@@ -851,7 +851,7 @@ handy.</p>
 <p class="first admonition-title">Warning</p>
 <p>A <em>very</em> common source of optimization not converging well is human
 error in the computation of the gradient. You can use
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.check_grad.html#scipy.optimize.check_grad" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.check_grad()</span></tt></a> to check that your gradient is
+<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.check_grad()</span></tt> to check that your gradient is
 correct. It returns the norm of the different between the gradient
 given, and a gradient computed numerically:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">check_grad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fprime</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
@@ -894,7 +894,7 @@ to get within 1e-8 of this minimum point.</p>
 <h3><a class="toc-backref" href="#id28">2.7.4.1. Minimizing the norm of a vector function</a><a class="headerlink" href="#minimizing-the-norm-of-a-vector-function" title="Permalink to this headline">¶</a></h3>
 <p>Least square problems, minimizing the norm of a vector function, have a
 specific structure that can be used in the <a class="reference external" href="http://en.wikipedia.org/wiki/Levenberg-Marquardt_algorithm">Levenberg–Marquardt algorithm</a>
-implemented in <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.leastsq.html#scipy.optimize.leastsq" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.leastsq()</span></tt></a>.</p>
+implemented in <tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.leastsq()</span></tt>.</p>
 <p>Lets try to minimize the norm of the following vectorial function:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
@@ -933,7 +933,7 @@ of parameters to optimize.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">If the function is linear, this is a linear-algebra problem, and
-should be solved with <a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.lstsq.html#scipy.linalg.lstsq" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.linalg.lstsq()</span></tt></a>.</p>
+should be solved with <tt class="xref py py-func docutils literal"><span class="pre">scipy.linalg.lstsq()</span></tt>.</p>
 </div>
 </div>
 <div class="section" id="curve-fitting">
@@ -942,7 +942,7 @@ should be solved with <a class="reference external" href="http://docs.scipy.org/
 <p>Least square problems occur often when fitting a non-linear to data.
 While it is possible to construct our optimization problem ourselves,
 scipy provides a helper function for this purpose:
-<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.curve_fit()</span></tt></a>:</p>
+<tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.curve_fit()</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">omega</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">phi</span><span class="p">)</span>
 <div class="newline"></div>
@@ -970,9 +970,9 @@ the optimization. Note that some problems that are not originally written
 as box bounds can be rewritten as such be a change of variables.</p>
 <a class="reference external image-reference" href="auto_examples/plot_constraints.html"><img alt="../../_images/plot_constraints_2.png" class="align-right" src="../../_images/plot_constraints_2.png" style="width: 225.0px; height: 187.5px;" /></a>
 <ul>
-<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fminbound.html#scipy.optimize.fminbound" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></tt></a> for 1D-optimization</p>
+<li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fminbound()</span></tt> for 1D-optimization</p>
 </li>
-<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_l_bfgs_b.html#scipy.optimize.fmin_l_bfgs_b" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt></a> a
+<li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_l_bfgs_b()</span></tt> a
 <a class="reference internal" href="#quasi-newton"><em>quasi-Newton</em></a> method with bound constraints:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
 <div class="newline"></div><span class="gp">... </span>   <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
@@ -989,7 +989,7 @@ as box bounds can be rewritten as such be a change of variables.</p>
 <p>Equality and inequality constraints specified as functions: <tt class="xref py py-obj docutils literal"><span class="pre">f(x)</span> <span class="pre">=</span> <span class="pre">0</span></tt>
 and <tt class="xref py py-obj docutils literal"><span class="pre">g(x)&lt;</span> <span class="pre">0</span></tt>.</p>
 <ul>
-<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_slsqp.html#scipy.optimize.fmin_slsqp" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_slsqp()</span></tt></a> Sequential least square programming:
+<li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_slsqp()</span></tt> Sequential least square programming:
 equality and inequality constraints:</p>
 <a class="reference external image-reference" href="auto_examples/plot_non_bounds_constraints.html"><img alt="../../_images/plot_non_bounds_constraints_1.png" class="align-right" src="../../_images/plot_non_bounds_constraints_1.png" style="width: 225.0px; height: 187.5px;" /></a>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1008,7 +1008,7 @@ equality and inequality constraints:</p>
 <div class="newline"></div></pre></div>
 </div>
 </li>
-<li><p class="first"><a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.fmin_cobyla.html#scipy.optimize.fmin_cobyla" title="(in SciPy v0.12)"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_cobyla()</span></tt></a> Constraints optimization by linear
+<li><p class="first"><tt class="xref py py-func docutils literal"><span class="pre">scipy.optimize.fmin_cobyla()</span></tt> Constraints optimization by linear
 approximation: inequality constraints only:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">optimize</span><span class="o">.</span><span class="n">fmin_cobyla</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">cons</span><span class="o">=</span><span class="n">constraint</span><span class="p">)</span>
 <div class="newline"></div><span class="go">   Normal return from subroutine COBYLA</span>

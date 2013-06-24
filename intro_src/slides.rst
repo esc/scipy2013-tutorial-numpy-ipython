@@ -4,7 +4,7 @@ Introduction
 Materials
 ---------
 
-* GitHub Repository: http://git.io/bocND
+* GitHub Repository: http://git.io/bocNDg
 
 
 * Materials ZipFile: http://git.io/G5i5qA
